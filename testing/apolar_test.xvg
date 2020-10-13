@@ -1,0 +1,25 @@
+# This file was created Wed Oct  7 20:12:05 2020
+# Created by:
+#               :-) GROMACS - gmx sasa, 2020.1-Ubuntu-2020.1-1 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/joaov/Dropbox/Share-MMS-2020/JVitorino_-_MM-PBSA/MM-PBSA/03_python-mmpbsa_calculation
+# Command line:
+#   gmx sasa -f frame00000.gro -s sas.tpr -n pb.ndx -o apolar_test.xvg
+# gmx sasa is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "Solvent Accessible Surface"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Area (nm\S2\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Total"
+      0.000  137.468
