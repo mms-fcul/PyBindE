@@ -25,20 +25,20 @@ a = subprocess.Popen([g4_editconf, '-f', sys.argv[1],'-o', "conf.gro", '-n', sys
 a.communicate(b'Dimer\n')
 a.wait()
 #make mdp
-text_mdp = ["integrator          =  md", "\n",
-            "nsteps              =  0", "\n",
-            "coulombtype         = Reaction-Field", "\n",
-            ";coulombtype         = PME", "\n",
-            "epsilon_rf          = 54.0", "\n",
-            "rlist               = "+cutoff, "\n",
-            "rcoulomb            = "+cutoff, "\n",
-            "rvdw                = "+cutoff, "\n",
-            "energygrps          = MonomerA MonomerB"
-            ]
+text_mdp = """
+integrator      =  md
+nsteps          =  0
+coulombtype     = Reaction-Field
+;coulombtype    = PME
+epsilon_rf      = 54.0
+rlist           = {0}
+rcoulomb        = {0}
+rvdw            = {0}
+energygrps      = MonomerA MonomerB""".format(cutoff)
 
 mdp_name=curr+".mdp"
 with open(mdp_name, "w") as out_file:
-    out_file.writelines(text_mdp)
+    out_file.write(text_mdp)
 
 #grompp
 log_grompp = open('log_grompp.out','a')
