@@ -32,9 +32,9 @@ def read_nb(file):
             fields = line.split(' ')
             # print(fields)
             nb_dict = {
-                'i':    fields[0],
-                'j':    fields[1],
-                'c6':   float(fields[3]),
+                'i':          fields[0], 
+                'j':          fields[1], 
+                'c6':   float(fields[3]), 
                 'c12':  float(fields[4])
             }
             NB.append(nb_dict)
@@ -67,9 +67,9 @@ def read_charges(file):
             fields = line.split(' ')
             # print(fields)
             charges_dict = {
-                'atom':    fields[0],
-                'resnumbc':    fields[1],
-                'charge':   float(fields[2])
+                'atom':         fields[0], 
+                'resnumbc':     fields[1], 
+                'charge': float(fields[2])
             }
             # print(charges_dict)
             charges_dataset.append(charges_dict)
