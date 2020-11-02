@@ -8,7 +8,8 @@ import subprocess
 pdb_file = "/home/joaov/python-mmpbsa/mmpbsa/testing/dimer.pdb"
 gro_file = "/home/joaov/python-mmpbsa/mmpbsa/testing/frame00100.gro"
 res_conv = "/home/joaov/python-mmpbsa/mmpbsa/testing/res_atoms_db.rtp"
-nonbonded_itp = "/home/joaov/python-mmpbsa/mmpbsa/testing/new_nb.itp" #use new_ instead of nb.itp (incomplete)
+nonbonded_itp = "/home/joaov/python-mmpbsa/mmpbsa/testing/nb.itp" #use new_ instead of nb.itp (incomplete)
+atomtypes_itp = "/home/joaov/python-mmpbsa/mmpbsa/testing/atomtypes_nb.itp"
 charges_db = "/home/joaov/python-mmpbsa/mmpbsa/testing/DataBaseT.crg"
 # number of the atom where the monomer 2 starts
 mon2_start = 1150
@@ -147,27 +148,45 @@ def read_resdb(file):
                 residues.append(res_dict)
     return residues
 
-def read_nb(file):
+def read_nb(filenb,atomtypes):
     NB = []
     lines_no_comments = []
     clean_lines = []
-    with open(file) as nb:
-        next(nb)
-        next(nb)
-        lines = nb.read().splitlines()
-
+    with open(atomtypes) as atypes:
+        next(atypes)
+        next(atypes)
+        lines = atypes.read().splitlines()
         for line in lines:
             sep_comment = line.split(";")
-            # print(fields)
             lines_no_comments.append(sep_comment[0])
         for line in lines_no_comments:
             cleanline = re.sub('\s+', ' ', line)
             clean_lines.append(cleanline.strip())
-        # print(clean_lines)
         clean_lines = list(filter(None, clean_lines))
         for line in clean_lines:
             fields = line.split(' ')
-            # print(fields)
+            nb_dict = {
+                'i':          fields[0].rstrip(), 
+                'j':          fields[0].rstrip(), 
+                'c6':   float(fields[5]), 
+                'c12':  float(fields[6])
+            }
+            NB.append(nb_dict)
+    lines_no_comments = []
+    clean_lines = []
+    with open(filenb) as nb:
+        next(nb)
+        next(nb)
+        lines = nb.read().splitlines()
+        for line in lines:
+            sep_comment = line.split(";")
+            lines_no_comments.append(sep_comment[0])
+        for line in lines_no_comments:
+            cleanline = re.sub('\s+', ' ', line)
+            clean_lines.append(cleanline.strip())
+        clean_lines = list(filter(None, clean_lines))
+        for line in clean_lines:
+            fields = line.split(' ')
             nb_dict = {
                 'i':          fields[0].rstrip(), 
                 'j':          fields[1].rstrip(), 
@@ -225,7 +244,7 @@ charges = charges.rename(columns={"atom": "atom_type", "resnumbc": "res_name"})
 complete_df = pd.merge(merged_df, charges,  how='left', left_on=[
                      'res_name', 'atom_type'], right_on=['res_name', 'atom_type'])
 
-nb_df = pd.DataFrame(read_nb(nonbonded_itp)) # df from nb.itp to grab c6 and c12
+nb_df=pd.DataFrame(read_nb(nonbonded_itp,atomtypes_itp)) # df from nb.itp to grab c6 and c12
 alt_nb_df = nb_df.rename(columns={"i": "j", "j": "i"}) # create switched refs
 complete_nb_df=nb_df.append(alt_nb_df) # now we have the reverse combinations too
 
