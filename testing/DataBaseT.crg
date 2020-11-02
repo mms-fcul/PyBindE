@@ -795,6 +795,13 @@ HO11  CT4       0.000
 HO21  CT4       0.000
 HO12  CT4       0.000
 HO22  CT4       0.000
+CT    CTR       0.270
+OT1   CTR      -0.635
+OT2   CTR      -0.635
+HO11  CTR       0.000
+HO21  CTR       0.000
+HO12  CTR       0.000
+HO22  CTR       0.000
 N     NH2      -0.830
 H1    NH2       0.415
 H2    NH2       0.415
