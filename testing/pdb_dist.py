@@ -6,13 +6,9 @@ import pandas as pd
 from biopandas.pdb import PandasPdb
 import numpy as np
 import subprocess
-
+import matplotlib.pyplot as plt
 pdb_file = "/home/joaov/python-mmpbsa/mmpbsa/testing/dimer.pdb"
 # %%
-import matplotlib.pyplot as plt
-# ppdb=PandasPdb().read_pdb('/home/joaov/python-mmpbsa/mmpbsa/testing/dimer.pdb')
-#pdb_file = "/home/joaov/python-mmpbsa/mmpbsa/testing/dimer.pdb"
-# atom_coord=ppdb.df["atom_number","x_coord","y_coord","z_coord"]
 res_conv = "/home/joaov/python-mmpbsa/mmpbsa/testing/res_atoms_db.rtp"
 
 def read_pdb(file):

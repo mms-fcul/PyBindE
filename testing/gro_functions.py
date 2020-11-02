@@ -9,7 +9,7 @@ pdb_file = "/home/joaov/python-mmpbsa/mmpbsa/testing/dimer.pdb"
 gro_file = "/home/joaov/python-mmpbsa/mmpbsa/testing/frame00100.gro"
 res_conv = "/home/joaov/python-mmpbsa/mmpbsa/testing/res_atoms_db.rtp"
 nonbonded_itp = "/home/joaov/python-mmpbsa/mmpbsa/testing/new_nb.itp" #use new_ instead of nb.itp (incomplete)
-
+charges_db = "/home/joaov/python-mmpbsa/mmpbsa/testing/DataBaseT.crg"
 # number of the atom where the monomer 2 starts
 mon2_start = 1150
 # functions
@@ -177,6 +177,30 @@ def read_nb(file):
             NB.append(nb_dict)
     return NB
 
+def read_charges(file):
+    clean_lines = []
+    charges_dataset = []
+    with open(file) as db:
+        next(db)
+        next(db)
+        next(db)
+        lines = db.read().splitlines()
+        for line in lines:
+            cleanline = re.sub('\s+', ' ', line)
+            clean_lines.append(cleanline)
+
+        for line in clean_lines:
+            fields = line.split(' ')
+            # print(fields)
+            charges_dict = {
+                'atom':         fields[0], 
+                'resnumbc':     fields[1], 
+                'charge': float(fields[2])
+            }
+            # print(charges_dict)
+            charges_dataset.append(charges_dict)
+    return charges_dataset
+
 # start of pipeline
 gro_df = read_gro(gro_file) #create df with gro info, creates monomer index
 
@@ -195,6 +219,12 @@ merged_df = pd.merge(gro_df, df_res,  how='left', left_on=[
 merged_df.update(mega_monA) # use previously fixed terminus to update merged_df
 merged_df.update(mega_monB) # use previously fixed terminus to update merged_df
 
+charges = pd.DataFrame(read_charges(charges_db)) #create charges df
+charges = charges.rename(columns={"atom": "atom_type", "resnumbc": "res_name"})
+#add chages do gro df
+complete_df = pd.merge(merged_df, charges,  how='left', left_on=[
+                     'res_name', 'atom_type'], right_on=['res_name', 'atom_type'])
+
 nb_df = pd.DataFrame(read_nb(nonbonded_itp)) # df from nb.itp to grab c6 and c12
 alt_nb_df = nb_df.rename(columns={"i": "j", "j": "i"}) # create switched refs
 complete_nb_df=nb_df.append(alt_nb_df) # now we have the reverse combinations too
@@ -202,9 +232,12 @@ complete_nb_df=nb_df.append(alt_nb_df) # now we have the reverse combinations to
 complete_nb_df=complete_nb_df.rename(columns={"i": "name_Ai", "j": "name_Bj"})
 complete_nb_df=complete_nb_df.drop_duplicates() # [3364 rows x 4 columns]
 
+complete_monA = complete_df.query('chain_id == "A"') 
+complete_monB = complete_df.query('chain_id == "B"') 
+
 cutoff = True
 cutoff_n = 5
-dist_df = pd.DataFrame(calc_dists(monA,monB)) # calculate distances between 2 mons
+dist_df = pd.DataFrame(calc_dists(complete_monA,complete_monB)) # calculate distances between 2 mons
 
 '''log_dist = "/home/joaov/python-mmpbsa/mmpbsa/testing/pdb_dist.log"
 c = subprocess.Popen(["/bin/rm", '-f', log_dist])
@@ -223,6 +256,21 @@ copy_dist = dist_df
 merged_copies = pd.merge(copy_dist, copy_nb,  how='left', left_on=[
                      'name_Ai', 'name_Bj'], right_on=['name_Ai', 'name_Bj'])
 
-print(merged_copies)
-
 nan_merged_copies = merged_copies.query("c6 != c6") #none
+
+merged_copies['En_VdW'] = (merged_copies['c12']/merged_copies['distance']**12)-(merged_copies['c6']/merged_copies['distance']**6)
+
+#Vcoulomb= f* (q1*q2)/(Er*rij)
+#the charges come from databaseT.crg?
+#where do I get Er?78 for water?
+#rij "separation" is distance?
+f=138.935458
+Er=78
+merged_copies['En_Coul'] = f*(merged_copies['charge_Ai']*merged_copies['charge_Bj'])/(Er*merged_copies['distance'])
+
+#print(merged_copies)
+VdW_en_total = merged_copies['En_VdW'].sum()
+Coul_en_total = merged_copies['En_Coul'].sum()
+print(VdW_en_total)
+print(Coul_en_total)
+#print(VdW_en_total)
