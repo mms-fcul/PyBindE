@@ -1,0 +1,250 @@
+[ None ]
+
+[ COOH0]
+[ replace ]
+C		C	12.011	0.330
+O		O	15.9994	-0.45
+[ add ]
+1	2	O1	C	O 	N
+	OA	15.9994	-0.288
+1	2	HO11	C	N	CA
+	H	1.008	0.408
+1	2	HO21	O	C	CA
+	H	1.008	0.000
+1	2	HO12	C	CA	O
+	H	1.008	0.000
+1	2	HO22	O	CA	C
+	H	1.008	0.000
+[ bonds ]
+C	O1	gb_13
+C	O 	gb_5
+O 	HO21	gb_1
+O 	HO22	gb_1
+O1	HO11	gb_1
+O1	HO12	gb_1
+[ angles ]
+O 	C	O1	ga_33
+C	O 	HO21	ga_12
+C	O 	HO22	ga_12
+C	O1	HO11	ga_12
+C	O1	HO12	ga_12
+CA	C	O1	ga_19
+CA	C	O 	ga_30
+HO21	O 	HO22	ga_CtrHH
+HO11	O1	HO12	ga_CtrHH
+[ dihedrals ]
+N	CA	C	O	gd_40
+CA	C	O 	HO21	gd_CTrCCOH
+CA	C	O1	HO11	gd_CTrCCOH
+[ impropers ]
+C	CA	O 	O1	gi_1
+O 	C	HO21	HO22	gi_1
+O1	C	HO11	HO12	gi_1
+
+[ COOH1]
+[ replace ]
+C		C	12.011	0.330
+O		OA	15.9994	-0.288
+[ add ]
+1	2	O1	C	O	N
+	O	15.9994	-0.45
+1	2	HO11	C	N	CA
+	H	1.008	0.000
+1	2	HO21	O	C	CA
+	H	1.008	0.408
+1	2	HO12	C	CA	O
+	H	1.008	0.000
+1	2	HO22	O	CA	C
+	H	1.008	0.000
+[ bonds ]
+C	O1	gb_5
+C	O	gb_13
+O	HO21	gb_1
+O	HO22	gb_1
+O1	HO11	gb_1
+O1	HO12	gb_1
+[ angles ]
+O	C	O1	ga_33
+C	O	HO21	ga_12
+C	O	HO22	ga_12
+C	O1	HO11	ga_12
+C	O1	HO12	ga_12
+CA	C	O1	ga_30
+CA	C	O	ga_19
+HO21	O	HO22	ga_CtrHH
+HO11	O1	HO12	ga_CtrHH
+[ dihedrals ]
+N	CA	C	O	gd_40
+CA	C	O	HO21	gd_CTrCCOH
+CA	C	O1	HO11	gd_CTrCCOH
+[ impropers ]
+C	CA	O	O1	gi_1
+O	C	HO21	HO22	gi_1
+O1	C	HO11	HO12	gi_1
+
+[ COOH2]
+[ replace ]
+C		C	12.011	0.330
+O		O	15.9994	-0.45
+[ add ]
+1	2	O1	C	O 	N
+	OA	15.9994	-0.288
+1	2	HO11	C	N	CA
+	H	1.008	0.000
+1	2	HO21	O	C	CA
+	H	1.008	0.000
+1	2	HO12	C	CA	O
+	H	1.008	0.408
+1	2	HO22	O	CA	C
+	H	1.008	0.000
+[ bonds ]
+C	O1	gb_13
+C	O 	gb_5
+O 	HO21	gb_1
+O 	HO22	gb_1
+O1	HO11	gb_1
+O1	HO12	gb_1
+[ angles ]
+O 	C	O1	ga_33
+C	O 	HO21	ga_12
+C	O 	HO22	ga_12
+C	O1	HO11	ga_12
+C	O1	HO12	ga_12
+CA	C	O1	ga_19
+CA	C	O 	ga_30
+HO21	O 	HO22	ga_CtrHH
+HO11	O1	HO12	ga_CtrHH
+[ dihedrals ]
+N	CA	C	O 	gd_40
+CA	C	O 	HO21	gd_CTrCCOH
+CA	C	O1	HO11	gd_CTrCCOH
+[ impropers ]
+C	CA	O 	O1	gi_1
+O 	C	HO21	HO22	gi_1
+O1	C	HO11	HO12	gi_1
+
+[ COOH3]
+[ replace ]
+C		C	12.011	0.330
+O		OA	15.9994	-0.288
+[ add ]
+1	2	O1	C	O	N
+	O	15.9994	-0.45
+1	2	HO11	C	N	CA
+	H	1.008	0.000
+1	2	HO21	O	C	CA
+	H	1.008	0.000
+1	2	HO12	C	CA	O
+	H	1.008	0.000
+1	2	HO22	O	CA	C
+	H	1.008	0.408
+[ bonds ]
+C	O1	gb_5
+C	O 	gb_13
+O 	HO21	gb_1
+O 	HO22	gb_1
+O1	HO11	gb_1
+O1	HO12	gb_1
+[ angles ]
+O 	C	O1	ga_33
+C	O 	HO21	ga_12
+C	O 	HO22	ga_12
+C	O1	HO11	ga_12
+C	O1	HO12	ga_12
+CA	C	O1	ga_30
+CA	C	O 	ga_19
+HO21	O 	HO22	ga_CtrHH
+HO11	O1	HO12	ga_CtrHH
+[ dihedrals ]
+N	CA	C	O 	gd_40
+CA	C	O 	HO21	gd_CTrCCOH
+CA	C	O1	HO11	gd_CTrCCOH
+[ impropers ]
+C	CA	O 	O1	gi_1
+O 	C	HO21	HO22	gi_1
+O1	C	HO11	HO12	gi_1
+
+[ COO_4 ]
+[ replace ]
+C		C	12.011	0.27
+O		OM	15.9994	-0.635
+[ add ]
+1	2	O1	C	O	N
+	OM	15.9994	-0.635
+1	2	HO21	O	C	CA
+	H	1.008	0.000
+1	2	HO11	C	N	CA
+	H	1.008	0.000
+1	2	HO22	O	CA	C
+	H	1.008	0.000
+1	2	HO12	C	CA	O
+	H	1.008	0.000
+[ bonds ]
+C	O 	gb_6
+C	O1	gb_6
+O 	HO21	gb_1
+O 	HO22	gb_1
+O1	HO11	gb_1
+O1	HO12	gb_1
+[ angles ]
+O 	C	O1	ga_38
+C	O 	HO21	ga_12
+C	O 	HO22	ga_12
+C	O1	HO11	ga_12
+C	O1	HO12	ga_12
+CA	C	O 	ga_22
+CA	C	O1	ga_22
+HO21	O 	HO22	ga_CtrHH
+HO11	O1	HO12	ga_CtrHH
+[ dihedrals ]
+N	CA	C	O 	gd_40
+CA	C	O 	HO21	gd_CTrCCOH
+CA	C	O1	HO11	gd_CTrCCOH
+[ impropers ]
+C	CA	O	O1 	gi_1
+O 	C	HO21	HO22	gi_1
+O1	C	HO11	HO12	gi_1
+
+[ COOH_regular ]
+[ replace ]
+C		C	12.011	0.33
+O		OA	15.9994	-0.288
+[ add ]
+1	2	OT	C	CA	N
+	O	15.9994	-0.45
+1	2	HO	O	C	CA
+	H	1.008	0.408
+[ bonds ]
+C	O	gb_13
+C	OT	gb_5
+O	HO	gb_1
+[ angles ]
+O	C	OT	ga_33
+C	O	HO	ga_12
+CA	C	O	ga_19
+CA	C	OT	ga_30
+[ dihedrals ]
+N	CA	C	O	gd_40
+CA	C	O	HO	gd_12
+[ impropers ]
+C	CA	OT	O	gi_1
+
+[ COO_regular ]
+[ replace ]
+C		C	12.011	0.27
+[ add ]
+2	8	O	C	CA	N
+	OM	15.9994	-0.635
+[ delete ]
+O
+[ bonds ]
+C	O1	gb_6
+C	O2	gb_6
+[ angles ]
+O1	C	O2	ga_38
+CA	C	O1	ga_22
+CA	C	O2	ga_22
+[ dihedrals ]
+N	CA	C	O2	gd_40
+[ impropers ]
+C	CA	O2	O1	gi_1

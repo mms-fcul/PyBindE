@@ -1,9 +1,0 @@
-integrator          =  md
-nsteps              =  0
-coulombtype         = Reaction-Field
-;coulombtype         = PME
-epsilon_rf          = 54.0
-rlist               = 3.0
-rcoulomb            = 3.0
-rvdw                = 3.0
-energygrps          = MonomerA MonomerB

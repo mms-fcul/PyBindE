@@ -1,0 +1,110 @@
+Option     Filename  Type         Description
+------------------------------------------------------------
+  -f        TMP.mdp  Input, Opt!  grompp input file with MD parameters
+ -po    TMP_out.mdp  Output       grompp input file with MD parameters
+  -c       conf.gro  Input        Structure file: gro g96 pdb tpr tpb tpa
+  -r       conf.gro  Input, Opt.  Structure file: gro g96 pdb tpr tpb tpa
+ -rb       conf.gro  Input, Opt.  Structure file: gro g96 pdb tpr tpb tpa
+  -n        b2M.ndx  Input, Opt!  Index file
+  -p        b2M.top  Input        Topology file
+ -pp TMP_processed.top  Output, Opt! Topology file
+  -o        b2M.tpr  Output       Run input file: tpr tpb tpa
+  -t       traj.trr  Input, Opt.  Full precision trajectory: trr trj cpt
+  -e       ener.edr  Input, Opt.  Energy file: edr ene
+
+Option       Type   Value   Description
+------------------------------------------------------
+-[no]h       bool   no      Print help info and quit
+-nice        int    0       Set the nicelevel
+-[no]v       bool   yes     Be loud and noisy
+-time        real   -1      Take frame at or first after this time.
+-[no]rmvsbds bool   yes     Remove constant bonded interactions with virtual
+                            sites
+-maxwarn     int    1000    Number of allowed warnings during input processing
+-[no]zero    bool   no      Set parameters for bonded interactions without
+                            defaults to zero instead of generating an error
+-[no]renum   bool   yes     Renumber atomtypes and minimize number of
+                            atomtypes
+
+
+Back Off! I just backed up TMP_out.mdp to ./#TMP_out.mdp.1#
+checking input for internal consistency...
+
+NOTE 1 [file TMP.mdp, line unknown]:
+  You are using a cut-off for VdW interactions with NVE, for good energy
+  conservation use vdwtype = Shift (possibly with DispCorr)
+
+
+NOTE 2 [file TMP.mdp, line unknown]:
+  You are using a cut-off for electrostatics with NVE, for good energy
+  conservation use coulombtype = PME-Switch or Reaction-Field-zero
+
+
+Back Off! I just backed up TMP_processed.top to ./#TMP_processed.top.1#
+Opening library file /programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-4.0.7_pH_I/share/gromacs/top/ff_dum.itp
+Generated 177 of the 1830 non-bonded parameter combinations
+Opening library file /programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-4.0.7_pH_I/share/gromacs/top/spc.itp
+Opening library file /programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-4.0.7_pH_I/share/gromacs/top/ions.itp
+Excluding 3 bonded neighbours molecule type 'Protein'
+
+NOTE 3 [file b2M.top, line 14613]:
+  System has non-zero total charge: 5.999999e+00
+  
+
+
+processing coordinates...
+double-checking input for internal consistency...
+renumbering atomtypes...
+converting bonded parameters...
+initialising group options...
+processing index file...
+Making dummy/rest group for T-Coupling containing 2298 elements
+Making dummy/rest group for Acceleration containing 2298 elements
+Making dummy/rest group for Freeze containing 2298 elements
+Making dummy/rest group for VCM containing 2298 elements
+Number of degrees of freedom in T-Coupling group rest is 6891.00
+Making dummy/rest group for User1 containing 2298 elements
+Making dummy/rest group for User2 containing 2298 elements
+Making dummy/rest group for XTC containing 2298 elements
+Making dummy/rest group for Or. Res. Fit containing 2298 elements
+Making dummy/rest group for QMMM containing 2298 elements
+T-Coupling       has 1 element(s): rest
+Energy Mon.      has 2 element(s): MonomerA MonomerB
+Acceleration     has 1 element(s): rest
+Freeze           has 1 element(s): rest
+User1            has 1 element(s): rest
+User2            has 1 element(s): rest
+VCM              has 1 element(s): rest
+XTC              has 1 element(s): rest
+Or. Res. Fit     has 1 element(s): rest
+QMMM             has 1 element(s): rest
+Checking consistency between energy and charge groups...
+writing run input file...
+
+There were 3 notes
+
+Back Off! I just backed up b2M.tpr to ./#b2M.tpr.1#
+
+gcq#241: "Can't You Make This Thing Go Faster ?" (Black Crowes)
+
+                         :-)  G  R  O  M  A  C  S  (-:
+
+               Giving Russians Opium May Alter Current Situation
+
+                            :-)  VERSION 4.0.7  (-:
+
+
+      Written by David van der Spoel, Erik Lindahl, Berk Hess, and others.
+       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+             Copyright (c) 2001-2008, The GROMACS development team,
+            check out http://www.gromacs.org for more information.
+
+         This program is free software; you can redistribute it and/or
+          modify it under the terms of the GNU General Public License
+         as published by the Free Software Foundation; either version 2
+             of the License, or (at your option) any later version.
+
+ :-)  /programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-4.0.7_pH_I/bin/grompp  (-:
+
+processing topology...
+This run will generate roughly 0 Mb of data

@@ -1,0 +1,354 @@
+Log file opened on Tue Oct 13 10:21:17 2020
+Host: bio002  pid: 2830  nodeid: 0  nnodes:  1
+The Gromacs distribution was built Sun May 24 15:44:26 WEST 2020 by
+root@bio204 (Linux 4.15.0-96-generic x86_64)
+
+
+                         :-)  G  R  O  M  A  C  S  (-:
+
+               Giving Russians Opium May Alter Current Situation
+
+                            :-)  VERSION 4.0.7  (-:
+
+
+      Written by David van der Spoel, Erik Lindahl, Berk Hess, and others.
+       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+             Copyright (c) 2001-2008, The GROMACS development team,
+            check out http://www.gromacs.org for more information.
+
+         This program is free software; you can redistribute it and/or
+          modify it under the terms of the GNU General Public License
+         as published by the Free Software Foundation; either version 2
+             of the License, or (at your option) any later version.
+
+ :-)  /programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-4.0.7_pH_I/bin/mdrun  (-:
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess and C. Kutzner and D. van der Spoel and E. Lindahl
+GROMACS 4: Algorithms for highly efficient, load-balanced, and scalable
+molecular simulation
+J. Chem. Theory Comput. 4 (2008) pp. 435-447
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark and H. J. C.
+Berendsen
+GROMACS: Fast, Flexible and Free
+J. Comp. Chem. 26 (2005) pp. 1701-1719
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+E. Lindahl and B. Hess and D. van der Spoel
+GROMACS 3.0: A package for molecular simulation and trajectory analysis
+J. Mol. Mod. 7 (2001) pp. 306-317
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, D. van der Spoel and R. van Drunen
+GROMACS: A message-passing parallel molecular dynamics implementation
+Comp. Phys. Comm. 91 (1995) pp. 43-56
+-------- -------- --- Thank You --- -------- --------
+
+Input Parameters:
+   integrator           = md
+   nsteps               = 0
+   init_step            = 0
+   ns_type              = Grid
+   nstlist              = 10
+   ndelta               = 2
+   nstcomm              = 1
+   comm_mode            = Linear
+   nstlog               = 100
+   nstxout              = 100
+   nstvout              = 100
+   nstfout              = 0
+   nstenergy            = 100
+   nstxtcout            = 0
+   init_t               = 0
+   delta_t              = 0.001
+   xtcprec              = 1000
+   nkx                  = 0
+   nky                  = 0
+   nkz                  = 0
+   pme_order            = 4
+   ewald_rtol           = 1e-05
+   ewald_geometry       = 0
+   epsilon_surface      = 0
+   optimize_fft         = FALSE
+   ePBC                 = xyz
+   bPeriodicMols        = FALSE
+   bContinuation        = FALSE
+   bShakeSOR            = FALSE
+   etc                  = No
+   epc                  = No
+   epctype              = Isotropic
+   tau_p                = 1
+   ref_p (3x3):
+      ref_p[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref_p[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref_p[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   compress (3x3):
+      compress[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compress[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compress[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   refcoord_scaling     = No
+   posres_com (3):
+      posres_com[0]= 0.00000e+00
+      posres_com[1]= 0.00000e+00
+      posres_com[2]= 0.00000e+00
+   posres_comB (3):
+      posres_comB[0]= 0.00000e+00
+      posres_comB[1]= 0.00000e+00
+      posres_comB[2]= 0.00000e+00
+   andersen_seed        = 815131
+   rlist                = 3
+   rtpi                 = 0.05
+   coulombtype          = Reaction-Field
+   rcoulomb_switch      = 0
+   rcoulomb             = 3
+   vdwtype              = Cut-off
+   rvdw_switch          = 0
+   rvdw                 = 3
+   epsilon_r            = 1
+   epsilon_rf           = 54
+   tabext               = 1
+   implicit_solvent     = No
+   gb_algorithm         = Still
+   gb_epsilon_solvent   = 80
+   nstgbradii           = 1
+   rgbradii             = 2
+   gb_saltconc          = 0
+   gb_obc_alpha         = 1
+   gb_obc_beta          = 0.8
+   gb_obc_gamma         = 4.85
+   sa_surface_tension   = 2.092
+   DispCorr             = No
+   free_energy          = no
+   init_lambda          = 0
+   sc_alpha             = 0
+   sc_power             = 0
+   sc_sigma             = 0.3
+   delta_lambda         = 0
+   nwall                = 0
+   wall_type            = 9-3
+   wall_atomtype[0]     = -1
+   wall_atomtype[1]     = -1
+   wall_density[0]      = 0
+   wall_density[1]      = 0
+   wall_ewald_zfac      = 3
+   pull                 = no
+   disre                = No
+   disre_weighting      = Conservative
+   disre_mixed          = FALSE
+   dr_fc                = 1000
+   dr_tau               = 0
+   nstdisreout          = 100
+   orires_fc            = 0
+   orires_tau           = 0
+   nstorireout          = 100
+   dihre-fc             = 1000
+   em_stepsize          = 0.01
+   em_tol               = 10
+   niter                = 20
+   fc_stepsize          = 0
+   nstcgsteep           = 1000
+   nbfgscorr            = 10
+   ConstAlg             = Lincs
+   shake_tol            = 0.0001
+   lincs_order          = 4
+   lincs_warnangle      = 30
+   lincs_iter           = 1
+   bd_fric              = 0
+   ld_seed              = 1993
+   cos_accel            = 0
+   deform (3x3):
+      deform[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   userint1             = 0
+   userint2             = 0
+   userint3             = 0
+   userint4             = 0
+   userreal1            = 0
+   userreal2            = 0
+   userreal3            = 0
+   userreal4            = 0
+grpopts:
+   nrdf:        6891
+   ref_t:           0
+   tau_t:           0
+anneal:          No
+ann_npoints:           0
+   acc:	           0           0           0
+   nfreeze:           N           N           N
+   energygrp_flags[  0]: 0 0
+   energygrp_flags[  1]: 0 0
+   efield-x:
+      n = 0
+   efield-xt:
+      n = 0
+   efield-y:
+      n = 0
+   efield-yt:
+      n = 0
+   efield-z:
+      n = 0
+   efield-zt:
+      n = 0
+   bQMMM                = FALSE
+   QMconstraints        = 0
+   QMMMscheme           = 0
+   scalefactor          = 1
+qm_opts:
+   ngQM                 = 0
+Table routines are used for coulomb: FALSE
+Table routines are used for vdw:     FALSE
+Cut-off's:   NS: 3   Coulomb: 3   LJ: 3
+Reaction-Field:
+epsRF = 54, rc = 3, krf = 0.0180088, crf = 0.495413, epsfac = 138.935
+The electrostatics potential has its minimum at r = 3.02804
+System total charge: 6.000
+Generated table with 2000 data points for 1-4 COUL.
+Tabscale = 500 points/nm
+Generated table with 2000 data points for 1-4 LJ6.
+Tabscale = 500 points/nm
+Generated table with 2000 data points for 1-4 LJ12.
+Tabscale = 500 points/nm
+Configuring nonbonded kernels...
+Testing x86_64 SSE support... present.
+
+
+Removing pbc first time
+Center of mass motion removal mode is Linear
+We have the following groups for center of mass motion removal:
+  0:  rest
+There are: 2298 Atoms
+Max number of connections per atom is 29
+Total number of connections is 33566
+Max number of graph edges per atom is 4
+Total number of graph edges is 4692
+Initial temperature: 0 K
+
+Started mdrun on node 0 Tue Oct 13 10:21:17 2020
+
+           Step           Time         Lambda
+              0        0.00000        0.00000
+
+Grid: 5 x 5 x 4 cells
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.          LJ-14
+    6.30038e+01    3.93158e+03    2.64336e+03    1.22154e+03   -1.47836e+02
+     Coulomb-14        LJ (SR)   Coulomb (SR)       RF excl.      Potential
+    2.84462e+04   -5.00515e+03   -3.67493e+04   -7.53635e+03   -1.31330e+04
+    Kinetic En.   Total Energy    Temperature Pressure (bar)
+    7.33981e+01   -1.30596e+04    2.56210e+00    2.95849e+02
+
+	<======  ###############  ==>
+	<====  A V E R A G E S  ====>
+	<==  ###############  ======>
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.          LJ-14
+    6.30038e+01    3.93158e+03    2.64336e+03    1.22154e+03   -1.47836e+02
+     Coulomb-14        LJ (SR)   Coulomb (SR)       RF excl.      Potential
+    2.84462e+04   -5.00515e+03   -3.67493e+04   -7.53635e+03   -1.31330e+04
+    Kinetic En.   Total Energy    Temperature Pressure (bar)
+    7.33981e+01   -1.30596e+04    2.56210e+00    2.95849e+02
+
+   Total Virial (kJ/mol)
+   -6.00640e+03   -6.82245e+02    6.19508e+02
+   -6.82208e+02   -4.94307e+03   -7.70331e+01
+    6.19425e+02   -7.71191e+01   -4.49065e+03
+
+   Pressure (bar)
+    3.45084e+02    3.89807e+01   -3.55247e+01
+    3.89787e+01    2.84206e+02    4.46449e+00
+   -3.55199e+01    4.46941e+00    2.58259e+02
+
+   Total Dipole (Debye)
+    2.12819e+03    1.68815e+03    1.05648e+03
+
+  Epot (kJ/mol)        Coul-SR          LJ-SR        Coul-14          LJ-14   
+MonomerA-MonomerA   -1.82163e+04   -2.30118e+03    1.43188e+04   -5.77799e+01
+MonomerA-MonomerB   -2.27049e+02   -1.98371e+02    0.00000e+00    0.00000e+00
+MonomerB-MonomerB   -1.83060e+04   -2.50560e+03    1.41274e+04   -9.00556e+01
+
+	<======  ###############################  ==>
+	<====  R M S - F L U C T U A T I O N S  ====>
+	<==  ###############################  ======>
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.          LJ-14
+    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00
+     Coulomb-14        LJ (SR)   Coulomb (SR)       RF excl.      Potential
+    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00
+    Kinetic En.   Total Energy    Temperature Pressure (bar)
+    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00
+
+   Total Virial (kJ/mol)
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+
+   Pressure (bar)
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+
+   Total Dipole (Debye)
+    0.00000e+00    0.00000e+00    0.00000e+00
+
+  Epot (kJ/mol)        Coul-SR          LJ-SR        Coul-14          LJ-14   
+MonomerA-MonomerA    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00
+MonomerA-MonomerB    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00
+MonomerB-MonomerB    0.00000e+00    0.00000e+00    0.00000e+00    0.00000e+00
+
+
+	M E G A - F L O P S   A C C O U N T I N G
+
+   RF=Reaction-Field  FE=Free Energy  SCFE=Soft-Core/Free Energy
+   T=Tabulated        W3=SPC/TIP3p    W4=TIP4p (single or pairs)
+   NF=No Forces
+
+ Computing:                         M-Number         M-Flops  % Flops
+-----------------------------------------------------------------------
+ LJ                                 0.527877          17.420    31.9
+ RF Coul                            0.309689          10.220    18.7
+ RF Coul + LJ                       0.411776          18.118    33.2
+ Outer nonbonded loop               0.010393           0.104     0.2
+ 1,4 nonbonded interactions         0.003652           0.329     0.6
+ NS-Pairs                           0.322528           6.773    12.4
+ Reset In Box                       0.000892           0.003     0.0
+ Shift-X                            0.009192           0.055     0.1
+ CG-CoM                             0.002298           0.007     0.0
+ Bonds                              0.002346           0.138     0.3
+ Angles                             0.003454           0.580     1.1
+ Propers                            0.001580           0.362     0.7
+ Impropers                          0.001222           0.254     0.5
+ Virial                             0.002343           0.042     0.1
+ Update                             0.002298           0.071     0.1
+ Stop-CM                            0.002298           0.023     0.0
+ Calc-Ekin                          0.004596           0.124     0.2
+-----------------------------------------------------------------------
+ Total                                                54.623   100.0
+-----------------------------------------------------------------------
+
+
+     R E A L   C Y C L E   A N D   T I M E   A C C O U N T I N G
+
+ Computing:         Nodes     Number     G-Cycles    Seconds     %
+-----------------------------------------------------------------------
+ Neighbor search        1          1        0.047        0.0    44.9
+ Force                  1          1        0.026        0.0    24.8
+ Write traj.            1          1        0.026        0.0    24.6
+ Update                 1          1        0.000        0.0     0.3
+ Rest                   1                   0.006        0.0     5.4
+-----------------------------------------------------------------------
+ Total                  1                   0.105        0.0   100.0
+-----------------------------------------------------------------------
+
+Finished mdrun on node 0 Tue Oct 13 10:21:17 2020
