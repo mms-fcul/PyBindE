@@ -1,10 +1,6 @@
 import pandas as pd
 import numpy as np
 import pickle
-import MDAnalysis as mda
-import pyjoaov as pj
-import time
-initial_time = time.perf_counter()
 
 
 working_path = "/home/joaov/github/mmpbsa/testing/"
@@ -176,7 +172,7 @@ complete_monB = complete_df.query('chain_id == "B"')
 # calculate distances between 2 mons
 cutoff = False
 cutoff_n = 4.5
-dist_df = pd.DataFrame(calc_dists(complete_monA, complete_monB))
+dist_df = pd.DataFrame(calc_dists(complete_monA, complete_monA))
 
 # fix some names between gro and databases
 complete_nb_df['type_Ai'] = complete_nb_df['type_Ai'].str.replace('CH2R', 'CH2r')
@@ -208,10 +204,6 @@ print("En_Coul = ", Coul_en_total)
 
 #Energy formulas--------------------------------------------------------------------------------
 
-with open('energy_vars.pkl', 'wb') as f:
+with open('monA_energy_vars.pkl', 'wb') as f:
     pickle.dump([VdW_en_total, Coul_en_total], f)
 
-final_time = time.perf_counter()
-elapsed_time=final_time-initial_time
-name='gro_en_calc.py'
-pj.log_timers(elapsed_time, name)

@@ -1,0 +1,25 @@
+# This file was created Tue Jan 26 00:09:54 2021
+# Created by:
+#               :-) GROMACS - gmx sasa, 2020.1-Ubuntu-2020.1-1 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/joaov/github/mmpbsa/gromacs-dependent/final_scripts
+# Command line:
+#   gmx sasa -f conf.gro -s /home/joaov/github/mmpbsa/gromacs-dependent/files/sas.tpr -n /home/joaov/github/mmpbsa/gromacs-dependent/files/pb.ndx -o temp_local/TMP_aux_MonB.xvg
+# gmx sasa is part of G R O M A C S:
+#
+# GRoups of Organic Molecules in ACtion for Science
+#
+@    title "Solvent Accessible Surface"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Area (nm\S2\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Total"
+  10000.000   70.502

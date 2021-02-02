@@ -1,0 +1,25 @@
+Generated on 01-02-2021 22:53:40
+filename            =  /home/joaov/github/mmpbsa/test_system/frame00100.gro
+
+E_VdW               =  -355.38
+E_Coul              =  -1774.62
+
+Gnonpolar_complex   =  70.16
+Gnonpolar_mon1      =  38.13
+Gnonpolar_mon2      =  32.95
+
+Gnonpolar_total     =  -3.85
+
+Gpolar_complex      =  0
+Gpolar_mon1         =  0
+Gpolar_mon2         =  0
+
+Gpolar_total        =  0
+
+Gsolv               =  -3.85
+
+EMM                 =  -2130.0
+
+G_binding           =  -2133.85
+
+User Note : MISSING POLAR ENERGY VALUES  

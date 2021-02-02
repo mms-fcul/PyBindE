@@ -1,0 +1,7 @@
+gro_en_calc.py       70.42   s
+gro_en_calc.py       70.52   s
+01_gro_en_calc.py    69.31   s
+01_gro_en_calc.py    66.55   s
+01b_gro_en_calc.py   69.93   s
+01b_gro_en_calc.py   68.26   s
+01b_gro_en_calc.py   66.9    s
