@@ -83,6 +83,6 @@ for key in selections:
     list_keys.append(selections[key])
     # Saving the objects:
 
-with open('sasa_vals.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
+#with open('sasa_vals.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
     pickle.dump(list_keys, f)
 

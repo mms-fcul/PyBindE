@@ -1,10 +1,10 @@
 import pandas as pd
+import numpy as np
 import pyjoaov as pj
 import freesasa as fs
 import os
 import time
 initial_time = time.perf_counter()
-#initial_time = (initial_time.strftime('%d-%m-%Y %H:%M:%S'))
 
 #paths
 working_path   = "/home/joaov/github/mmpbsa/testing/"
@@ -31,10 +31,7 @@ mon2_end   = 2298
 #distances cutoff
 cutoff = False
 cutoff_n = 4.5
-
-#monomers have N and C terminus
 terminus = True
-
 ######################################################################
 gro_df = pj.read_gro_minus_index(gro_file) #create df with gro info, creates monomer index
 
@@ -82,16 +79,35 @@ if not nans.empty:
 
 monomers_df = gro_res_crg_df
 
-monA = monomers_df.query('chain_id == "A"') 
-monB = monomers_df.query('chain_id == "B"') 
+monA = monomers_df.query('chain_id == "A"')
+trimmed_monA = pd.DataFrame(monA,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
+monB = monomers_df.query('chain_id == "B"')
+trimmed_monB = pd.DataFrame(monB,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
 #print(gro_res_crg_df.head(20))
 #print(gro_res_crg_df.tail(20))
 #pj.df_snapshot(gro_res_crg_df,"gro_res_crg_df")
 # calculate distances between 2 mons
+from scipy.spatial.distance import cdist
+    
+def calc_dists_pandas(set1, set2):
+  a = set1[["x_coord", "y_coord", "z_coord"]]
+  b = set2[["x_coord", "y_coord", "z_coord"]]
+
+  df = set1[["atom_num", "atom_type"]].merge(set2[["atom_num", "atom_type"]], how="cross", suffixes=("_A", "_B"))
+  df["distance"] = cdist(a, b).ravel()
+  print(df)
+  return df
+
+
+#calculate distances between all atoms of 2 monomers
 print("Calculating distances...")
-dist_df = pd.DataFrame(pj.calc_dists(monA, monB, cutoff, cutoff_n))
-
-
+#dist_df=pj.calc_dists_test(trimmed_monA, trimmed_monB, cutoff, cutoff_n)
+dist_df=calc_dists_pandas(trimmed_monA,trimmed_monB)
+final_time = time.perf_counter()
+elapsed_time=final_time-initial_time
+print("Elapsed time: ", elapsed_time,"seconds.")
+print("Elapsed time: ", elapsed_time/60,"minutes.")
 # fix some names between gro and databases
 complete_df = pd.merge(dist_df, df_nb,  how = 'left', on = ['type_Ai', 'type_Bj'])
 complete_df['type_Ai'] = complete_df['type_Ai'].str.replace('CH2R', 'CH2r')
@@ -112,88 +128,14 @@ VdW_en_total = complete_df['En_VdW'].sum()
 print("En_VdW = ", VdW_en_total)
 Coul_en_total = complete_df['En_Coul'].sum()
 print("En_Coul = ", Coul_en_total)
-#pj.df_snapshot(complete_df,"complete_df_01b")
-
-#convert gro to pdb
-pj.gro2pdb(gro_df,new_filepath)
-pj.prYellow("New file is: "+new_filepath)
-PDB = new_filepath
-#calculate SASA estimate
-
-use_gromacs = False
-
-if use_gromacs:
-  
-  gmx20_path  = "/usr/bin/gmx"
-  file_path   = gro_file
-  tpr_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/sas.tpr"
-  ndx_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/pb.ndx"
-  
-  sasa_components = pj.run_g_sasa(gmx20_path,file_path,tpr_path,ndx_path)
-  
-  sasa_P  = sasa_components[0]
-  sasa_MA = sasa_components[1]
-  sasa_MB = sasa_components[2]
-  print(sasa_components)
-  
-else:
-  fs.setVerbosity(1)
-  structure = fs.Structure(PDB)
-  result =fs.calc(structure,fs.Parameters({'algorithm' : fs.ShrakeRupley,
-                                           'n-points' : 10000}))
-
-  #print("Total : %.2f A2" % result.totalArea())
-  selections = fs.selectArea(('dimer, resi 1-198','monA, resi 1-99', 'monB, resi 100-198'), structure, result)
-  list_keys=[]
-  for key in selections:
-      print (key, ": %.2f A2" % selections[key])
-      list_keys.append(selections[key])
-  sasa_P  = list_keys[0]
-  sasa_MA = list_keys[1]
-  sasa_MB = list_keys[2]
-
-pdb_coord = pj.read_pdb(PDB)
-pdb_df = pd.DataFrame(pdb_coord)
-
-gcenter=pj.geom_center(pdb_df)
-print("Geometric center of dimer in pdb is:",gcenter)
-
-box_size=pj.appropriate_box_size(pdb_df)
-print("Appropriate box side size of pdb is:",box_size)
-sasa      = [sasa_P,sasa_MA,sasa_MB]
-
-
-#generate energy summary file energies.txt
-g = 0.00542 # gamma -> kcal/(mol‚A2)
-b = 0.92    # beta  -> kcal/mol
-
-nonbonded = [VdW_en_total,Coul_en_total]
-polar     = [-8971.42,-3854.31,-3713.99]
-#polar     = [solv_dimer, solv_mon1, solv_mon2]
-UserNote= "MISSING POLAR ENERGY VALUES \n Modifications were made to the way the program treats N and C terminus"
-pj.gen_en_summary(gro_file,g,b,nonbonded,sasa,polar,UserNote,saving_path+"energies.txt")
-pj.prYellow("New energy summary has been created!")
 
 
 final_time = time.perf_counter()
-#final_time = (final_time.strftime('%d-%m-%Y %H:%M:%S'))
-
 elapsed_time=final_time-initial_time
 print("Elapsed time: ", elapsed_time,"seconds.")
 print("Elapsed time: ", elapsed_time/60,"minutes.")
 
-name='01b_gro_en_calc.py'
+name='CALC_DIST.py'
 pj.log_timers(elapsed_time, name)
 
-
-
-
-
-
-
-
-
-
-
-
-
+print(dist_df)

@@ -59,9 +59,9 @@ complete_nb_df = complete_nb_df.drop_duplicates()
 
 complete_monA = complete_df.query('chain_id == "A"') 
 complete_monB = complete_df.query('chain_id == "B"') 
-print(complete_df.head(20))
-print(complete_df.tail(20))
-pj.df_snapshot(complete_df,"complete_df")
+#print(complete_df.head(20))
+#print(complete_df.tail(20))
+#pj.df_snapshot(complete_df,"complete_df")
 # calculate distances between 2 mons
 dist_df = pd.DataFrame(pj.calc_dists(complete_monA, complete_monB, cutoff, cutoff_n))
 
@@ -130,7 +130,7 @@ pj.prYellow("New file is: "+new_filepath)
 
 #calculate SASA estimate
 
-use_gromacs = False
+use_gromacs = True
 
 if use_gromacs:
   
@@ -139,8 +139,9 @@ if use_gromacs:
   tpr_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/sas.tpr"
   ndx_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/pb.ndx"
   
-  sasa = pj.run_g_sasa(gmx20_path,file_path,tpr_path,ndx_path)
-  
+  sasa    = pj.run_g_sasa(gmx20_path,file_path,tpr_path,ndx_path)
+
+  print(sasa)
 else:
   fs.setVerbosity(1)
   structure = fs.Structure(PDB)
@@ -156,16 +157,18 @@ else:
   sasa_P  = list_keys[0]
   sasa_MA = list_keys[1]
   sasa_MB = list_keys[2]
-
-  pdb_coord = pj.read_pdb(PDB)
-  pdb_df = pd.DataFrame(pdb_coord)
-
-  gcenter=pj.geom_center(pdb_df)
-  print("Geometric center of dimer in pdb is:",gcenter)
-
-  box_size=pj.appropriate_box_size(pdb_df)
-  print("Appropriate box side size of pdb is:",box_size)
   sasa      = [sasa_P,sasa_MA,sasa_MB]
+  
+  
+pdb_coord = pj.read_pdb(PDB)
+pdb_df = pd.DataFrame(pdb_coord)
+
+gcenter=pj.geom_center(pdb_df)
+print("Geometric center of dimer in pdb is:",gcenter)
+
+box_size=pj.appropriate_box_size(pdb_df)
+print("Appropriate box side size of pdb is:",box_size)
+  
 
 
 #generate energy summary file energies.txt

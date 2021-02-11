@@ -33,7 +33,7 @@ cutoff = False
 cutoff_n = 4.5
 
 #monomers have N and C terminus
-terminus = True
+has_terminus = True
 
 ######################################################################
 gro_df = pj.read_gro_minus_index(gro_file) #create df with gro info, creates monomer index
@@ -56,7 +56,7 @@ df_nb = df_nb.rename(columns = {"i": "type_Ai", "j": "type_Bj"})
 #df_nb = df_nb.drop_duplicates()
 
 #Change C and N terminus residue to CTR and NTR
-if terminus:
+if has_terminus:
   
   ntr_list=[]
   for i in df_res.loc[(df_res["res_name"] == 'NTR'), "atom_name"]:
@@ -66,6 +66,7 @@ if terminus:
   for i in df_res.loc[(df_res["res_name"] == 'CTR'), "atom_name"]:
       ctr_list.append(i)
 
+  #terminus = ['NTR','CTR']
   pj.fix_terminus_improved(gro_df,ntr_list,ctr_list)
 
 #add information about atom_type
@@ -82,15 +83,20 @@ if not nans.empty:
 
 monomers_df = gro_res_crg_df
 
-monA = monomers_df.query('chain_id == "A"') 
-monB = monomers_df.query('chain_id == "B"') 
+monA_df = monomers_df.query('chain_id == "A"')
+trimmed_monA = pd.DataFrame(monA_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
+monB_df = monomers_df.query('chain_id == "B"')
+trimmed_monB = pd.DataFrame(monB_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
 #print(gro_res_crg_df.head(20))
 #print(gro_res_crg_df.tail(20))
 #pj.df_snapshot(gro_res_crg_df,"gro_res_crg_df")
 # calculate distances between 2 mons
 print("Calculating distances...")
-dist_df = pd.DataFrame(pj.calc_dists(monA, monB, cutoff, cutoff_n))
 
+dist_df = pj.calc_cdist(trimmed_monA, trimmed_monB)
+print(dist_df)
 
 # fix some names between gro and databases
 complete_df = pd.merge(dist_df, df_nb,  how = 'left', on = ['type_Ai', 'type_Bj'])
@@ -112,10 +118,14 @@ VdW_en_total = complete_df['En_VdW'].sum()
 print("En_VdW = ", VdW_en_total)
 Coul_en_total = complete_df['En_Coul'].sum()
 print("En_Coul = ", Coul_en_total)
-#pj.df_snapshot(complete_df,"complete_df_01b")
+#pj.df_snapshot(complete_df,"complete_df_01c")
 
+nans = complete_df.query("charge_Bj != charge_Bj")
+if not nans.empty:
+  print("empty entries in complete_df:",nans)
 #convert gro to pdb
-pj.gro2pdb(gro_df,new_filepath)
+pdb_terminus=['NT3','CT4']
+pj.gro2pdb_simple(gro_df,new_filepath,pdb_terminus)
 pj.prYellow("New file is: "+new_filepath)
 PDB = new_filepath
 #calculate SASA estimate
@@ -137,20 +147,32 @@ if use_gromacs:
   print(sasa_components)
   
 else:
-  fs.setVerbosity(1)
-  structure = fs.Structure(PDB)
-  result =fs.calc(structure,fs.Parameters({'algorithm' : fs.ShrakeRupley,
-                                           'n-points' : 10000}))
+  
+  prot = saving_path+"Prot.pdb"
+  monA = saving_path+"monA.pdb"
+  monB = saving_path+"monB.pdb"
+  
+  pdb_terminus=['NT3','CT4']
+  
+  pj.gro2pdb_simple(gro_df,prot,pdb_terminus)
+  pj.gro2pdb_simple(monA_df,monA,pdb_terminus)
+  pj.gro2pdb_simple(monB_df,monB,pdb_terminus)
 
-  #print("Total : %.2f A2" % result.totalArea())
-  selections = fs.selectArea(('dimer, resi 1-198','monA, resi 1-99', 'monB, resi 100-198'), structure, result)
-  list_keys=[]
-  for key in selections:
-      print (key, ": %.2f A2" % selections[key])
-      list_keys.append(selections[key])
-  sasa_P  = list_keys[0]
-  sasa_MA = list_keys[1]
-  sasa_MB = list_keys[2]
+  fs.setVerbosity(1)
+
+  area_prot, energy_prot = pj.run_freesasa(prot)
+  area_monA, energy_monA = pj.run_freesasa(monA)
+  area_monB, energy_Prot = pj.run_freesasa(monB)
+
+  print("Area prot:",area_prot,"En:", energy_prot*4.184)
+  print("Area monA:",area_monA,"En:", energy_monA*4.184)
+  print("Area monB:",area_monB,"En:", energy_Prot*4.184)
+
+  print("Energy =",(energy_prot-(energy_monA+energy_Prot))*4.184)
+  
+  sasa_P  = area_prot
+  sasa_MA = area_monA
+  sasa_MB = area_monB
 
 pdb_coord = pj.read_pdb(PDB)
 pdb_df = pd.DataFrame(pdb_coord)
@@ -168,9 +190,10 @@ g = 0.00542 # gamma -> kcal/(mol‚A2)
 b = 0.92    # beta  -> kcal/mol
 
 nonbonded = [VdW_en_total,Coul_en_total]
-polar     = [-8971.42,-3854.31,-3713.99]
+#polar     = [-8971.42,-3854.31,-3713.99]
+polar =pd.read_pickle("/home/joaov/github/mmpbsa/testing/saved_files/solvation_vals.pkl")
 #polar     = [solv_dimer, solv_mon1, solv_mon2]
-UserNote= "MISSING POLAR ENERGY VALUES \n Modifications were made to the way the program treats N and C terminus"
+UserNote= ""
 pj.gen_en_summary(gro_file,g,b,nonbonded,sasa,polar,UserNote,saving_path+"energies.txt")
 pj.prYellow("New energy summary has been created!")
 
@@ -182,7 +205,7 @@ elapsed_time=final_time-initial_time
 print("Elapsed time: ", elapsed_time,"seconds.")
 print("Elapsed time: ", elapsed_time/60,"minutes.")
 
-name='01b_gro_en_calc.py'
+name='01c_gro_en_calc.py, scipy cdist, gsas'
 pj.log_timers(elapsed_time, name)
 
 

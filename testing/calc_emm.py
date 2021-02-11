@@ -1,10 +1,8 @@
 import pandas as pd
 import pyjoaov as pj
-import freesasa as fs
 import os
 import time
 initial_time = time.perf_counter()
-#initial_time = (initial_time.strftime('%d-%m-%Y %H:%M:%S'))
 
 #paths
 working_path   = "/home/joaov/github/mmpbsa/testing/"
@@ -75,6 +73,7 @@ gro_res_df['atom_type'] = gro_res_df['atom_type'].str.replace('CH2R', 'CH2r')
 # add charges do gro df
 gro_res_crg_df = pd.merge(gro_res_df, df_charges,  how = 'left', on = ['res_name', 'atom_name'])
 
+# see if there's empty rows in atom_type
 nans = gro_res_crg_df.query("atom_type != atom_type")
 if not nans.empty:
   print(nans)
@@ -82,15 +81,15 @@ if not nans.empty:
 
 monomers_df = gro_res_crg_df
 
-monA = monomers_df.query('chain_id == "A"') 
-monB = monomers_df.query('chain_id == "B"') 
-#print(gro_res_crg_df.head(20))
-#print(gro_res_crg_df.tail(20))
-#pj.df_snapshot(gro_res_crg_df,"gro_res_crg_df")
-# calculate distances between 2 mons
-print("Calculating distances...")
-dist_df = pd.DataFrame(pj.calc_dists(monA, monB, cutoff, cutoff_n))
+monA = monomers_df.query('chain_id == "A"')
+trimmed_monA = pd.DataFrame(monA,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
 
+monB = monomers_df.query('chain_id == "B"')
+trimmed_monB = pd.DataFrame(monB,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
+# calculate distances between 2 mons
+#print("Calculating distances...")
+dist_df = pj.calc_cdist(trimmed_monA, trimmed_monB)
 
 # fix some names between gro and databases
 complete_df = pd.merge(dist_df, df_nb,  how = 'left', on = ['type_Ai', 'type_Bj'])
@@ -105,95 +104,15 @@ f = 138.935458
 Er = 1
 complete_df['En_Coul'] = f*(complete_df['charge_Ai']*complete_df['charge_Bj'])/(Er*complete_df['distance'])
 
-#print(complete_df[complete_df.duplicated()])
-#complete_df = complete_df.drop_duplicates(subset = ['atom_Ai', 'atom_Bj', 'distance'])
 
 VdW_en_total = complete_df['En_VdW'].sum()
 print("En_VdW = ", VdW_en_total)
 Coul_en_total = complete_df['En_Coul'].sum()
 print("En_Coul = ", Coul_en_total)
-#pj.df_snapshot(complete_df,"complete_df_01b")
-
-#convert gro to pdb
-pj.gro2pdb(gro_df,new_filepath)
-pj.prYellow("New file is: "+new_filepath)
-PDB = new_filepath
-#calculate SASA estimate
-
-use_gromacs = False
-
-if use_gromacs:
-  
-  gmx20_path  = "/usr/bin/gmx"
-  file_path   = gro_file
-  tpr_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/sas.tpr"
-  ndx_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/pb.ndx"
-  
-  sasa_components = pj.run_g_sasa(gmx20_path,file_path,tpr_path,ndx_path)
-  
-  sasa_P  = sasa_components[0]
-  sasa_MA = sasa_components[1]
-  sasa_MB = sasa_components[2]
-  print(sasa_components)
-  
-else:
-  fs.setVerbosity(1)
-  structure = fs.Structure(PDB)
-  result =fs.calc(structure,fs.Parameters({'algorithm' : fs.ShrakeRupley,
-                                           'n-points' : 10000}))
-
-  #print("Total : %.2f A2" % result.totalArea())
-  selections = fs.selectArea(('dimer, resi 1-198','monA, resi 1-99', 'monB, resi 100-198'), structure, result)
-  list_keys=[]
-  for key in selections:
-      print (key, ": %.2f A2" % selections[key])
-      list_keys.append(selections[key])
-  sasa_P  = list_keys[0]
-  sasa_MA = list_keys[1]
-  sasa_MB = list_keys[2]
-
-pdb_coord = pj.read_pdb(PDB)
-pdb_df = pd.DataFrame(pdb_coord)
-
-gcenter=pj.geom_center(pdb_df)
-print("Geometric center of dimer in pdb is:",gcenter)
-
-box_size=pj.appropriate_box_size(pdb_df)
-print("Appropriate box side size of pdb is:",box_size)
-sasa      = [sasa_P,sasa_MA,sasa_MB]
-
-
-#generate energy summary file energies.txt
-g = 0.00542 # gamma -> kcal/(mol‚A2)
-b = 0.92    # beta  -> kcal/mol
-
-nonbonded = [VdW_en_total,Coul_en_total]
-polar     = [-8971.42,-3854.31,-3713.99]
-#polar     = [solv_dimer, solv_mon1, solv_mon2]
-UserNote= "MISSING POLAR ENERGY VALUES \n Modifications were made to the way the program treats N and C terminus"
-pj.gen_en_summary(gro_file,g,b,nonbonded,sasa,polar,UserNote,saving_path+"energies.txt")
-pj.prYellow("New energy summary has been created!")
 
 
 final_time = time.perf_counter()
-#final_time = (final_time.strftime('%d-%m-%Y %H:%M:%S'))
-
 elapsed_time=final_time-initial_time
 print("Elapsed time: ", elapsed_time,"seconds.")
-print("Elapsed time: ", elapsed_time/60,"minutes.")
-
-name='01b_gro_en_calc.py'
+name='calc_emm.py, scipy cdist'
 pj.log_timers(elapsed_time, name)
-
-
-
-
-
-
-
-
-
-
-
-
-

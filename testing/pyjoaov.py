@@ -4,8 +4,10 @@ import numpy as np
 import pickle
 import MDAnalysis as mda
 import subprocess
+import freesasa as fs
 from copy import copy
 import datetime
+from scipy.spatial.distance import cdist
 
 # This file's purpose is to serve as a custom python module to
 # save useful functions related to the python implementation 
@@ -70,7 +72,6 @@ def read_gro_minus_index(file):
     gro_df.drop(gro_df.tail(1).index, inplace = True)
     return gro_df
 
-  
 
 def read_pdb(file):
     pdb_lines = []
@@ -98,9 +99,12 @@ def read_pdb(file):
     return pdb_dict
 
 def fix_terminus_improved(df,ntr_list,ctr_list):
-    
+    terminus = ['NTR','CTR']
     monA = df.query('chain_id == "A"')
     monB = df.query('chain_id == "B"')
+    
+    #mask = gro_res_df['atom_type'].isnull()
+    #list=gro_res_df.loc[ mask,'res_num'].unique()
 
     min_res_numA = monA['res_num'].min()  # 1
     max_res_numA = monA['res_num'].max()  # 99
@@ -116,11 +120,11 @@ def fix_terminus_improved(df,ntr_list,ctr_list):
 
     mask1 = df["res_num"].isin(ntr_res)
     mask2 = df["atom_name"].isin(ntr_list)
-    df.loc[mask1 & mask2,'res_name'] = 'NTR'
+    df.loc[mask1 & mask2,'res_name'] = terminus[0]
 
     mask1 = df["res_num"].isin(ctr_res)
     mask2 = df["atom_name"].isin(ctr_list)
-    df.loc[mask1 & mask2,'res_name'] = 'CTR'
+    df.loc[mask1 & mask2,'res_name'] = terminus[1]
 
 
 #fix dataframe terminus for monomers' C and N terminus
@@ -279,14 +283,16 @@ def gen_en_summary(filename,g,b,nonbonded,sasa,polar,note,saving_path):
   Gnonpolar_mon2    = g*A_mon2    + b
 
   Gnonpolar = Gnonpolar_complex - (Gnonpolar_mon1 + Gnonpolar_mon2)
-  Gnonpolar = Gnonpolar*4.184
+  Gnonpolar = Gnonpolar*4.184 # kJ/mol
 
   #Gpolar -----------------------------------
-  Gpolar_complex = polar[0]
-  Gpolar_mon1    = polar[1]
-  Gpolar_mon2    = polar[2]
+  t=310 #K
+  kb=0.008314463
+  Gpolar_complex = polar[0]*kb*t
+  Gpolar_mon1    = polar[1]*kb*t
+  Gpolar_mon2    = polar[2]*kb*t
 
-  Gpolar = Gpolar_complex - (Gpolar_mon1 + Gpolar_mon2)
+  Gpolar = Gpolar_complex - (Gpolar_mon1 + Gpolar_mon2) # kJ/(mol.K)
 
   Gsolv = Gpolar + Gnonpolar
 
@@ -346,53 +352,32 @@ User Note : {}  """.format(now,
   with open(energies, "w") as out_file:
       out_file.write(text_energies)
       
-      
+
+
 def run_g_sasa(gmx20_path,file_path,tpr_path,ndx_path):
-  # --------------------------------------------------------
-  # bash command
-  subprocess.Popen(["/bin/rm", '-f', "aux*.xvg", "conf.gro"])
-  # -----------------------variables ------------------------
-  #gmx20 = Path("/programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-2020.2/bin/gmx")
-  #gmx20_path = Path("/usr/bin/gmx")
-  #g4_sas = Path("/programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-4.0.7_pH_I/bin/g_sas")
-  #g4_editconf = Path("/programs/gromacs-OpenMPI2/gromacs-AMD/gromacs-4.0.7_pH_I/bin/editconf")
-
-  #filepath = "/home/joaov/github/mmpbsa/gromacs-dependent/files/"
-  tpr = tpr_path #filepath + "sas.tpr"
-  ndx = ndx_path #filepath + "pb.ndx"
-  # ------------------------gromacs---------------------------
-  # for gromacs 2020.x, this works:
-
-  def run_sasa(output, option):
-      a = subprocess.Popen([gmx20_path, 'editconf', '-f', file_path,'-o', "conf.gro", '-n', ndx], stdin=subprocess.PIPE)
-      a.communicate(b'Dimer\n')
-      a.wait()
-      p = subprocess.Popen([gmx20_path, 'sasa', '-f', "conf.gro", '-s',tpr, '-n', ndx, '-ndots','50', '-o', output], stdin=subprocess.PIPE)
-      if option == "Dimer":
-          p.communicate(b'Dimer\n')
-          p.wait()
-      elif option == "MonA":
-          p.communicate(b'MonomerA\n')
-          p.wait()
-      elif option == "MonB":
-          p.communicate(b'MonomerB\n')
-          p.wait()
-
-  subprocess.Popen(["mkdir", 'temp_local'])
-  temps ="/home/joaov/github/mmpbsa/gromacs-dependent/final_scripts/TMP/"
-
-  run_sasa("temp_local/TMP_aux_Prot.xvg", "Dimer")
-  run_sasa("temp_local/TMP_aux_MonA.xvg", "MonA")
-  run_sasa("temp_local/TMP_aux_MonB.xvg", "MonB")
   
-  P   = subprocess.check_output(["tail -n 1 temp_local/TMP_aux_Prot.xvg | awk '{print $2*100}'"], shell=True).decode("utf-8")
-  MA  = subprocess.check_output(["tail -n 1 temp_local/TMP_aux_MonA.xvg | awk '{print $2*100}'"], shell=True).decode("utf-8")
-  MB  = subprocess.check_output(["tail -n 1 temp_local/TMP_aux_MonB.xvg | awk '{print $2*100}'"], shell=True).decode("utf-8")
+    subprocess.Popen(["/bin/rm", '-f', "aux*.xvg", "conf.gro"])
+    subprocess.Popen(["mkdir", 'temp_local'])
+    
+    # for gromacs 2020.x, this works:
+    #a = subprocess.Popen([gmx20_path, 'editconf', '-f', file_path,'-o', "conf.gro", '-n', ndx_path], stdin=subprocess.PIPE)
+    #a.communicate(b'Dimer\n')
+    #a.wait()
+    p = subprocess.Popen([gmx20_path, 'sasa', '-f', file_path, '-s',tpr_path, '-n', ndx_path, '-ndots','1000', '-o', "temp_local/TMP_aux_Prot.xvg", '-surface','"Dimer"','-output','"Dimer"'], stdin=subprocess.PIPE)
+    p.wait()
+    p = subprocess.Popen([gmx20_path, 'sasa', '-f', file_path, '-s',tpr_path, '-n', ndx_path, '-ndots','1000', '-o', "temp_local/TMP_aux_MonA.xvg", '-surface','"MonomerA"','-output','"MonomerA"'], stdin=subprocess.PIPE)
+    p.wait()
+    p = subprocess.Popen([gmx20_path, 'sasa', '-f', file_path, '-s',tpr_path, '-n', ndx_path, '-ndots','1000', '-o', "temp_local/TMP_aux_MonB.xvg", '-surface','"MonomerB"','-output','"MonomerB"'], stdin=subprocess.PIPE)
+    p.wait()
 
-  c=subprocess.run(["/bin/rm -f aux*.xvg conf.gro #conf*#"], shell=True)
-  #energy= (P*g+b)
-  components=[P,MA,MB]
-  return components
+    P   = subprocess.check_output(["tail -n 1 temp_local/TMP_aux_Prot.xvg | awk '{print $2*100}'"], shell=True).decode("utf-8")
+    MA  = subprocess.check_output(["tail -n 1 temp_local/TMP_aux_MonA.xvg | awk '{print $2*100}'"], shell=True).decode("utf-8")
+    MB  = subprocess.check_output(["tail -n 1 temp_local/TMP_aux_MonB.xvg | awk '{print $2*100}'"], shell=True).decode("utf-8")
+
+    c=subprocess.run(["/bin/rm -f aux*.xvg conf.gro #conf*#"], shell=True)
+    #energy= (P*g+b)
+    components=[P,MA,MB]
+    return components
 
 def df_snapshot(df, name):
     base_filename = name +'.txt'
@@ -407,7 +392,7 @@ def log_timers(elapsed_time, name):
         outfile.write(line_to_write)
         outfile.write("\n")
 
-def gro2pdb(gro_df,name):
+def gro2pdb_4pymol(gro_df,name):
     
     gro_df['atom'] = 'ATOM  '
     gro_df['occ'] = 1.0
@@ -432,8 +417,425 @@ def gro2pdb(gro_df,name):
     for i, pos in enumerate(to_replace):
         data = data.replace(pos,replace_to[i])
     #close the input file
-    fin.close()
-    #open the input file in write mode
-    fin = open(PDB, "wt")
-    fin.write(data)
-    fin.close()
+    file_head= ['TITLE     PDB Created by gro2pdb','MODEL        1']
+    file_tail= ['ENDMDL','END']
+
+    fin.close() #close the input file
+
+    fin = open(PDB, "wt") #open the input file in write mode
+    
+    for line in file_head:
+        fin.write(line+ '\n')
+        
+    fin.write(data) #overrite the input file with the resulting data
+    
+    for line in file_tail:
+        fin.write(line+ '\n')
+        
+    fin.close() #close the file
+    
+def gro2pdb_simple(gro_df,name,pdb_terminus):
+    
+    gro = gro_df.copy()
+    gro.loc[:,'atom'] = 'ATOM  '
+    gro.loc[:,'occ'] = 1.0
+    gro.loc[:,'T_factor'] = 0.0
+    gro.loc[:,'x_coord'] = (gro['x_coord'].astype(float)*10)
+    gro.loc[:,'y_coord'] = (gro['y_coord'].astype(float)*10)
+    gro.loc[:,'z_coord'] = (gro['z_coord'].astype(float)*10)
+    gro.loc[:,'empty'] = ''
+    #print(gro)
+
+    gro = gro.replace('NTR',pdb_terminus[0])
+    gro = gro.replace('CTR',pdb_terminus[1])
+    gro = pd.DataFrame(gro,columns=['atom','atom_num','empty','atom_name','empty','res_name','chain_id', 'res_num','empty','empty','x_coord','y_coord','z_coord', 'occ','T_factor'])
+    #                                         atom     a_num  empty  a_name   alt_i  r_name   chain_id  r_num  code_i empty  x_coord  y_coord  z_coord   occ     T_factor
+    np.savetxt(name,gro,delimiter='',fmt=('%6.6s', '%5.5s','%1s', '%-4.4s','%1s', '%-4.4s', '%1.1s','%4.4s','%1s','%3s', '%8.3f', '%8.3f', '%8.3f', '%6.2f', '%6.2f'))
+
+
+#calculate distances between all atoms of 2 monomers
+def calc_dists2(mon1, mon2, cutoff, cutoff_n):
+  distances_db = []
+  for a in mon1.index:
+      xa = float(mon1['x_coord'][a])
+      ya = float(mon1['y_coord'][a])
+      za = float(mon1['z_coord'][a])
+      num_a = mon1['atom_num'][a]
+      type_a = mon1['atom_type'][a]
+      charge_a = mon1['charge'][a]
+      #a_coord = np.array((xa, ya, za), dtype = float)
+      for b in mon2.index:
+          xb = float(mon2['x_coord'][b])
+          yb = float(mon2['y_coord'][b])
+          zb = float(mon2['z_coord'][b])
+          num_b = mon2['atom_num'][b]
+          type_b = mon2['atom_type'][b]
+          charge_b = mon2['charge'][b]
+          #b_coord = np.array((xb, yb, zb), dtype = float)
+          distance2 = (xb-xa)**2+(yb-ya)**2+(zb-za)**2
+          #distance=np.linalg.norm(b_coord - a_coord)
+          if cutoff:
+              if distance <= cutoff_n:
+                  dist_dict = {
+                      'atom_Ai':      num_a, 
+                      'atom_Bj':      num_b, 
+                      'type_Ai':      type_a, 
+                      'type_Bj':      type_b, 
+                      'distance':     distance2, 
+                      'charge_Ai':    charge_a, 
+                      'charge_Bj':    charge_b
+                  }
+                  distances_db.append(dist_dict)
+              else:
+                  continue
+          else:
+              dist_dict = {
+                  'atom_Ai':      num_a, 
+                  'atom_Bj':      num_b, 
+                  'type_Ai':      type_a, 
+                  'type_Bj':      type_b, 
+                  'distance':     distance2, 
+                  'charge_Ai':    charge_a, 
+                  'charge_Bj':    charge_b
+              }
+              distances_db.append(dist_dict)
+  df=pd.DataFrame(distances_db)
+  df['distance']=np.sqrt((df['distance']))
+  return df
+
+#calculate distances between all atoms of 2 monomers
+def calc_dists_pandas(mon1, mon2):
+  
+  mon1.rename(columns = {'atom_num':'atom_Ai',
+                         'atom_type':'type_Ai',
+                         'charge':'charge_Ai',
+                         'x_coord': 'xa',
+                         'y_coord': 'ya',
+                         'z_coord': 'za',}, inplace = True)
+  
+  mon2.rename(columns = {'atom_num':'atom_Bj',
+                         'atom_type':'type_Bj',
+                         'charge':'charge_Bj',
+                         'x_coord': 'xb',
+                         'y_coord': 'yb',
+                         'z_coord': 'zb',}, inplace = True)
+  mon2=mon2.reset_index(drop=True)
+
+  df = pd.concat([mon1, mon2], axis=1)
+
+  df['xa'] = df['xa'].astype(float)
+  df['ya'] = df['ya'].astype(float)
+  df['za'] = df['za'].astype(float)
+  df['xb'] = df['xb'].astype(float)
+  df['yb'] = df['yb'].astype(float)
+  df['zb'] = df['zb'].astype(float)
+    
+  df['distance']=((df['xb'])-(df['xa']))**2+((df['yb'])-(df['ya']))**2+((df['zb'])-(df['za']))**2
+  df['distance']=np.sqrt((df['distance']))
+  
+  dist_df = pd.DataFrame(df,columns=['atom_Ai','atom_Bj','type_Ai','type_Bj','charge_Ai','charge_Bj','distance'])
+  return dist_df
+
+
+def calc_cdist_alt(set1, set2):
+  #setup
+  a = set1[["xa", "ya", "za"]]
+  b = set2[["xb", "yb", "zb"]]
+  #o suminho
+  distances = cdist(a, b)
+  #assembly
+  index = pd.MultiIndex.from_product([set1["atom_Ai"], set2["atom_Bj"]], names=["atom_Ai", "atom_Bj"])
+  df = pd.DataFrame(distances.ravel(), index=index, columns=["distance"]).reset_index()
+  #treatment
+  df=pd.merge(df,set1,how = 'left', on = ['atom_Ai'])
+  df=pd.merge(df,set2,how = 'left', on = ['atom_Bj'])
+  df=df.drop(["xa", "ya", "za","xb", "yb", "zb"],axis=1)
+  
+  return df
+
+def calc_cdist(set1, set2):
+  a = set1[["x_coord", "y_coord", "z_coord"]]
+  b = set2[["x_coord", "y_coord", "z_coord"]]
+
+  df = set1[["atom_num", "atom_type","charge"]].merge(set2[["atom_num", "atom_type","charge"]], how="cross", suffixes=("_Ai", "_Bj"))
+  df["distance"] = cdist(a, b).ravel()
+  df.rename(columns = {'atom_num_Ai':'atom_Ai',
+                       'atom_num_Bj':'atom_Bj',
+                       'atom_type_Ai':'type_Ai',
+                       'atom_type_Bj':'type_Bj'}, inplace = True)
+  return df
+
+def run_freesasa(file):
+    structure = fs.Structure(file)
+    result =fs.calc(structure,fs.Parameters({'algorithm' : fs.ShrakeRupley,
+                                             'probe-radius' : 1.4,
+                                              'n-points' : 1000}))
+    #result =fs.calc(structure,fs.Parameters({'algorithm' : fs.LeeRichards,
+    #                                               'n-slices' : 100}))
+    area =result.totalArea()
+    #area_classes = fs.classifyResults(result, structure)
+    #print("Total : %.2f A2" % result.totalArea())
+    #for key in area_classes:
+    #    print(key, ": %.2f A2" % area_classes[key])
+    #    
+    g = 0.00542 # gamma -> kcal/(mol‚A2)
+    b = 0.92    # beta  -> kcal/mol
+    energy=result.totalArea()*g+b
+    return area, energy
+
+def mmpbsa_protocol(files,monomers,settings):
+    
+    gro_file, databases, saving_path, new_filepath     = files
+    txt_df_res,txt_df_nb,txt_df_charges                = databases
+    mon1_start,mon1_end,mon2_start,mon2_end            = monomers
+    
+    cutoff_settings,use_gromacs,pdb_terminus,verbose   = settings
+    cutoff,cutoff_n                                    = cutoff_settings
+    
+    
+    gro_df = read_gro_minus_index(gro_file) #create df with gro info, creates monomer index
+
+    monA_range = [mon1_start, mon1_end]
+    monB_range = [mon2_start, mon2_end]
+
+    gro_df = make_index_and_subset(gro_df, monA_range, monB_range)
+
+    gro_df['atom_name'] = gro_df['atom_name'].replace('O2', 'OT2')
+    gro_df['atom_name'] = gro_df['atom_name'].replace('O1', 'OT1')
+
+    #Import databases
+    df_res      = pd.read_table(txt_df_res,     delim_whitespace=True,header=None,names=['res_name','atom_name','atom_type']) # df w/ atom names/types from rtp
+    df_charges  = pd.read_table(txt_df_charges, delim_whitespace=True,header=None,names=['atom_name','res_name','charge'])
+    df_nb       = pd.read_table(txt_df_nb,      delim_whitespace=True,header=None,names=['i','j','c6','c12']) # df from nb.itp to grab c6 and c12
+
+    #print(df_nb[df_nb.duplicated()])
+    df_nb = df_nb.rename(columns = {"i": "type_Ai", "j": "type_Bj"})
+    #df_nb = df_nb.drop_duplicates()
+
+    #Change C and N terminus residue to CTR and NTR
+    has_terminus=True
+    if has_terminus:
+    
+        ntr_list=[]
+        for i in df_res.loc[(df_res["res_name"] == 'NTR'), "atom_name"]:
+            ntr_list.append(i)
+
+        ctr_list=[]
+        for i in df_res.loc[(df_res["res_name"] == 'CTR'), "atom_name"]:
+            ctr_list.append(i)
+
+    #terminus = ['NTR','CTR']
+    fix_terminus_improved(gro_df,ntr_list,ctr_list)
+
+    #add information about atom_type
+    gro_res_df = pd.merge(gro_df, df_res,  how = 'left', on = ['res_name', 'atom_name'])
+    gro_res_df['atom_type'] = gro_res_df['atom_type'].str.replace('CH2R', 'CH2r')
+
+    # add charges do gro df
+    gro_res_crg_df = pd.merge(gro_res_df, df_charges,  how = 'left', on = ['res_name', 'atom_name'])
+
+    nans = gro_res_crg_df.query("atom_type != atom_type")
+    if not nans.empty:
+        print(nans)
+        prYellow("There are atoms with no attribution in atom_type!")
+
+    monomers_df = gro_res_crg_df
+
+    monA_df = monomers_df.query('chain_id == "A"')
+    trimmed_monA = pd.DataFrame(monA_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
+    monB_df = monomers_df.query('chain_id == "B"')
+    trimmed_monB = pd.DataFrame(monB_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
+    #print(gro_res_crg_df.head(20))
+    #print(gro_res_crg_df.tail(20))
+    #df_snapshot(gro_res_crg_df,"gro_res_crg_df")
+    # calculate distances between 2 mons
+    if verbose: print("Calculating distances...")
+
+    dist_df = calc_cdist(trimmed_monA, trimmed_monB)
+    if cutoff: dist_df = dist_df.query("distance <= {}".format(cutoff_n))
+    #if verbose: print(dist_df)
+    # fix some names between gro and databases
+    complete_df = pd.merge(dist_df, df_nb,  how = 'left', on = ['type_Ai', 'type_Bj'])
+    complete_df['type_Ai'] = complete_df['type_Ai'].str.replace('CH2R', 'CH2r')
+    complete_df['type_Bj'] = complete_df['type_Bj'].str.replace('CH2R', 'CH2r')
+
+
+    #Vdw and coulomb calculations
+    complete_df['En_VdW'] = (complete_df['c12']/complete_df['distance']**12)-(complete_df['c6']/complete_df['distance']**6)
+
+    f = 138.935458
+    Er = 1
+    complete_df['En_Coul'] = f*(complete_df['charge_Ai']*complete_df['charge_Bj'])/(Er*complete_df['distance'])
+
+    #print(complete_df[complete_df.duplicated()])
+    #complete_df = complete_df.drop_duplicates(subset = ['atom_Ai', 'atom_Bj', 'distance'])
+    VdW_en_total = complete_df['En_VdW'].sum()
+    Coul_en_total = complete_df['En_Coul'].sum()
+    if verbose: 
+        print(complete_df)
+        print("En_VdW = ", VdW_en_total)
+        print("En_Coul = ", Coul_en_total)
+    #df_snapshot(complete_df,"complete_df_01c")
+
+    nans = complete_df.query("charge_Bj != charge_Bj")
+    if not nans.empty:
+        print("empty entries in complete_df:",nans)
+    #convert gro to pdb
+    #pdb_terminus=['NT3','CT4']
+    gro2pdb_simple(gro_df,new_filepath,pdb_terminus)
+    if verbose: prYellow("New file is: "+new_filepath)
+    PDB = new_filepath
+    #calculate SASA estimate
+
+    #use_gromacs = False
+
+    if use_gromacs:
+    
+        gmx20_path  = "/usr/bin/gmx"
+        file_path   = gro_file
+        tpr_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/sas.tpr"
+        ndx_path    = "/home/joaov/github/mmpbsa/gromacs-dependent/files/pb.ndx"
+        
+        sasa_components = run_g_sasa(gmx20_path,file_path,tpr_path,ndx_path)
+        
+        sasa_P  = sasa_components[0]
+        sasa_MA = sasa_components[1]
+        sasa_MB = sasa_components[2]
+        print(sasa_components)
+    
+    else:
+        
+        prot = saving_path+"Prot.pdb"
+        monA = saving_path+"monA.pdb"
+        monB = saving_path+"monB.pdb"
+        
+        pdb_terminus=['NT3','CT4']
+        
+        gro2pdb_simple(gro_df,prot,pdb_terminus)
+        gro2pdb_simple(monA_df,monA,pdb_terminus)
+        gro2pdb_simple(monB_df,monB,pdb_terminus)
+
+        fs.setVerbosity(1)
+
+        area_prot, energy_prot = run_freesasa(prot)
+        area_monA, energy_monA = run_freesasa(monA)
+        area_monB, energy_Prot = run_freesasa(monB)
+
+        if verbose: 
+            print("Area prot:",area_prot,"En:", energy_prot*4.184)
+            print("Area monA:",area_monA,"En:", energy_monA*4.184)
+            print("Area monB:",area_monB,"En:", energy_Prot*4.184)
+
+            print("Energy =",(energy_prot-(energy_monA+energy_Prot))*4.184)
+        
+        sasa_P  = area_prot
+        sasa_MA = area_monA
+        sasa_MB = area_monB
+
+    pdb_coord = read_pdb(PDB)
+    pdb_df = pd.DataFrame(pdb_coord)
+
+    gcenter=geom_center(pdb_df)
+    if verbose: print("Geometric center of dimer in pdb is:",gcenter)
+
+    box_size=appropriate_box_size(pdb_df)
+    if verbose: print("Appropriate box side size of pdb is:",box_size)
+    sasa      = [sasa_P,sasa_MA,sasa_MB]
+
+
+    #generate energy summary file energies.txt
+    g = 0.00542 # gamma -> kcal/(mol‚A2)
+    b = 0.92    # beta  -> kcal/mol
+
+    nonbonded = [VdW_en_total,Coul_en_total]
+    #polar     = [-8971.42,-3854.31,-3713.99]
+    polar =pd.read_pickle("/home/joaov/github/mmpbsa/testing/saved_files/solvation_vals.pkl")
+    #polar     = [solv_dimer, solv_mon1, solv_mon2]
+    UserNote= ""
+    gen_en_summary(gro_file,g,b,nonbonded,sasa,polar,UserNote,saving_path+"energies_01d.txt")
+    if verbose: prYellow("New energy summary has been created!")
+
+def calc_emm(files,monomers):
+
+    gro_file, databases = files
+    txt_df_res,txt_df_nb,txt_df_charges = databases
+    mon1_start,mon1_end,mon2_start,mon2_end = monomers
+    
+    gro_df = read_gro_minus_index(gro_file) #create df with gro info, creates monomer index
+
+    monA_range = [mon1_start, mon1_end]
+    monB_range = [mon2_start, mon2_end]
+
+    gro_df = make_index_and_subset(gro_df, monA_range, monB_range)
+
+    gro_df['atom_name'] = gro_df['atom_name'].replace('O2', 'OT2')
+    gro_df['atom_name'] = gro_df['atom_name'].replace('O1', 'OT1')
+
+    #Import databases
+    df_res      = pd.read_table(txt_df_res,     delim_whitespace=True,header=None,names=['res_name','atom_name','atom_type']) # df w/ atom names/types from rtp
+    df_charges  = pd.read_table(txt_df_charges, delim_whitespace=True,header=None,names=['atom_name','res_name','charge'])
+    df_nb       = pd.read_table(txt_df_nb,      delim_whitespace=True,header=None,names=['i','j','c6','c12']) # df from nb.itp to grab c6 and c12
+
+    #print(df_nb[df_nb.duplicated()])
+    df_nb = df_nb.rename(columns = {"i": "type_Ai", "j": "type_Bj"})
+    #df_nb = df_nb.drop_duplicates()
+
+    #Change C and N terminus residue to CTR and NTR
+    has_terminus=True
+    if has_terminus:
+    
+        ntr_list=[]
+        for i in df_res.loc[(df_res["res_name"] == 'NTR'), "atom_name"]:
+            ntr_list.append(i)
+
+        ctr_list=[]
+        for i in df_res.loc[(df_res["res_name"] == 'CTR'), "atom_name"]:
+            ctr_list.append(i)
+
+    #terminus = ['NTR','CTR']
+    fix_terminus_improved(gro_df,ntr_list,ctr_list)
+
+    #add information about atom_type
+    gro_res_df = pd.merge(gro_df, df_res,  how = 'left', on = ['res_name', 'atom_name'])
+    gro_res_df['atom_type'] = gro_res_df['atom_type'].str.replace('CH2R', 'CH2r')
+
+    # add charges do gro df
+    gro_res_crg_df = pd.merge(gro_res_df, df_charges,  how = 'left', on = ['res_name', 'atom_name'])
+
+    nans = gro_res_crg_df.query("atom_type != atom_type")
+    if not nans.empty:
+        print(nans)
+        prYellow("There are atoms with no attribution in atom_type!")
+
+    monomers_df = gro_res_crg_df
+
+    monA_df = monomers_df.query('chain_id == "A"')
+    trimmed_monA = pd.DataFrame(monA_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
+    monB_df = monomers_df.query('chain_id == "B"')
+    trimmed_monB = pd.DataFrame(monB_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
+
+
+    dist_df = calc_cdist(trimmed_monA, trimmed_monB)
+
+    # fix some names between gro and databases
+    complete_df = pd.merge(dist_df, df_nb,  how = 'left', on = ['type_Ai', 'type_Bj'])
+    complete_df['type_Ai'] = complete_df['type_Ai'].str.replace('CH2R', 'CH2r')
+    complete_df['type_Bj'] = complete_df['type_Bj'].str.replace('CH2R', 'CH2r')
+
+
+    #Vdw and coulomb calculations
+    complete_df['En_VdW'] = (complete_df['c12']/complete_df['distance']**12)-(complete_df['c6']/complete_df['distance']**6)
+
+    f = 138.935458
+    Er = 1
+    complete_df['En_Coul'] = f*(complete_df['charge_Ai']*complete_df['charge_Bj'])/(Er*complete_df['distance'])
+
+    #print(complete_df[complete_df.duplicated()])
+    #complete_df = complete_df.drop_duplicates(subset = ['atom_Ai', 'atom_Bj', 'distance'])
+
+    VdW_en_total = complete_df['En_VdW'].sum()
+    Coul_en_total = complete_df['En_Coul'].sum()
+    return VdW_en_total, Coul_en_total

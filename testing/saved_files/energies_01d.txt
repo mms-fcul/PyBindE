@@ -1,4 +1,4 @@
-Generated on 07-02-2021 02:10:17
+Generated on 07-02-2021 07:58:12
 filename            =  /home/joaov/github/mmpbsa/testing/frame00100.gro
 
 E_VdW               =  -355.38

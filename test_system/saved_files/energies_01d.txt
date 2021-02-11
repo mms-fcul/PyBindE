@@ -1,5 +1,5 @@
-Generated on 07-02-2021 02:10:17
-filename            =  /home/joaov/github/mmpbsa/testing/frame00100.gro
+Generated on 07-02-2021 07:12:14
+filename            =  /home/joaov/github/mmpbsa/test_system/frame00100.gro
 
 E_VdW               =  -355.38
 E_Coul              =  -1774.62

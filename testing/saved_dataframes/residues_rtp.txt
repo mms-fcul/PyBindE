@@ -3946,3 +3946,5 @@
   NTR    H2     H
   NTR    H3     H
   NTR    CA   CH1
+  NTR     C     C
+  NTR     O     O
