@@ -1,0 +1,2021 @@
+
+        DelPhi Parameters
+
+        igrid       = 121
+        scale       = 4
+        perfil      = 0
+
+        repsin  = 2.0
+        repsout = 80.0
+        conc    = 0.1
+        ibctyp  = 4
+        res2    = 0.01
+        nlit    = 500
+
+        acent  = [56.21, 111.41, 5.36]
+        natoms = 16618
+        in_crg = DataBaseT.crg
+        in_siz = DataBaseT.siz
+        in_pdb = P.pdb
+
+        radprb  = 1.4
+        energy  = ['s', 'c']
+        site    = ['a', 'q', 'p']
+        in_crg_len = 13
+        in_siz_len = 13
+        in_pdb_len = 5
+
+        relfac = 0.2
+        relpar = 0.2
+        nonit  = 50
+        fcrg   = False
+        pbx    = True
+        pby    = True
+        pbz    = False
+
+        precision  = single
+        float_type = <class 'ctypes.c_float'>
+        isurftype  = -1
+        parallel   = False
+        debug      = False
+
+        
+   
+ loading variables time was (sec)    0.00000000    
+   
+ realsiz ==            4
+ igrid     ->            0                  121
+ scale     ->    10000.0000       1.0000000000000000     
+ repsin    ->    2.00000000       2.0000000000000000     
+ repsout   ->    80.0000000       80.000000000000000     
+ radprb(1) ->    1.39999998       1.3999999999999999     
+ conc(1)   ->    0.00000000      0.10000000000000001     
+ ibctyp    ->            2                    4
+ res2      ->    0.00000000       1.0000000000000000E-002
+ nlit      ->            0                  500
+ nnit      ->            0                   50
+ py_relfac ->   0.997500002      0.20000000000000001     
+ py_relpar ->    1.00000000      0.20000000000000001     
+ py_pbx    ->  F T
+ py_pby    ->  F T
+ py_acent  > (   0.00000000       0.00000000       0.00000000     ) (   56.210000000000001        111.41000000000000        5.3600000000000003      )
+ energy      -> sc
+ sites -> aqp
+ natom ->                 16618
+ nmedia ->                     1
+ nobject ->                     1
+ Direct mapping of epsilon: (0/1)(n/y)           1
+ time to read in and/or assign rad/chrg=   1.16037202    
+ object number :              1 ,  is a molecule
+ cmin  -6.57100010       32.2140007      -32.4620018    
+ cmax   118.992004       190.621002       43.1920013    
+ Debye Lengths contained in the finite diff. box  -3.95860910    
+   
+ grid size                  :         121
+ percent of box to be filled:   132.018326    
+ scale,in grids/A :   1.00000000    
+ xmin,xmax     (A):  -6.57100010       118.992004    
+ ymin,ymax     (A):   32.2140007       190.621002    
+ zmin,zmax     (A):  -32.4620018       43.1920013    
+ x,y,z range   (A):    125.563004       158.406998       75.6540070    
+ system geometric center in (A):   56.2105026       111.417503       5.36499977    
+  grid  box is centered in (A) :   56.2099991       111.410004       5.36000013    
+ object centre offset (gu)  :   0.00000000       0.00000000       0.00000000    
+ outer dielectric           :   80.0000000    
+ dielectric in medium number           0  :   80.0000000    
+ dielectric in medium number           1  :   1.99999988    
+ first kind salt concentration (M)   :  0.100000001    
+ valences salt 1 are                   1  and           1
+ second kind salt concentration (M)  :   0.00000000    
+ valences salt 2 are                   0  and           0
+ ionic strength (M)         :  0.100000001    
+ debye length (A)           :   9.70593166    
+ absolute temperature (K)   :   297.334198    
+ ion exclusion radius (A)   :   2.00000000    
+ probe radius facing water(A:   1.39999998    
+ probe radius, internal (A) :   1.39999998    
+ boundary conditions        : coulombic   
+ x,y,z periodic bc. and volt. drop flags: T T F F F F
+ # of linear iterations     :         500
+ convergence by rms  change :   0.00000000      kt
+ convergence by max  change :   9.99999978E-03  kt
+ convergence by norm change :   0.00000000      kt
+ # of non-linear iterations :          50
+ non-linear energy calculat.: T
+ manual relaxation parameter : T
+ ionic direct energy contribution: F
+ concentration map output   : F
+ spherical charge distbn.   : F
+ INSIGHT format output      : F
+ site potential output      : T
+ modified atom file output  : F
+ map file label             :
+qdiffxas: qdiffxs4 with an improved surfacing routine       
+  convergence graph turned off
+  potential listings turned off
+  
+ !!! WARNING: part of system outside the box!
+ number of charges coming from molecules        12409
+  23  H    ARG     2 is charged! Radius moved from zero to  1.0
+  33  H    THR     3 is charged! Radius moved from zero to  1.0
+  49  H    LYS     4 is charged! Radius moved from zero to  1.0
+  57  H    GLN     5 is charged! Radius moved from zero to  1.0
+  58  HE22 GLN     5 is charged! Radius moved from zero to  1.0
+  61  HE21 GLN     5 is charged! Radius moved from zero to  1.0
+  69  H    THR     6 is charged! Radius moved from zero to  1.0
+  78  H    ALA     7 is charged! Radius moved from zero to  1.0
+  93  H    ARG     8 is charged! Radius moved from zero to  1.0
+ 108  H    LYS     9 is charged! Radius moved from zero to  1.0
+ 115  H    SER    10 is charged! Radius moved from zero to  1.0
+ 126  H    THR    11 is charged! Radius moved from zero to  1.0
+ 134  H    GLY    12 is charged! Radius moved from zero to  1.0
+ 139  H    GLY    13 is charged! Radius moved from zero to  1.0
+ 152  H    LYS    14 is charged! Radius moved from zero to  1.0
+ 158  H    ALA    15 is charged! Radius moved from zero to  1.0
+ 180  H    ARG    17 is charged! Radius moved from zero to  1.0
+ 195  H    LYS    18 is charged! Radius moved from zero to  1.0
+ 203  H    GLN    19 is charged! Radius moved from zero to  1.0
+ 204  HE22 GLN    19 is charged! Radius moved from zero to  1.0
+ 207  HE21 GLN    19 is charged! Radius moved from zero to  1.0
+ 216  H    LEU    20 is charged! Radius moved from zero to  1.0
+ 222  H    ALA    21 is charged! Radius moved from zero to  1.0
+ 230  H    THR    22 is charged! Radius moved from zero to  1.0
+ 246  H    LYS    23 is charged! Radius moved from zero to  1.0
+ 252  H    ALA    24 is charged! Radius moved from zero to  1.0
+ 258  H    ALA    25 is charged! Radius moved from zero to  1.0
+ 273  H    ARG    26 is charged! Radius moved from zero to  1.0
+ 288  H    LYS    27 is charged! Radius moved from zero to  1.0
+ 295  H    SER    28 is charged! Radius moved from zero to  1.0
+ 304  H    ALA    29 is charged! Radius moved from zero to  1.0
+ 317  H    ALA    31 is charged! Radius moved from zero to  1.0
+ 325  H    THR    32 is charged! Radius moved from zero to  1.0
+ 333  H    GLY    33 is charged! Radius moved from zero to  1.0
+ 338  H    GLY    34 is charged! Radius moved from zero to  1.0
+ 346  H    VAL    35 is charged! Radius moved from zero to  1.0
+ 359  H    LYS    36 is charged! Radius moved from zero to  1.0
+ 372  H    LYS    37 is charged! Radius moved from zero to  1.0
+ 386  H    HIS    39 is charged! Radius moved from zero to  1.0
+ 409  H    ARG    40 is charged! Radius moved from zero to  1.0
+ 426  H    TYR    41 is charged! Radius moved from zero to  1.0
+ 445  H    ARG    42 is charged! Radius moved from zero to  1.0
+ 459  H    GLY    44 is charged! Radius moved from zero to  1.0
+ 467  H    THR    45 is charged! Radius moved from zero to  1.0
+ 478  H    VAL    46 is charged! Radius moved from zero to  1.0
+ 484  H    ALA    47 is charged! Radius moved from zero to  1.0
+ 493  H    LEU    48 is charged! Radius moved from zero to  1.0
+ 508  H    ARG    49 is charged! Radius moved from zero to  1.0
+ 520  H    GLU    50 is charged! Radius moved from zero to  1.0
+ 533  H    ILE    51 is charged! Radius moved from zero to  1.0
+ 548  H    ARG    52 is charged! Radius moved from zero to  1.0
+ 565  H    ARG    53 is charged! Radius moved from zero to  1.0
+ 582  H    TYR    54 is charged! Radius moved from zero to  1.0
+ 594  H    GLN    55 is charged! Radius moved from zero to  1.0
+ 595  HE22 GLN    55 is charged! Radius moved from zero to  1.0
+ 598  HE21 GLN    55 is charged! Radius moved from zero to  1.0
+ 611  H    LYS    56 is charged! Radius moved from zero to  1.0
+ 618  H    SER    57 is charged! Radius moved from zero to  1.0
+ 629  H    THR    58 is charged! Radius moved from zero to  1.0
+ 642  H    GLU    59 is charged! Radius moved from zero to  1.0
+ 655  H    LEU    60 is charged! Radius moved from zero to  1.0
+ 664  H    LEU    61 is charged! Radius moved from zero to  1.0
+ 673  H    ILE    62 is charged! Radius moved from zero to  1.0
+ 688  H    ARG    63 is charged! Radius moved from zero to  1.0
+ 703  H    LYS    64 is charged! Radius moved from zero to  1.0
+ 712  H    LEU    65 is charged! Radius moved from zero to  1.0
+ 734  H    PHE    67 is charged! Radius moved from zero to  1.0
+ 744  H    GLN    68 is charged! Radius moved from zero to  1.0
+ 745  HE22 GLN    68 is charged! Radius moved from zero to  1.0
+ 748  HE21 GLN    68 is charged! Radius moved from zero to  1.0
+ 763  H    ARG    69 is charged! Radius moved from zero to  1.0
+ 774  H    LEU    70 is charged! Radius moved from zero to  1.0
+ 782  H    VAL    71 is charged! Radius moved from zero to  1.0
+ 797  H    ARG    72 is charged! Radius moved from zero to  1.0
+ 809  H    GLU    73 is charged! Radius moved from zero to  1.0
+ 822  H    ILE    74 is charged! Radius moved from zero to  1.0
+ 828  H    ALA    75 is charged! Radius moved from zero to  1.0
+ 838  H    GLN    76 is charged! Radius moved from zero to  1.0
+ 839  HE22 GLN    76 is charged! Radius moved from zero to  1.0
+ 840  HE21 GLN    76 is charged! Radius moved from zero to  1.0
+ 849  H    ASP    77 is charged! Radius moved from zero to  1.0
+ 868  H    PHE    78 is charged! Radius moved from zero to  1.0
+ 883  H    LYS    79 is charged! Radius moved from zero to  1.0
+ 891  H    THR    80 is charged! Radius moved from zero to  1.0
+ 903  H    ASP    81 is charged! Radius moved from zero to  1.0
+ 916  H    LEU    82 is charged! Radius moved from zero to  1.0
+ 931  H    ARG    83 is charged! Radius moved from zero to  1.0
+ 948  H    PHE    84 is charged! Radius moved from zero to  1.0
+ 958  H    GLN    85 is charged! Radius moved from zero to  1.0
+ 959  HE22 GLN    85 is charged! Radius moved from zero to  1.0
+ 962  HE21 GLN    85 is charged! Radius moved from zero to  1.0
+ 969  H    SER    86 is charged! Radius moved from zero to  1.0
+ 979  H    SER    87 is charged! Radius moved from zero to  1.0
+ 988  H    ALA    88 is charged! Radius moved from zero to  1.0
+ 996  H    VAL    89 is charged! Radius moved from zero to  1.0
+1005  H    MET    90 is charged! Radius moved from zero to  1.0
+1011  H    ALA    91 is charged! Radius moved from zero to  1.0
+1020  H    LEU    92 is charged! Radius moved from zero to  1.0
+1028  H    GLN    93 is charged! Radius moved from zero to  1.0
+1029  HE22 GLN    93 is charged! Radius moved from zero to  1.0
+1032  HE21 GLN    93 is charged! Radius moved from zero to  1.0
+1042  H    GLU    94 is charged! Radius moved from zero to  1.0
+1052  H    ALA    95 is charged! Radius moved from zero to  1.0
+1059  H    SER    96 is charged! Radius moved from zero to  1.0
+1072  H    GLU    97 is charged! Radius moved from zero to  1.0
+1082  H    ALA    98 is charged! Radius moved from zero to  1.0
+1097  H    TYR    99 is charged! Radius moved from zero to  1.0
+1110  H    LEU   100 is charged! Radius moved from zero to  1.0
+1118  H    VAL   101 is charged! Radius moved from zero to  1.0
+1124  H    ALA   102 is charged! Radius moved from zero to  1.0
+1133  H    LEU   103 is charged! Radius moved from zero to  1.0
+1148  H    PHE   104 is charged! Radius moved from zero to  1.0
+1160  H    GLU   105 is charged! Radius moved from zero to  1.0
+1173  H    ASP   106 is charged! Radius moved from zero to  1.0
+1185  H    THR   107 is charged! Radius moved from zero to  1.0
+1195  H    ASN   108 is charged! Radius moved from zero to  1.0
+1198  HD22 ASN   108 is charged! Radius moved from zero to  1.0
+1199  HD21 ASN   108 is charged! Radius moved from zero to  1.0
+1208  H    LEU   109 is charged! Radius moved from zero to  1.0
+1215  H    CYS   110 is charged! Radius moved from zero to  1.0
+1222  H    ALA   111 is charged! Radius moved from zero to  1.0
+1231  H    ILE   112 is charged! Radius moved from zero to  1.0
+1245  H    HIS   113 is charged! Radius moved from zero to  1.0
+1252  H    ALA   114 is charged! Radius moved from zero to  1.0
+1265  H    LYS   115 is charged! Radius moved from zero to  1.0
+1280  H    ARG   116 is charged! Radius moved from zero to  1.0
+1290  H    VAL   117 is charged! Radius moved from zero to  1.0
+1298  H    THR   118 is charged! Radius moved from zero to  1.0
+1310  H    ILE   119 is charged! Radius moved from zero to  1.0
+1319  H    MET   120 is charged! Radius moved from zero to  1.0
+1339  H    LYS   122 is charged! Radius moved from zero to  1.0
+1348  H    ASP   123 is charged! Radius moved from zero to  1.0
+1361  H    ILE   124 is charged! Radius moved from zero to  1.0
+1369  H    GLN   125 is charged! Radius moved from zero to  1.0
+1370  HE22 GLN   125 is charged! Radius moved from zero to  1.0
+1373  HE21 GLN   125 is charged! Radius moved from zero to  1.0
+1382  H    LEU   126 is charged! Radius moved from zero to  1.0
+1388  H    ALA   127 is charged! Radius moved from zero to  1.0
+1403  H    ARG   128 is charged! Radius moved from zero to  1.0
+1420  H    ARG   129 is charged! Radius moved from zero to  1.0
+1431  H    ILE   130 is charged! Radius moved from zero to  1.0
+1446  H    ARG   131 is charged! Radius moved from zero to  1.0
+1453  H    GLY   132 is charged! Radius moved from zero to  1.0
+1463  H    GLU   133 is charged! Radius moved from zero to  1.0
+1482  H    ARG   134 is charged! Radius moved from zero to  1.0
+1491  H    ALA   135 is charged! Radius moved from zero to  1.0
+1502  HG   SER   137 is charged! Radius moved from zero to  1.0
+1507  H    GLY   138 is charged! Radius moved from zero to  1.0
+1522  H    ARG   139 is charged! Radius moved from zero to  1.0
+1529  H    GLY   140 is charged! Radius moved from zero to  1.0
+1542  H    LYS   141 is charged! Radius moved from zero to  1.0
+1547  H    GLY   142 is charged! Radius moved from zero to  1.0
+1552  H    GLY   143 is charged! Radius moved from zero to  1.0
+1565  H    LYS   144 is charged! Radius moved from zero to  1.0
+1570  H    GLY   145 is charged! Radius moved from zero to  1.0
+1579  H    LEU   146 is charged! Radius moved from zero to  1.0
+1584  H    GLY   147 is charged! Radius moved from zero to  1.0
+1597  H    LYS   148 is charged! Radius moved from zero to  1.0
+1602  H    GLY   149 is charged! Radius moved from zero to  1.0
+1607  H    GLY   150 is charged! Radius moved from zero to  1.0
+1613  H    ALA   151 is charged! Radius moved from zero to  1.0
+1626  H    LYS   152 is charged! Radius moved from zero to  1.0
+1641  H    ARG   153 is charged! Radius moved from zero to  1.0
+1650  H    HIS   154 is charged! Radius moved from zero to  1.0
+1673  H    ARG   155 is charged! Radius moved from zero to  1.0
+1688  H    LYS   156 is charged! Radius moved from zero to  1.0
+1696  H    VAL   157 is charged! Radius moved from zero to  1.0
+1705  H    LEU   158 is charged! Radius moved from zero to  1.0
+1720  H    ARG   159 is charged! Radius moved from zero to  1.0
+1731  H    ASP   160 is charged! Radius moved from zero to  1.0
+1738  H    ASN   161 is charged! Radius moved from zero to  1.0
+1741  HD22 ASN   161 is charged! Radius moved from zero to  1.0
+1742  HD21 ASN   161 is charged! Radius moved from zero to  1.0
+1751  H    ILE   162 is charged! Radius moved from zero to  1.0
+1759  H    GLN   163 is charged! Radius moved from zero to  1.0
+1760  HE22 GLN   163 is charged! Radius moved from zero to  1.0
+1763  HE21 GLN   163 is charged! Radius moved from zero to  1.0
+1768  H    GLY   164 is charged! Radius moved from zero to  1.0
+1777  H    ILE   165 is charged! Radius moved from zero to  1.0
+1785  H    THR   166 is charged! Radius moved from zero to  1.0
+1786  HG1  THR   166 is charged! Radius moved from zero to  1.0
+1799  H    LYS   167 is charged! Radius moved from zero to  1.0
+1812  H    ALA   169 is charged! Radius moved from zero to  1.0
+1821  H    ILE   170 is charged! Radius moved from zero to  1.0
+1836  H    ARG   171 is charged! Radius moved from zero to  1.0
+1853  H    ARG   172 is charged! Radius moved from zero to  1.0
+1864  H    LEU   173 is charged! Radius moved from zero to  1.0
+1870  H    ALA   174 is charged! Radius moved from zero to  1.0
+1885  H    ARG   175 is charged! Radius moved from zero to  1.0
+1902  H    ARG   176 is charged! Radius moved from zero to  1.0
+1909  H    GLY   177 is charged! Radius moved from zero to  1.0
+1914  H    GLY   178 is charged! Radius moved from zero to  1.0
+1922  H    VAL   179 is charged! Radius moved from zero to  1.0
+1935  H    LYS   180 is charged! Radius moved from zero to  1.0
+1950  H    ARG   181 is charged! Radius moved from zero to  1.0
+1961  H    ILE   182 is charged! Radius moved from zero to  1.0
+1968  H    SER   183 is charged! Radius moved from zero to  1.0
+1969  HG   SER   183 is charged! Radius moved from zero to  1.0
+1974  H    GLY   184 is charged! Radius moved from zero to  1.0
+1983  H    LEU   185 is charged! Radius moved from zero to  1.0
+1992  H    ILE   186 is charged! Radius moved from zero to  1.0
+2007  H    TYR   187 is charged! Radius moved from zero to  1.0
+2020  H    GLU   188 is charged! Radius moved from zero to  1.0
+2030  H    GLU   189 is charged! Radius moved from zero to  1.0
+2038  H    THR   190 is charged! Radius moved from zero to  1.0
+2039  HG1  THR   190 is charged! Radius moved from zero to  1.0
+2054  H    ARG   191 is charged! Radius moved from zero to  1.0
+2061  H    GLY   192 is charged! Radius moved from zero to  1.0
+2069  H    VAL   193 is charged! Radius moved from zero to  1.0
+2078  H    LEU   194 is charged! Radius moved from zero to  1.0
+2091  H    LYS   195 is charged! Radius moved from zero to  1.0
+2099  H    VAL   196 is charged! Radius moved from zero to  1.0
+2114  H    PHE   197 is charged! Radius moved from zero to  1.0
+2125  H    LEU   198 is charged! Radius moved from zero to  1.0
+2135  H    GLU   199 is charged! Radius moved from zero to  1.0
+2142  H    ASN   200 is charged! Radius moved from zero to  1.0
+2145  HD22 ASN   200 is charged! Radius moved from zero to  1.0
+2146  HD21 ASN   200 is charged! Radius moved from zero to  1.0
+2154  H    VAL   201 is charged! Radius moved from zero to  1.0
+2163  H    ILE   202 is charged! Radius moved from zero to  1.0
+2178  H    ARG   203 is charged! Radius moved from zero to  1.0
+2189  H    ASP   204 is charged! Radius moved from zero to  1.0
+2195  H    ALA   205 is charged! Radius moved from zero to  1.0
+2203  H    VAL   206 is charged! Radius moved from zero to  1.0
+2211  H    THR   207 is charged! Radius moved from zero to  1.0
+2212  HG1  THR   207 is charged! Radius moved from zero to  1.0
+2227  H    TYR   208 is charged! Radius moved from zero to  1.0
+2238  H    THR   209 is charged! Radius moved from zero to  1.0
+2239  HG1  THR   209 is charged! Radius moved from zero to  1.0
+2249  H    GLU   210 is charged! Radius moved from zero to  1.0
+2256  H    HIS   211 is charged! Radius moved from zero to  1.0
+2270  H    ALA   212 is charged! Radius moved from zero to  1.0
+2283  H    LYS   213 is charged! Radius moved from zero to  1.0
+2298  H    ARG   214 is charged! Radius moved from zero to  1.0
+2313  H    LYS   215 is charged! Radius moved from zero to  1.0
+2321  H    THR   216 is charged! Radius moved from zero to  1.0
+2322  HG1  THR   216 is charged! Radius moved from zero to  1.0
+2330  H    VAL   217 is charged! Radius moved from zero to  1.0
+2338  H    THR   218 is charged! Radius moved from zero to  1.0
+2339  HG1  THR   218 is charged! Radius moved from zero to  1.0
+2345  H    ALA   219 is charged! Radius moved from zero to  1.0
+2354  H    MET   220 is charged! Radius moved from zero to  1.0
+2363  H    ASP   221 is charged! Radius moved from zero to  1.0
+2371  H    VAL   222 is charged! Radius moved from zero to  1.0
+2379  H    VAL   223 is charged! Radius moved from zero to  1.0
+2394  H    TYR   224 is charged! Radius moved from zero to  1.0
+2403  H    ALA   225 is charged! Radius moved from zero to  1.0
+2412  H    LEU   226 is charged! Radius moved from zero to  1.0
+2425  H    LYS   227 is charged! Radius moved from zero to  1.0
+2440  H    ARG   228 is charged! Radius moved from zero to  1.0
+2452  H    GLN   229 is charged! Radius moved from zero to  1.0
+2453  HE22 GLN   229 is charged! Radius moved from zero to  1.0
+2454  HE21 GLN   229 is charged! Radius moved from zero to  1.0
+2459  H    GLY   230 is charged! Radius moved from zero to  1.0
+2474  H    ARG   231 is charged! Radius moved from zero to  1.0
+2484  H    THR   232 is charged! Radius moved from zero to  1.0
+2485  HG1  THR   232 is charged! Radius moved from zero to  1.0
+2494  H    LEU   233 is charged! Radius moved from zero to  1.0
+2509  H    TYR   234 is charged! Radius moved from zero to  1.0
+2517  H    GLY   235 is charged! Radius moved from zero to  1.0
+2532  H    PHE   236 is charged! Radius moved from zero to  1.0
+2539  H    GLY   237 is charged! Radius moved from zero to  1.0
+2543  H    GLY   238 is charged! Radius moved from zero to  1.0
+2550  HG   SER   273 is charged! Radius moved from zero to  1.0
+2555  H    GLY   274 is charged! Radius moved from zero to  1.0
+2570  H    ARG   275 is charged! Radius moved from zero to  1.0
+2577  H    GLY   276 is charged! Radius moved from zero to  1.0
+2590  H    LYS   277 is charged! Radius moved from zero to  1.0
+2598  H    GLN   278 is charged! Radius moved from zero to  1.0
+2599  HE22 GLN   278 is charged! Radius moved from zero to  1.0
+2602  HE21 GLN   278 is charged! Radius moved from zero to  1.0
+2607  H    GLY   279 is charged! Radius moved from zero to  1.0
+2612  H    GLY   280 is charged! Radius moved from zero to  1.0
+2625  H    LYS   281 is charged! Radius moved from zero to  1.0
+2633  H    THR   282 is charged! Radius moved from zero to  1.0
+2634  HG1  THR   282 is charged! Radius moved from zero to  1.0
+2649  H    ARG   283 is charged! Radius moved from zero to  1.0
+2657  H    ALA   284 is charged! Radius moved from zero to  1.0
+2670  H    LYS   285 is charged! Radius moved from zero to  1.0
+2676  H    ALA   286 is charged! Radius moved from zero to  1.0
+2689  H    LYS   287 is charged! Radius moved from zero to  1.0
+2697  H    THR   288 is charged! Radius moved from zero to  1.0
+2698  HG1  THR   288 is charged! Radius moved from zero to  1.0
+2713  H    ARG   289 is charged! Radius moved from zero to  1.0
+2722  H    SER   290 is charged! Radius moved from zero to  1.0
+2723  HG   SER   290 is charged! Radius moved from zero to  1.0
+2730  H    SER   291 is charged! Radius moved from zero to  1.0
+2731  HG   SER   291 is charged! Radius moved from zero to  1.0
+2746  H    ARG   292 is charged! Radius moved from zero to  1.0
+2754  H    ALA   293 is charged! Radius moved from zero to  1.0
+2759  H    GLY   294 is charged! Radius moved from zero to  1.0
+2768  H    LEU   295 is charged! Radius moved from zero to  1.0
+2776  H    GLN   296 is charged! Radius moved from zero to  1.0
+2777  HE22 GLN   296 is charged! Radius moved from zero to  1.0
+2780  HE21 GLN   296 is charged! Radius moved from zero to  1.0
+2795  H    PHE   297 is charged! Radius moved from zero to  1.0
+2812  H    VAL   299 is charged! Radius moved from zero to  1.0
+2817  H    GLY   300 is charged! Radius moved from zero to  1.0
+2832  H    ARG   301 is charged! Radius moved from zero to  1.0
+2842  H    VAL   302 is charged! Radius moved from zero to  1.0
+2856  H    HIS   303 is charged! Radius moved from zero to  1.0
+2872  H    ARG   304 is charged! Radius moved from zero to  1.0
+2883  H    LEU   305 is charged! Radius moved from zero to  1.0
+2892  H    LEU   306 is charged! Radius moved from zero to  1.0
+2907  H    ARG   307 is charged! Radius moved from zero to  1.0
+2922  H    LYS   308 is charged! Radius moved from zero to  1.0
+2927  H    GLY   309 is charged! Radius moved from zero to  1.0
+2934  H    ASN   310 is charged! Radius moved from zero to  1.0
+2937  HD22 ASN   310 is charged! Radius moved from zero to  1.0
+2938  HD21 ASN   310 is charged! Radius moved from zero to  1.0
+2953  H    TYR   311 is charged! Radius moved from zero to  1.0
+2962  H    ALA   312 is charged! Radius moved from zero to  1.0
+2972  H    GLU   313 is charged! Radius moved from zero to  1.0
+2987  H    ARG   314 is charged! Radius moved from zero to  1.0
+2997  H    VAL   315 is charged! Radius moved from zero to  1.0
+3002  H    GLY   316 is charged! Radius moved from zero to  1.0
+3008  H    ALA   317 is charged! Radius moved from zero to  1.0
+3013  H    GLY   318 is charged! Radius moved from zero to  1.0
+3019  H    ALA   319 is charged! Radius moved from zero to  1.0
+3034  H    VAL   321 is charged! Radius moved from zero to  1.0
+3049  H    TYR   322 is charged! Radius moved from zero to  1.0
+3061  H    LEU   323 is charged! Radius moved from zero to  1.0
+3067  H    ALA   324 is charged! Radius moved from zero to  1.0
+3073  H    ALA   325 is charged! Radius moved from zero to  1.0
+3081  H    VAL   326 is charged! Radius moved from zero to  1.0
+3090  H    LEU   327 is charged! Radius moved from zero to  1.0
+3100  H    GLU   328 is charged! Radius moved from zero to  1.0
+3115  H    TYR   329 is charged! Radius moved from zero to  1.0
+3127  H    LEU   330 is charged! Radius moved from zero to  1.0
+3135  H    THR   331 is charged! Radius moved from zero to  1.0
+3136  HG1  THR   331 is charged! Radius moved from zero to  1.0
+3142  H    ALA   332 is charged! Radius moved from zero to  1.0
+3152  H    GLU   333 is charged! Radius moved from zero to  1.0
+3161  H    ILE   334 is charged! Radius moved from zero to  1.0
+3170  H    LEU   335 is charged! Radius moved from zero to  1.0
+3180  H    GLU   336 is charged! Radius moved from zero to  1.0
+3189  H    LEU   337 is charged! Radius moved from zero to  1.0
+3195  H    ALA   338 is charged! Radius moved from zero to  1.0
+3200  H    GLY   339 is charged! Radius moved from zero to  1.0
+3207  H    ASN   340 is charged! Radius moved from zero to  1.0
+3210  HD22 ASN   340 is charged! Radius moved from zero to  1.0
+3211  HD21 ASN   340 is charged! Radius moved from zero to  1.0
+3217  H    ALA   341 is charged! Radius moved from zero to  1.0
+3223  H    ALA   342 is charged! Radius moved from zero to  1.0
+3238  H    ARG   343 is charged! Radius moved from zero to  1.0
+3249  H    ASP   344 is charged! Radius moved from zero to  1.0
+3256  H    ASN   345 is charged! Radius moved from zero to  1.0
+3259  HD22 ASN   345 is charged! Radius moved from zero to  1.0
+3260  HD21 ASN   345 is charged! Radius moved from zero to  1.0
+3273  H    LYS   346 is charged! Radius moved from zero to  1.0
+3286  H    LYS   347 is charged! Radius moved from zero to  1.0
+3294  H    THR   348 is charged! Radius moved from zero to  1.0
+3295  HG1  THR   348 is charged! Radius moved from zero to  1.0
+3310  H    ARG   349 is charged! Radius moved from zero to  1.0
+3321  H    ILE   350 is charged! Radius moved from zero to  1.0
+3330  H    ILE   351 is charged! Radius moved from zero to  1.0
+3352  H    ARG   353 is charged! Radius moved from zero to  1.0
+3361  H    HIS   354 is charged! Radius moved from zero to  1.0
+3378  H    LEU   355 is charged! Radius moved from zero to  1.0
+3386  H    GLN   356 is charged! Radius moved from zero to  1.0
+3387  HE22 GLN   356 is charged! Radius moved from zero to  1.0
+3390  HE21 GLN   356 is charged! Radius moved from zero to  1.0
+3399  H    LEU   357 is charged! Radius moved from zero to  1.0
+3405  H    ALA   358 is charged! Radius moved from zero to  1.0
+3413  H    VAL   359 is charged! Radius moved from zero to  1.0
+3428  H    ARG   360 is charged! Radius moved from zero to  1.0
+3437  H    ASN   361 is charged! Radius moved from zero to  1.0
+3440  HD22 ASN   361 is charged! Radius moved from zero to  1.0
+3441  HD21 ASN   361 is charged! Radius moved from zero to  1.0
+3450  H    ASP   362 is charged! Radius moved from zero to  1.0
+3460  H    GLU   363 is charged! Radius moved from zero to  1.0
+3470  H    GLU   364 is charged! Radius moved from zero to  1.0
+3479  H    LEU   365 is charged! Radius moved from zero to  1.0
+3486  H    ASN   366 is charged! Radius moved from zero to  1.0
+3489  HD22 ASN   366 is charged! Radius moved from zero to  1.0
+3490  HD21 ASN   366 is charged! Radius moved from zero to  1.0
+3503  H    LYS   367 is charged! Radius moved from zero to  1.0
+3512  H    LEU   368 is charged! Radius moved from zero to  1.0
+3521  H    LEU   369 is charged! Radius moved from zero to  1.0
+3526  H    GLY   370 is charged! Radius moved from zero to  1.0
+3541  H    ARG   371 is charged! Radius moved from zero to  1.0
+3551  H    VAL   372 is charged! Radius moved from zero to  1.0
+3559  H    THR   373 is charged! Radius moved from zero to  1.0
+3560  HG1  THR   373 is charged! Radius moved from zero to  1.0
+3569  H    ILE   374 is charged! Radius moved from zero to  1.0
+3575  H    ALA   375 is charged! Radius moved from zero to  1.0
+3583  H    GLN   376 is charged! Radius moved from zero to  1.0
+3584  HE22 GLN   376 is charged! Radius moved from zero to  1.0
+3587  HE21 GLN   376 is charged! Radius moved from zero to  1.0
+3592  H    GLY   377 is charged! Radius moved from zero to  1.0
+3597  H    GLY   378 is charged! Radius moved from zero to  1.0
+3605  H    VAL   379 is charged! Radius moved from zero to  1.0
+3614  H    LEU   380 is charged! Radius moved from zero to  1.0
+3628  H    ASN   382 is charged! Radius moved from zero to  1.0
+3631  HD22 ASN   382 is charged! Radius moved from zero to  1.0
+3632  HD21 ASN   382 is charged! Radius moved from zero to  1.0
+3641  H    ILE   383 is charged! Radius moved from zero to  1.0
+3649  H    GLN   384 is charged! Radius moved from zero to  1.0
+3650  HE22 GLN   384 is charged! Radius moved from zero to  1.0
+3653  HE21 GLN   384 is charged! Radius moved from zero to  1.0
+3660  H    SER   385 is charged! Radius moved from zero to  1.0
+3661  HG   SER   385 is charged! Radius moved from zero to  1.0
+3669  H    VAL   386 is charged! Radius moved from zero to  1.0
+3678  H    LEU   387 is charged! Radius moved from zero to  1.0
+3687  H    LEU   388 is charged! Radius moved from zero to  1.0
+3707  H    LYS   390 is charged! Radius moved from zero to  1.0
+3720  H    LYS   391 is charged! Radius moved from zero to  1.0
+3728  H    THR   392 is charged! Radius moved from zero to  1.0
+3729  HG1  THR   392 is charged! Radius moved from zero to  1.0
+3739  H    GLU   393 is charged! Radius moved from zero to  1.0
+3746  H    SER   394 is charged! Radius moved from zero to  1.0
+3747  HG   SER   394 is charged! Radius moved from zero to  1.0
+3754  H    SER   395 is charged! Radius moved from zero to  1.0
+3755  HG   SER   395 is charged! Radius moved from zero to  1.0
+3768  H    LYS   396 is charged! Radius moved from zero to  1.0
+3775  H    SER   397 is charged! Radius moved from zero to  1.0
+3776  HG   SER   397 is charged! Radius moved from zero to  1.0
+3789  H    LYS   398 is charged! Radius moved from zero to  1.0
+3796  H    SER   399 is charged! Radius moved from zero to  1.0
+3797  HG   SER   399 is charged! Radius moved from zero to  1.0
+3809  H    LYS   400 is charged! Radius moved from zero to  1.0
+3827  H    LYS   410 is charged! Radius moved from zero to  1.0
+3834  H    SER   411 is charged! Radius moved from zero to  1.0
+3835  HG   SER   411 is charged! Radius moved from zero to  1.0
+3841  H    ALA   412 is charged! Radius moved from zero to  1.0
+3854  H    ALA   414 is charged! Radius moved from zero to  1.0
+3874  H    LYS   416 is charged! Radius moved from zero to  1.0
+3887  H    LYS   417 is charged! Radius moved from zero to  1.0
+3892  H    GLY   418 is charged! Radius moved from zero to  1.0
+3899  H    SER   419 is charged! Radius moved from zero to  1.0
+3900  HG   SER   419 is charged! Radius moved from zero to  1.0
+3913  H    LYS   420 is charged! Radius moved from zero to  1.0
+3926  H    LYS   421 is charged! Radius moved from zero to  1.0
+3932  H    ALA   422 is charged! Radius moved from zero to  1.0
+3940  H    VAL   423 is charged! Radius moved from zero to  1.0
+3948  H    THR   424 is charged! Radius moved from zero to  1.0
+3949  HG1  THR   424 is charged! Radius moved from zero to  1.0
+3962  H    LYS   425 is charged! Radius moved from zero to  1.0
+3970  H    THR   426 is charged! Radius moved from zero to  1.0
+3971  HG1  THR   426 is charged! Radius moved from zero to  1.0
+3981  H    GLN   427 is charged! Radius moved from zero to  1.0
+3982  HE22 GLN   427 is charged! Radius moved from zero to  1.0
+3983  HE21 GLN   427 is charged! Radius moved from zero to  1.0
+3996  H    LYS   428 is charged! Radius moved from zero to  1.0
+4009  H    LYS   429 is charged! Radius moved from zero to  1.0
+4018  H    ASP   430 is charged! Radius moved from zero to  1.0
+4023  H    GLY   431 is charged! Radius moved from zero to  1.0
+4036  H    LYS   432 is charged! Radius moved from zero to  1.0
+4049  H    LYS   433 is charged! Radius moved from zero to  1.0
+4064  H    ARG   434 is charged! Radius moved from zero to  1.0
+4081  H    ARG   435 is charged! Radius moved from zero to  1.0
+4096  H    LYS   436 is charged! Radius moved from zero to  1.0
+4104  H    THR   437 is charged! Radius moved from zero to  1.0
+4105  HG1  THR   437 is charged! Radius moved from zero to  1.0
+4120  H    ARG   438 is charged! Radius moved from zero to  1.0
+4135  H    LYS   439 is charged! Radius moved from zero to  1.0
+4145  H    GLU   440 is charged! Radius moved from zero to  1.0
+4152  H    SER   441 is charged! Radius moved from zero to  1.0
+4153  HG   SER   441 is charged! Radius moved from zero to  1.0
+4168  H    TYR   442 is charged! Radius moved from zero to  1.0
+4177  H    ALA   443 is charged! Radius moved from zero to  1.0
+4186  H    ILE   444 is charged! Radius moved from zero to  1.0
+4201  H    TYR   445 is charged! Radius moved from zero to  1.0
+4212  H    VAL   446 is charged! Radius moved from zero to  1.0
+4227  H    TYR   447 is charged! Radius moved from zero to  1.0
+4243  H    LYS   448 is charged! Radius moved from zero to  1.0
+4251  H    VAL   449 is charged! Radius moved from zero to  1.0
+4260  H    LEU   450 is charged! Radius moved from zero to  1.0
+4273  H    LYS   451 is charged! Radius moved from zero to  1.0
+4283  H    GLN   452 is charged! Radius moved from zero to  1.0
+4284  HE22 GLN   452 is charged! Radius moved from zero to  1.0
+4285  HE21 GLN   452 is charged! Radius moved from zero to  1.0
+4293  H    VAL   453 is charged! Radius moved from zero to  1.0
+4300  H    HIS   454 is charged! Radius moved from zero to  1.0
+4324  H    ASP   456 is charged! Radius moved from zero to  1.0
+4332  H    THR   457 is charged! Radius moved from zero to  1.0
+4333  HG1  THR   457 is charged! Radius moved from zero to  1.0
+4338  H    GLY   458 is charged! Radius moved from zero to  1.0
+4347  H    ILE   459 is charged! Radius moved from zero to  1.0
+4354  H    SER   460 is charged! Radius moved from zero to  1.0
+4355  HG   SER   460 is charged! Radius moved from zero to  1.0
+4362  H    SER   461 is charged! Radius moved from zero to  1.0
+4363  HG   SER   461 is charged! Radius moved from zero to  1.0
+4376  H    LYS   462 is charged! Radius moved from zero to  1.0
+4382  H    ALA   463 is charged! Radius moved from zero to  1.0
+4391  H    MET   464 is charged! Radius moved from zero to  1.0
+4398  H    SER   465 is charged! Radius moved from zero to  1.0
+4399  HG   SER   465 is charged! Radius moved from zero to  1.0
+4408  H    ILE   466 is charged! Radius moved from zero to  1.0
+4417  H    MET   467 is charged! Radius moved from zero to  1.0
+4424  H    ASN   468 is charged! Radius moved from zero to  1.0
+4427  HD22 ASN   468 is charged! Radius moved from zero to  1.0
+4428  HD21 ASN   468 is charged! Radius moved from zero to  1.0
+4435  H    SER   469 is charged! Radius moved from zero to  1.0
+4436  HG   SER   469 is charged! Radius moved from zero to  1.0
+4451  H    PHE   470 is charged! Radius moved from zero to  1.0
+4461  H    VAL   471 is charged! Radius moved from zero to  1.0
+4468  H    ASN   472 is charged! Radius moved from zero to  1.0
+4471  HD22 ASN   472 is charged! Radius moved from zero to  1.0
+4472  HD21 ASN   472 is charged! Radius moved from zero to  1.0
+4481  H    ASP   473 is charged! Radius moved from zero to  1.0
+4489  H    VAL   474 is charged! Radius moved from zero to  1.0
+4504  H    PHE   475 is charged! Radius moved from zero to  1.0
+4516  H    GLU   476 is charged! Radius moved from zero to  1.0
+4531  H    ARG   477 is charged! Radius moved from zero to  1.0
+4542  H    ILE   478 is charged! Radius moved from zero to  1.0
+4548  H    ALA   479 is charged! Radius moved from zero to  1.0
+4553  H    GLY   480 is charged! Radius moved from zero to  1.0
+4563  H    GLU   481 is charged! Radius moved from zero to  1.0
+4569  H    ALA   482 is charged! Radius moved from zero to  1.0
+4576  H    SER   483 is charged! Radius moved from zero to  1.0
+4577  HG   SER   483 is charged! Radius moved from zero to  1.0
+4592  H    ARG   484 is charged! Radius moved from zero to  1.0
+4603  H    LEU   485 is charged! Radius moved from zero to  1.0
+4609  H    ALA   486 is charged! Radius moved from zero to  1.0
+4616  H    HIS   487 is charged! Radius moved from zero to  1.0
+4639  H    TYR   488 is charged! Radius moved from zero to  1.0
+4649  H    ASN   489 is charged! Radius moved from zero to  1.0
+4652  HD22 ASN   489 is charged! Radius moved from zero to  1.0
+4653  HD21 ASN   489 is charged! Radius moved from zero to  1.0
+4666  H    LYS   490 is charged! Radius moved from zero to  1.0
+4681  H    ARG   491 is charged! Radius moved from zero to  1.0
+4690  H    SER   492 is charged! Radius moved from zero to  1.0
+4691  HG   SER   492 is charged! Radius moved from zero to  1.0
+4699  H    THR   493 is charged! Radius moved from zero to  1.0
+4700  HG1  THR   493 is charged! Radius moved from zero to  1.0
+4709  H    ILE   494 is charged! Radius moved from zero to  1.0
+4717  H    THR   495 is charged! Radius moved from zero to  1.0
+4718  HG1  THR   495 is charged! Radius moved from zero to  1.0
+4725  H    SER   496 is charged! Radius moved from zero to  1.0
+4726  HG   SER   496 is charged! Radius moved from zero to  1.0
+4741  H    ARG   497 is charged! Radius moved from zero to  1.0
+4753  H    GLU   498 is charged! Radius moved from zero to  1.0
+4762  H    ILE   499 is charged! Radius moved from zero to  1.0
+4770  H    GLN   500 is charged! Radius moved from zero to  1.0
+4771  HE22 GLN   500 is charged! Radius moved from zero to  1.0
+4774  HE21 GLN   500 is charged! Radius moved from zero to  1.0
+4782  H    THR   501 is charged! Radius moved from zero to  1.0
+4783  HG1  THR   501 is charged! Radius moved from zero to  1.0
+4789  H    ALA   502 is charged! Radius moved from zero to  1.0
+4797  H    VAL   503 is charged! Radius moved from zero to  1.0
+4812  H    ARG   504 is charged! Radius moved from zero to  1.0
+4823  H    LEU   505 is charged! Radius moved from zero to  1.0
+4832  H    LEU   506 is charged! Radius moved from zero to  1.0
+4841  H    LEU   507 is charged! Radius moved from zero to  1.0
+4853  H    GLY   509 is charged! Radius moved from zero to  1.0
+4863  H    GLU   510 is charged! Radius moved from zero to  1.0
+4872  H    LEU   511 is charged! Radius moved from zero to  1.0
+4878  H    ALA   512 is charged! Radius moved from zero to  1.0
+4891  H    LYS   513 is charged! Radius moved from zero to  1.0
+4898  H    HIS   514 is charged! Radius moved from zero to  1.0
+4912  H    ALA   515 is charged! Radius moved from zero to  1.0
+4920  H    VAL   516 is charged! Radius moved from zero to  1.0
+4927  H    SER   517 is charged! Radius moved from zero to  1.0
+4928  HG   SER   517 is charged! Radius moved from zero to  1.0
+4938  H    GLU   518 is charged! Radius moved from zero to  1.0
+4943  H    GLY   519 is charged! Radius moved from zero to  1.0
+4951  H    THR   520 is charged! Radius moved from zero to  1.0
+4952  HG1  THR   520 is charged! Radius moved from zero to  1.0
+4965  H    LYS   521 is charged! Radius moved from zero to  1.0
+4971  H    ALA   522 is charged! Radius moved from zero to  1.0
+4979  H    VAL   523 is charged! Radius moved from zero to  1.0
+4987  H    THR   524 is charged! Radius moved from zero to  1.0
+4988  HG1  THR   524 is charged! Radius moved from zero to  1.0
+5001  H    LYS   525 is charged! Radius moved from zero to  1.0
+5016  H    TYR   526 is charged! Radius moved from zero to  1.0
+5027  H    THR   527 is charged! Radius moved from zero to  1.0
+5028  HG1  THR   527 is charged! Radius moved from zero to  1.0
+5035  H    SER   528 is charged! Radius moved from zero to  1.0
+5036  HG   SER   528 is charged! Radius moved from zero to  1.0
+5042  H    ALA   529 is charged! Radius moved from zero to  1.0
+5054  H    LYS   530 is charged! Radius moved from zero to  1.0
+5074  H    ARG   546 is charged! Radius moved from zero to  1.0
+5084  H    THR   547 is charged! Radius moved from zero to  1.0
+5085  HG1  THR   547 is charged! Radius moved from zero to  1.0
+5098  H    LYS   548 is charged! Radius moved from zero to  1.0
+5106  H    GLN   549 is charged! Radius moved from zero to  1.0
+5107  HE22 GLN   549 is charged! Radius moved from zero to  1.0
+5110  HE21 GLN   549 is charged! Radius moved from zero to  1.0
+5118  H    THR   550 is charged! Radius moved from zero to  1.0
+5119  HG1  THR   550 is charged! Radius moved from zero to  1.0
+5125  H    ALA   551 is charged! Radius moved from zero to  1.0
+5140  H    ARG   552 is charged! Radius moved from zero to  1.0
+5155  H    LYS   553 is charged! Radius moved from zero to  1.0
+5162  H    SER   554 is charged! Radius moved from zero to  1.0
+5163  HG   SER   554 is charged! Radius moved from zero to  1.0
+5171  H    THR   555 is charged! Radius moved from zero to  1.0
+5172  HG1  THR   555 is charged! Radius moved from zero to  1.0
+5177  H    GLY   556 is charged! Radius moved from zero to  1.0
+5182  H    GLY   557 is charged! Radius moved from zero to  1.0
+5195  H    LYS   558 is charged! Radius moved from zero to  1.0
+5201  H    ALA   559 is charged! Radius moved from zero to  1.0
+5223  H    ARG   561 is charged! Radius moved from zero to  1.0
+5238  H    LYS   562 is charged! Radius moved from zero to  1.0
+5246  H    GLN   563 is charged! Radius moved from zero to  1.0
+5247  HE22 GLN   563 is charged! Radius moved from zero to  1.0
+5250  HE21 GLN   563 is charged! Radius moved from zero to  1.0
+5259  H    LEU   564 is charged! Radius moved from zero to  1.0
+5265  H    ALA   565 is charged! Radius moved from zero to  1.0
+5273  H    THR   566 is charged! Radius moved from zero to  1.0
+5274  HG1  THR   566 is charged! Radius moved from zero to  1.0
+5287  H    LYS   567 is charged! Radius moved from zero to  1.0
+5293  H    ALA   568 is charged! Radius moved from zero to  1.0
+5299  H    ALA   569 is charged! Radius moved from zero to  1.0
+5314  H    ARG   570 is charged! Radius moved from zero to  1.0
+5329  H    LYS   571 is charged! Radius moved from zero to  1.0
+5336  H    SER   572 is charged! Radius moved from zero to  1.0
+5337  HG   SER   572 is charged! Radius moved from zero to  1.0
+5343  H    ALA   573 is charged! Radius moved from zero to  1.0
+5356  H    ALA   575 is charged! Radius moved from zero to  1.0
+5364  H    THR   576 is charged! Radius moved from zero to  1.0
+5365  HG1  THR   576 is charged! Radius moved from zero to  1.0
+5370  H    GLY   577 is charged! Radius moved from zero to  1.0
+5375  H    GLY   578 is charged! Radius moved from zero to  1.0
+5383  H    VAL   579 is charged! Radius moved from zero to  1.0
+5396  H    LYS   580 is charged! Radius moved from zero to  1.0
+5409  H    LYS   581 is charged! Radius moved from zero to  1.0
+5423  H    HIS   583 is charged! Radius moved from zero to  1.0
+5446  H    ARG   584 is charged! Radius moved from zero to  1.0
+5463  H    TYR   585 is charged! Radius moved from zero to  1.0
+5481  H    ARG   586 is charged! Radius moved from zero to  1.0
+5495  H    GLY   588 is charged! Radius moved from zero to  1.0
+5503  H    THR   589 is charged! Radius moved from zero to  1.0
+5504  HG1  THR   589 is charged! Radius moved from zero to  1.0
+5512  H    VAL   590 is charged! Radius moved from zero to  1.0
+5518  H    ALA   591 is charged! Radius moved from zero to  1.0
+5527  H    LEU   592 is charged! Radius moved from zero to  1.0
+5542  H    ARG   593 is charged! Radius moved from zero to  1.0
+5554  H    GLU   594 is charged! Radius moved from zero to  1.0
+5563  H    ILE   595 is charged! Radius moved from zero to  1.0
+5578  H    ARG   596 is charged! Radius moved from zero to  1.0
+5595  H    ARG   597 is charged! Radius moved from zero to  1.0
+5612  H    TYR   598 is charged! Radius moved from zero to  1.0
+5623  H    GLN   599 is charged! Radius moved from zero to  1.0
+5624  HE22 GLN   599 is charged! Radius moved from zero to  1.0
+5627  HE21 GLN   599 is charged! Radius moved from zero to  1.0
+5640  H    LYS   600 is charged! Radius moved from zero to  1.0
+5647  H    SER   601 is charged! Radius moved from zero to  1.0
+5648  HG   SER   601 is charged! Radius moved from zero to  1.0
+5656  H    THR   602 is charged! Radius moved from zero to  1.0
+5657  HG1  THR   602 is charged! Radius moved from zero to  1.0
+5667  H    GLU   603 is charged! Radius moved from zero to  1.0
+5676  H    LEU   604 is charged! Radius moved from zero to  1.0
+5685  H    LEU   605 is charged! Radius moved from zero to  1.0
+5694  H    ILE   606 is charged! Radius moved from zero to  1.0
+5709  H    ARG   607 is charged! Radius moved from zero to  1.0
+5724  H    LYS   608 is charged! Radius moved from zero to  1.0
+5733  H    LEU   609 is charged! Radius moved from zero to  1.0
+5755  H    PHE   611 is charged! Radius moved from zero to  1.0
+5767  H    GLN   612 is charged! Radius moved from zero to  1.0
+5768  HE22 GLN   612 is charged! Radius moved from zero to  1.0
+5769  HE21 GLN   612 is charged! Radius moved from zero to  1.0
+5784  H    ARG   613 is charged! Radius moved from zero to  1.0
+5795  H    LEU   614 is charged! Radius moved from zero to  1.0
+5803  H    VAL   615 is charged! Radius moved from zero to  1.0
+5818  H    ARG   616 is charged! Radius moved from zero to  1.0
+5830  H    GLU   617 is charged! Radius moved from zero to  1.0
+5839  H    ILE   618 is charged! Radius moved from zero to  1.0
+5845  H    ALA   619 is charged! Radius moved from zero to  1.0
+5853  H    GLN   620 is charged! Radius moved from zero to  1.0
+5854  HE22 GLN   620 is charged! Radius moved from zero to  1.0
+5857  HE21 GLN   620 is charged! Radius moved from zero to  1.0
+5866  H    ASP   621 is charged! Radius moved from zero to  1.0
+5881  H    PHE   622 is charged! Radius moved from zero to  1.0
+5896  H    LYS   623 is charged! Radius moved from zero to  1.0
+5904  H    THR   624 is charged! Radius moved from zero to  1.0
+5905  HG1  THR   624 is charged! Radius moved from zero to  1.0
+5914  H    ASP   625 is charged! Radius moved from zero to  1.0
+5923  H    LEU   626 is charged! Radius moved from zero to  1.0
+5938  H    ARG   627 is charged! Radius moved from zero to  1.0
+5955  H    PHE   628 is charged! Radius moved from zero to  1.0
+5965  H    GLN   629 is charged! Radius moved from zero to  1.0
+5966  HE22 GLN   629 is charged! Radius moved from zero to  1.0
+5969  HE21 GLN   629 is charged! Radius moved from zero to  1.0
+5976  H    SER   630 is charged! Radius moved from zero to  1.0
+5977  HG   SER   630 is charged! Radius moved from zero to  1.0
+5984  H    SER   631 is charged! Radius moved from zero to  1.0
+5985  HG   SER   631 is charged! Radius moved from zero to  1.0
+5991  H    ALA   632 is charged! Radius moved from zero to  1.0
+5999  H    VAL   633 is charged! Radius moved from zero to  1.0
+6008  H    MET   634 is charged! Radius moved from zero to  1.0
+6014  H    ALA   635 is charged! Radius moved from zero to  1.0
+6023  H    LEU   636 is charged! Radius moved from zero to  1.0
+6031  H    GLN   637 is charged! Radius moved from zero to  1.0
+6032  HE22 GLN   637 is charged! Radius moved from zero to  1.0
+6035  HE21 GLN   637 is charged! Radius moved from zero to  1.0
+6045  H    GLU   638 is charged! Radius moved from zero to  1.0
+6051  H    ALA   639 is charged! Radius moved from zero to  1.0
+6058  H    SER   640 is charged! Radius moved from zero to  1.0
+6059  HG   SER   640 is charged! Radius moved from zero to  1.0
+6069  H    GLU   641 is charged! Radius moved from zero to  1.0
+6075  H    ALA   642 is charged! Radius moved from zero to  1.0
+6090  H    TYR   643 is charged! Radius moved from zero to  1.0
+6102  H    LEU   644 is charged! Radius moved from zero to  1.0
+6110  H    VAL   645 is charged! Radius moved from zero to  1.0
+6116  H    ALA   646 is charged! Radius moved from zero to  1.0
+6125  H    LEU   647 is charged! Radius moved from zero to  1.0
+6140  H    PHE   648 is charged! Radius moved from zero to  1.0
+6152  H    GLU   649 is charged! Radius moved from zero to  1.0
+6161  H    ASP   650 is charged! Radius moved from zero to  1.0
+6169  H    THR   651 is charged! Radius moved from zero to  1.0
+6170  HG1  THR   651 is charged! Radius moved from zero to  1.0
+6177  H    ASN   652 is charged! Radius moved from zero to  1.0
+6180  HD22 ASN   652 is charged! Radius moved from zero to  1.0
+6181  HD21 ASN   652 is charged! Radius moved from zero to  1.0
+6190  H    LEU   653 is charged! Radius moved from zero to  1.0
+6197  H    CYS   654 is charged! Radius moved from zero to  1.0
+6204  H    ALA   655 is charged! Radius moved from zero to  1.0
+6213  H    ILE   656 is charged! Radius moved from zero to  1.0
+6227  H    HIS   657 is charged! Radius moved from zero to  1.0
+6234  H    ALA   658 is charged! Radius moved from zero to  1.0
+6247  H    LYS   659 is charged! Radius moved from zero to  1.0
+6262  H    ARG   660 is charged! Radius moved from zero to  1.0
+6272  H    VAL   661 is charged! Radius moved from zero to  1.0
+6280  H    THR   662 is charged! Radius moved from zero to  1.0
+6281  HG1  THR   662 is charged! Radius moved from zero to  1.0
+6290  H    ILE   663 is charged! Radius moved from zero to  1.0
+6299  H    MET   664 is charged! Radius moved from zero to  1.0
+6319  H    LYS   666 is charged! Radius moved from zero to  1.0
+6328  H    ASP   667 is charged! Radius moved from zero to  1.0
+6337  H    ILE   668 is charged! Radius moved from zero to  1.0
+6347  H    GLN   669 is charged! Radius moved from zero to  1.0
+6348  HE22 GLN   669 is charged! Radius moved from zero to  1.0
+6349  HE21 GLN   669 is charged! Radius moved from zero to  1.0
+6358  H    LEU   670 is charged! Radius moved from zero to  1.0
+6364  H    ALA   671 is charged! Radius moved from zero to  1.0
+6379  H    ARG   672 is charged! Radius moved from zero to  1.0
+6396  H    ARG   673 is charged! Radius moved from zero to  1.0
+6407  H    ILE   674 is charged! Radius moved from zero to  1.0
+6422  H    ARG   675 is charged! Radius moved from zero to  1.0
+6429  H    GLY   676 is charged! Radius moved from zero to  1.0
+6439  H    GLU   677 is charged! Radius moved from zero to  1.0
+6454  H    ARG   678 is charged! Radius moved from zero to  1.0
+6461  H    ALA   679 is charged! Radius moved from zero to  1.0
+6468  HG   SER   681 is charged! Radius moved from zero to  1.0
+6473  H    GLY   682 is charged! Radius moved from zero to  1.0
+6488  H    ARG   683 is charged! Radius moved from zero to  1.0
+6495  H    GLY   684 is charged! Radius moved from zero to  1.0
+6508  H    LYS   685 is charged! Radius moved from zero to  1.0
+6513  H    GLY   686 is charged! Radius moved from zero to  1.0
+6518  H    GLY   687 is charged! Radius moved from zero to  1.0
+6531  H    LYS   688 is charged! Radius moved from zero to  1.0
+6536  H    GLY   689 is charged! Radius moved from zero to  1.0
+6545  H    LEU   690 is charged! Radius moved from zero to  1.0
+6550  H    GLY   691 is charged! Radius moved from zero to  1.0
+6563  H    LYS   692 is charged! Radius moved from zero to  1.0
+6568  H    GLY   693 is charged! Radius moved from zero to  1.0
+6573  H    GLY   694 is charged! Radius moved from zero to  1.0
+6579  H    ALA   695 is charged! Radius moved from zero to  1.0
+6592  H    LYS   696 is charged! Radius moved from zero to  1.0
+6607  H    ARG   697 is charged! Radius moved from zero to  1.0
+6616  H    HIS   698 is charged! Radius moved from zero to  1.0
+6639  H    ARG   699 is charged! Radius moved from zero to  1.0
+6654  H    LYS   700 is charged! Radius moved from zero to  1.0
+6662  H    VAL   701 is charged! Radius moved from zero to  1.0
+6671  H    LEU   702 is charged! Radius moved from zero to  1.0
+6686  H    ARG   703 is charged! Radius moved from zero to  1.0
+6697  H    ASP   704 is charged! Radius moved from zero to  1.0
+6704  H    ASN   705 is charged! Radius moved from zero to  1.0
+6707  HD22 ASN   705 is charged! Radius moved from zero to  1.0
+6708  HD21 ASN   705 is charged! Radius moved from zero to  1.0
+6717  H    ILE   706 is charged! Radius moved from zero to  1.0
+6725  H    GLN   707 is charged! Radius moved from zero to  1.0
+6726  HE22 GLN   707 is charged! Radius moved from zero to  1.0
+6729  HE21 GLN   707 is charged! Radius moved from zero to  1.0
+6734  H    GLY   708 is charged! Radius moved from zero to  1.0
+6743  H    ILE   709 is charged! Radius moved from zero to  1.0
+6751  H    THR   710 is charged! Radius moved from zero to  1.0
+6752  HG1  THR   710 is charged! Radius moved from zero to  1.0
+6765  H    LYS   711 is charged! Radius moved from zero to  1.0
+6778  H    ALA   713 is charged! Radius moved from zero to  1.0
+6787  H    ILE   714 is charged! Radius moved from zero to  1.0
+6802  H    ARG   715 is charged! Radius moved from zero to  1.0
+6819  H    ARG   716 is charged! Radius moved from zero to  1.0
+6830  H    LEU   717 is charged! Radius moved from zero to  1.0
+6836  H    ALA   718 is charged! Radius moved from zero to  1.0
+6851  H    ARG   719 is charged! Radius moved from zero to  1.0
+6868  H    ARG   720 is charged! Radius moved from zero to  1.0
+6875  H    GLY   721 is charged! Radius moved from zero to  1.0
+6880  H    GLY   722 is charged! Radius moved from zero to  1.0
+6888  H    VAL   723 is charged! Radius moved from zero to  1.0
+6901  H    LYS   724 is charged! Radius moved from zero to  1.0
+6916  H    ARG   725 is charged! Radius moved from zero to  1.0
+6927  H    ILE   726 is charged! Radius moved from zero to  1.0
+6934  H    SER   727 is charged! Radius moved from zero to  1.0
+6935  HG   SER   727 is charged! Radius moved from zero to  1.0
+6940  H    GLY   728 is charged! Radius moved from zero to  1.0
+6949  H    LEU   729 is charged! Radius moved from zero to  1.0
+6958  H    ILE   730 is charged! Radius moved from zero to  1.0
+6973  H    TYR   731 is charged! Radius moved from zero to  1.0
+6986  H    GLU   732 is charged! Radius moved from zero to  1.0
+6996  H    GLU   733 is charged! Radius moved from zero to  1.0
+7004  H    THR   734 is charged! Radius moved from zero to  1.0
+7005  HG1  THR   734 is charged! Radius moved from zero to  1.0
+7020  H    ARG   735 is charged! Radius moved from zero to  1.0
+7027  H    GLY   736 is charged! Radius moved from zero to  1.0
+7035  H    VAL   737 is charged! Radius moved from zero to  1.0
+7044  H    LEU   738 is charged! Radius moved from zero to  1.0
+7057  H    LYS   739 is charged! Radius moved from zero to  1.0
+7065  H    VAL   740 is charged! Radius moved from zero to  1.0
+7080  H    PHE   741 is charged! Radius moved from zero to  1.0
+7091  H    LEU   742 is charged! Radius moved from zero to  1.0
+7101  H    GLU   743 is charged! Radius moved from zero to  1.0
+7108  H    ASN   744 is charged! Radius moved from zero to  1.0
+7111  HD22 ASN   744 is charged! Radius moved from zero to  1.0
+7112  HD21 ASN   744 is charged! Radius moved from zero to  1.0
+7120  H    VAL   745 is charged! Radius moved from zero to  1.0
+7129  H    ILE   746 is charged! Radius moved from zero to  1.0
+7144  H    ARG   747 is charged! Radius moved from zero to  1.0
+7155  H    ASP   748 is charged! Radius moved from zero to  1.0
+7161  H    ALA   749 is charged! Radius moved from zero to  1.0
+7169  H    VAL   750 is charged! Radius moved from zero to  1.0
+7177  H    THR   751 is charged! Radius moved from zero to  1.0
+7178  HG1  THR   751 is charged! Radius moved from zero to  1.0
+7193  H    TYR   752 is charged! Radius moved from zero to  1.0
+7204  H    THR   753 is charged! Radius moved from zero to  1.0
+7205  HG1  THR   753 is charged! Radius moved from zero to  1.0
+7215  H    GLU   754 is charged! Radius moved from zero to  1.0
+7222  H    HIS   755 is charged! Radius moved from zero to  1.0
+7236  H    ALA   756 is charged! Radius moved from zero to  1.0
+7249  H    LYS   757 is charged! Radius moved from zero to  1.0
+7264  H    ARG   758 is charged! Radius moved from zero to  1.0
+7279  H    LYS   759 is charged! Radius moved from zero to  1.0
+7287  H    THR   760 is charged! Radius moved from zero to  1.0
+7288  HG1  THR   760 is charged! Radius moved from zero to  1.0
+7296  H    VAL   761 is charged! Radius moved from zero to  1.0
+7304  H    THR   762 is charged! Radius moved from zero to  1.0
+7305  HG1  THR   762 is charged! Radius moved from zero to  1.0
+7311  H    ALA   763 is charged! Radius moved from zero to  1.0
+7320  H    MET   764 is charged! Radius moved from zero to  1.0
+7329  H    ASP   765 is charged! Radius moved from zero to  1.0
+7337  H    VAL   766 is charged! Radius moved from zero to  1.0
+7345  H    VAL   767 is charged! Radius moved from zero to  1.0
+7360  H    TYR   768 is charged! Radius moved from zero to  1.0
+7369  H    ALA   769 is charged! Radius moved from zero to  1.0
+7378  H    LEU   770 is charged! Radius moved from zero to  1.0
+7391  H    LYS   771 is charged! Radius moved from zero to  1.0
+7406  H    ARG   772 is charged! Radius moved from zero to  1.0
+7416  H    GLN   773 is charged! Radius moved from zero to  1.0
+7417  HE22 GLN   773 is charged! Radius moved from zero to  1.0
+7420  HE21 GLN   773 is charged! Radius moved from zero to  1.0
+7425  H    GLY   774 is charged! Radius moved from zero to  1.0
+7440  H    ARG   775 is charged! Radius moved from zero to  1.0
+7450  H    THR   776 is charged! Radius moved from zero to  1.0
+7451  HG1  THR   776 is charged! Radius moved from zero to  1.0
+7460  H    LEU   777 is charged! Radius moved from zero to  1.0
+7475  H    TYR   778 is charged! Radius moved from zero to  1.0
+7483  H    GLY   779 is charged! Radius moved from zero to  1.0
+7498  H    PHE   780 is charged! Radius moved from zero to  1.0
+7505  H    GLY   781 is charged! Radius moved from zero to  1.0
+7509  H    GLY   782 is charged! Radius moved from zero to  1.0
+7516  HG   SER   817 is charged! Radius moved from zero to  1.0
+7521  H    GLY   818 is charged! Radius moved from zero to  1.0
+7536  H    ARG   819 is charged! Radius moved from zero to  1.0
+7543  H    GLY   820 is charged! Radius moved from zero to  1.0
+7556  H    LYS   821 is charged! Radius moved from zero to  1.0
+7564  H    GLN   822 is charged! Radius moved from zero to  1.0
+7565  HE22 GLN   822 is charged! Radius moved from zero to  1.0
+7568  HE21 GLN   822 is charged! Radius moved from zero to  1.0
+7573  H    GLY   823 is charged! Radius moved from zero to  1.0
+7578  H    GLY   824 is charged! Radius moved from zero to  1.0
+7591  H    LYS   825 is charged! Radius moved from zero to  1.0
+7599  H    THR   826 is charged! Radius moved from zero to  1.0
+7600  HG1  THR   826 is charged! Radius moved from zero to  1.0
+7615  H    ARG   827 is charged! Radius moved from zero to  1.0
+7623  H    ALA   828 is charged! Radius moved from zero to  1.0
+7636  H    LYS   829 is charged! Radius moved from zero to  1.0
+7642  H    ALA   830 is charged! Radius moved from zero to  1.0
+7655  H    LYS   831 is charged! Radius moved from zero to  1.0
+7663  H    THR   832 is charged! Radius moved from zero to  1.0
+7664  HG1  THR   832 is charged! Radius moved from zero to  1.0
+7679  H    ARG   833 is charged! Radius moved from zero to  1.0
+7688  H    SER   834 is charged! Radius moved from zero to  1.0
+7689  HG   SER   834 is charged! Radius moved from zero to  1.0
+7696  H    SER   835 is charged! Radius moved from zero to  1.0
+7697  HG   SER   835 is charged! Radius moved from zero to  1.0
+7712  H    ARG   836 is charged! Radius moved from zero to  1.0
+7720  H    ALA   837 is charged! Radius moved from zero to  1.0
+7725  H    GLY   838 is charged! Radius moved from zero to  1.0
+7734  H    LEU   839 is charged! Radius moved from zero to  1.0
+7742  H    GLN   840 is charged! Radius moved from zero to  1.0
+7743  HE22 GLN   840 is charged! Radius moved from zero to  1.0
+7746  HE21 GLN   840 is charged! Radius moved from zero to  1.0
+7761  H    PHE   841 is charged! Radius moved from zero to  1.0
+7778  H    VAL   843 is charged! Radius moved from zero to  1.0
+7783  H    GLY   844 is charged! Radius moved from zero to  1.0
+7798  H    ARG   845 is charged! Radius moved from zero to  1.0
+7808  H    VAL   846 is charged! Radius moved from zero to  1.0
+7822  H    HIS   847 is charged! Radius moved from zero to  1.0
+7838  H    ARG   848 is charged! Radius moved from zero to  1.0
+7849  H    LEU   849 is charged! Radius moved from zero to  1.0
+7858  H    LEU   850 is charged! Radius moved from zero to  1.0
+7873  H    ARG   851 is charged! Radius moved from zero to  1.0
+7888  H    LYS   852 is charged! Radius moved from zero to  1.0
+7893  H    GLY   853 is charged! Radius moved from zero to  1.0
+7900  H    ASN   854 is charged! Radius moved from zero to  1.0
+7903  HD22 ASN   854 is charged! Radius moved from zero to  1.0
+7904  HD21 ASN   854 is charged! Radius moved from zero to  1.0
+7919  H    TYR   855 is charged! Radius moved from zero to  1.0
+7928  H    ALA   856 is charged! Radius moved from zero to  1.0
+7938  H    GLU   857 is charged! Radius moved from zero to  1.0
+7953  H    ARG   858 is charged! Radius moved from zero to  1.0
+7963  H    VAL   859 is charged! Radius moved from zero to  1.0
+7968  H    GLY   860 is charged! Radius moved from zero to  1.0
+7974  H    ALA   861 is charged! Radius moved from zero to  1.0
+7979  H    GLY   862 is charged! Radius moved from zero to  1.0
+7985  H    ALA   863 is charged! Radius moved from zero to  1.0
+8000  H    VAL   865 is charged! Radius moved from zero to  1.0
+8015  H    TYR   866 is charged! Radius moved from zero to  1.0
+8027  H    LEU   867 is charged! Radius moved from zero to  1.0
+8033  H    ALA   868 is charged! Radius moved from zero to  1.0
+8039  H    ALA   869 is charged! Radius moved from zero to  1.0
+8047  H    VAL   870 is charged! Radius moved from zero to  1.0
+8056  H    LEU   871 is charged! Radius moved from zero to  1.0
+8066  H    GLU   872 is charged! Radius moved from zero to  1.0
+8081  H    TYR   873 is charged! Radius moved from zero to  1.0
+8093  H    LEU   874 is charged! Radius moved from zero to  1.0
+8101  H    THR   875 is charged! Radius moved from zero to  1.0
+8102  HG1  THR   875 is charged! Radius moved from zero to  1.0
+8108  H    ALA   876 is charged! Radius moved from zero to  1.0
+8118  H    GLU   877 is charged! Radius moved from zero to  1.0
+8127  H    ILE   878 is charged! Radius moved from zero to  1.0
+8136  H    LEU   879 is charged! Radius moved from zero to  1.0
+8146  H    GLU   880 is charged! Radius moved from zero to  1.0
+8155  H    LEU   881 is charged! Radius moved from zero to  1.0
+8161  H    ALA   882 is charged! Radius moved from zero to  1.0
+8166  H    GLY   883 is charged! Radius moved from zero to  1.0
+8173  H    ASN   884 is charged! Radius moved from zero to  1.0
+8176  HD22 ASN   884 is charged! Radius moved from zero to  1.0
+8177  HD21 ASN   884 is charged! Radius moved from zero to  1.0
+8183  H    ALA   885 is charged! Radius moved from zero to  1.0
+8189  H    ALA   886 is charged! Radius moved from zero to  1.0
+8204  H    ARG   887 is charged! Radius moved from zero to  1.0
+8215  H    ASP   888 is charged! Radius moved from zero to  1.0
+8222  H    ASN   889 is charged! Radius moved from zero to  1.0
+8225  HD22 ASN   889 is charged! Radius moved from zero to  1.0
+8226  HD21 ASN   889 is charged! Radius moved from zero to  1.0
+8239  H    LYS   890 is charged! Radius moved from zero to  1.0
+8252  H    LYS   891 is charged! Radius moved from zero to  1.0
+8260  H    THR   892 is charged! Radius moved from zero to  1.0
+8261  HG1  THR   892 is charged! Radius moved from zero to  1.0
+8276  H    ARG   893 is charged! Radius moved from zero to  1.0
+8287  H    ILE   894 is charged! Radius moved from zero to  1.0
+8296  H    ILE   895 is charged! Radius moved from zero to  1.0
+8318  H    ARG   897 is charged! Radius moved from zero to  1.0
+8327  H    HIS   898 is charged! Radius moved from zero to  1.0
+8344  H    LEU   899 is charged! Radius moved from zero to  1.0
+8352  H    GLN   900 is charged! Radius moved from zero to  1.0
+8353  HE22 GLN   900 is charged! Radius moved from zero to  1.0
+8356  HE21 GLN   900 is charged! Radius moved from zero to  1.0
+8365  H    LEU   901 is charged! Radius moved from zero to  1.0
+8371  H    ALA   902 is charged! Radius moved from zero to  1.0
+8379  H    VAL   903 is charged! Radius moved from zero to  1.0
+8394  H    ARG   904 is charged! Radius moved from zero to  1.0
+8403  H    ASN   905 is charged! Radius moved from zero to  1.0
+8406  HD22 ASN   905 is charged! Radius moved from zero to  1.0
+8407  HD21 ASN   905 is charged! Radius moved from zero to  1.0
+8416  H    ASP   906 is charged! Radius moved from zero to  1.0
+8426  H    GLU   907 is charged! Radius moved from zero to  1.0
+8436  H    GLU   908 is charged! Radius moved from zero to  1.0
+8445  H    LEU   909 is charged! Radius moved from zero to  1.0
+8452  H    ASN   910 is charged! Radius moved from zero to  1.0
+8455  HD22 ASN   910 is charged! Radius moved from zero to  1.0
+8456  HD21 ASN   910 is charged! Radius moved from zero to  1.0
+8469  H    LYS   911 is charged! Radius moved from zero to  1.0
+8478  H    LEU   912 is charged! Radius moved from zero to  1.0
+8487  H    LEU   913 is charged! Radius moved from zero to  1.0
+8492  H    GLY   914 is charged! Radius moved from zero to  1.0
+8507  H    ARG   915 is charged! Radius moved from zero to  1.0
+8517  H    VAL   916 is charged! Radius moved from zero to  1.0
+8525  H    THR   917 is charged! Radius moved from zero to  1.0
+8526  HG1  THR   917 is charged! Radius moved from zero to  1.0
+8535  H    ILE   918 is charged! Radius moved from zero to  1.0
+8541  H    ALA   919 is charged! Radius moved from zero to  1.0
+8549  H    GLN   920 is charged! Radius moved from zero to  1.0
+8550  HE22 GLN   920 is charged! Radius moved from zero to  1.0
+8553  HE21 GLN   920 is charged! Radius moved from zero to  1.0
+8558  H    GLY   921 is charged! Radius moved from zero to  1.0
+8563  H    GLY   922 is charged! Radius moved from zero to  1.0
+8571  H    VAL   923 is charged! Radius moved from zero to  1.0
+8580  H    LEU   924 is charged! Radius moved from zero to  1.0
+8594  H    ASN   926 is charged! Radius moved from zero to  1.0
+8597  HD22 ASN   926 is charged! Radius moved from zero to  1.0
+8598  HD21 ASN   926 is charged! Radius moved from zero to  1.0
+8607  H    ILE   927 is charged! Radius moved from zero to  1.0
+8615  H    GLN   928 is charged! Radius moved from zero to  1.0
+8616  HE22 GLN   928 is charged! Radius moved from zero to  1.0
+8619  HE21 GLN   928 is charged! Radius moved from zero to  1.0
+8626  H    SER   929 is charged! Radius moved from zero to  1.0
+8627  HG   SER   929 is charged! Radius moved from zero to  1.0
+8635  H    VAL   930 is charged! Radius moved from zero to  1.0
+8644  H    LEU   931 is charged! Radius moved from zero to  1.0
+8653  H    LEU   932 is charged! Radius moved from zero to  1.0
+8673  H    LYS   934 is charged! Radius moved from zero to  1.0
+8686  H    LYS   935 is charged! Radius moved from zero to  1.0
+8694  H    THR   936 is charged! Radius moved from zero to  1.0
+8695  HG1  THR   936 is charged! Radius moved from zero to  1.0
+8705  H    GLU   937 is charged! Radius moved from zero to  1.0
+8712  H    SER   938 is charged! Radius moved from zero to  1.0
+8713  HG   SER   938 is charged! Radius moved from zero to  1.0
+8720  H    SER   939 is charged! Radius moved from zero to  1.0
+8721  HG   SER   939 is charged! Radius moved from zero to  1.0
+8734  H    LYS   940 is charged! Radius moved from zero to  1.0
+8741  H    SER   941 is charged! Radius moved from zero to  1.0
+8742  HG   SER   941 is charged! Radius moved from zero to  1.0
+8755  H    LYS   942 is charged! Radius moved from zero to  1.0
+8762  H    SER   943 is charged! Radius moved from zero to  1.0
+8763  HG   SER   943 is charged! Radius moved from zero to  1.0
+8775  H    LYS   944 is charged! Radius moved from zero to  1.0
+8793  H    LYS   954 is charged! Radius moved from zero to  1.0
+8800  H    SER   955 is charged! Radius moved from zero to  1.0
+8801  HG   SER   955 is charged! Radius moved from zero to  1.0
+8807  H    ALA   956 is charged! Radius moved from zero to  1.0
+8820  H    ALA   958 is charged! Radius moved from zero to  1.0
+8840  H    LYS   960 is charged! Radius moved from zero to  1.0
+8853  H    LYS   961 is charged! Radius moved from zero to  1.0
+8858  H    GLY   962 is charged! Radius moved from zero to  1.0
+8865  H    SER   963 is charged! Radius moved from zero to  1.0
+8866  HG   SER   963 is charged! Radius moved from zero to  1.0
+8879  H    LYS   964 is charged! Radius moved from zero to  1.0
+8892  H    LYS   965 is charged! Radius moved from zero to  1.0
+8898  H    ALA   966 is charged! Radius moved from zero to  1.0
+8906  H    VAL   967 is charged! Radius moved from zero to  1.0
+8914  H    THR   968 is charged! Radius moved from zero to  1.0
+8915  HG1  THR   968 is charged! Radius moved from zero to  1.0
+8928  H    LYS   969 is charged! Radius moved from zero to  1.0
+8936  H    THR   970 is charged! Radius moved from zero to  1.0
+8937  HG1  THR   970 is charged! Radius moved from zero to  1.0
+8945  H    GLN   971 is charged! Radius moved from zero to  1.0
+8946  HE22 GLN   971 is charged! Radius moved from zero to  1.0
+8949  HE21 GLN   971 is charged! Radius moved from zero to  1.0
+8962  H    LYS   972 is charged! Radius moved from zero to  1.0
+8975  H    LYS   973 is charged! Radius moved from zero to  1.0
+8984  H    ASP   974 is charged! Radius moved from zero to  1.0
+8989  H    GLY   975 is charged! Radius moved from zero to  1.0
+9002  H    LYS   976 is charged! Radius moved from zero to  1.0
+9015  H    LYS   977 is charged! Radius moved from zero to  1.0
+9030  H    ARG   978 is charged! Radius moved from zero to  1.0
+9047  H    ARG   979 is charged! Radius moved from zero to  1.0
+9062  H    LYS   980 is charged! Radius moved from zero to  1.0
+9070  H    THR   981 is charged! Radius moved from zero to  1.0
+9071  HG1  THR   981 is charged! Radius moved from zero to  1.0
+9086  H    ARG   982 is charged! Radius moved from zero to  1.0
+9101  H    LYS   983 is charged! Radius moved from zero to  1.0
+9111  H    GLU   984 is charged! Radius moved from zero to  1.0
+9118  H    SER   985 is charged! Radius moved from zero to  1.0
+9119  HG   SER   985 is charged! Radius moved from zero to  1.0
+9134  H    TYR   986 is charged! Radius moved from zero to  1.0
+9143  H    ALA   987 is charged! Radius moved from zero to  1.0
+9152  H    ILE   988 is charged! Radius moved from zero to  1.0
+9167  H    TYR   989 is charged! Radius moved from zero to  1.0
+9178  H    VAL   990 is charged! Radius moved from zero to  1.0
+9193  H    TYR   991 is charged! Radius moved from zero to  1.0
+9209  H    LYS   992 is charged! Radius moved from zero to  1.0
+9217  H    VAL   993 is charged! Radius moved from zero to  1.0
+9226  H    LEU   994 is charged! Radius moved from zero to  1.0
+9239  H    LYS   995 is charged! Radius moved from zero to  1.0
+9247  H    GLN   996 is charged! Radius moved from zero to  1.0
+9248  HE22 GLN   996 is charged! Radius moved from zero to  1.0
+9251  HE21 GLN   996 is charged! Radius moved from zero to  1.0
+9259  H    VAL   997 is charged! Radius moved from zero to  1.0
+9266  H    HIS   998 is charged! Radius moved from zero to  1.0
+9290  H    ASP  1000 is charged! Radius moved from zero to  1.0
+9298  H    THR  1001 is charged! Radius moved from zero to  1.0
+9299  HG1  THR  1001 is charged! Radius moved from zero to  1.0
+9304  H    GLY  1002 is charged! Radius moved from zero to  1.0
+9313  H    ILE  1003 is charged! Radius moved from zero to  1.0
+9320  H    SER  1004 is charged! Radius moved from zero to  1.0
+9321  HG   SER  1004 is charged! Radius moved from zero to  1.0
+9328  H    SER  1005 is charged! Radius moved from zero to  1.0
+9329  HG   SER  1005 is charged! Radius moved from zero to  1.0
+9342  H    LYS  1006 is charged! Radius moved from zero to  1.0
+9348  H    ALA  1007 is charged! Radius moved from zero to  1.0
+9357  H    MET  1008 is charged! Radius moved from zero to  1.0
+9364  H    SER  1009 is charged! Radius moved from zero to  1.0
+9365  HG   SER  1009 is charged! Radius moved from zero to  1.0
+9374  H    ILE  1010 is charged! Radius moved from zero to  1.0
+9383  H    MET  1011 is charged! Radius moved from zero to  1.0
+9390  H    ASN  1012 is charged! Radius moved from zero to  1.0
+9393  HD22 ASN  1012 is charged! Radius moved from zero to  1.0
+9394  HD21 ASN  1012 is charged! Radius moved from zero to  1.0
+9401  H    SER  1013 is charged! Radius moved from zero to  1.0
+9402  HG   SER  1013 is charged! Radius moved from zero to  1.0
+9417  H    PHE  1014 is charged! Radius moved from zero to  1.0
+9427  H    VAL  1015 is charged! Radius moved from zero to  1.0
+9434  H    ASN  1016 is charged! Radius moved from zero to  1.0
+9437  HD22 ASN  1016 is charged! Radius moved from zero to  1.0
+9438  HD21 ASN  1016 is charged! Radius moved from zero to  1.0
+9447  H    ASP  1017 is charged! Radius moved from zero to  1.0
+9455  H    VAL  1018 is charged! Radius moved from zero to  1.0
+9470  H    PHE  1019 is charged! Radius moved from zero to  1.0
+9482  H    GLU  1020 is charged! Radius moved from zero to  1.0
+9497  H    ARG  1021 is charged! Radius moved from zero to  1.0
+9508  H    ILE  1022 is charged! Radius moved from zero to  1.0
+9514  H    ALA  1023 is charged! Radius moved from zero to  1.0
+9519  H    GLY  1024 is charged! Radius moved from zero to  1.0
+9529  H    GLU  1025 is charged! Radius moved from zero to  1.0
+9535  H    ALA  1026 is charged! Radius moved from zero to  1.0
+9542  H    SER  1027 is charged! Radius moved from zero to  1.0
+9543  HG   SER  1027 is charged! Radius moved from zero to  1.0
+9558  H    ARG  1028 is charged! Radius moved from zero to  1.0
+9569  H    LEU  1029 is charged! Radius moved from zero to  1.0
+9575  H    ALA  1030 is charged! Radius moved from zero to  1.0
+9582  H    HIS  1031 is charged! Radius moved from zero to  1.0
+9605  H    TYR  1032 is charged! Radius moved from zero to  1.0
+9615  H    ASN  1033 is charged! Radius moved from zero to  1.0
+9618  HD22 ASN  1033 is charged! Radius moved from zero to  1.0
+9619  HD21 ASN  1033 is charged! Radius moved from zero to  1.0
+9632  H    LYS  1034 is charged! Radius moved from zero to  1.0
+9647  H    ARG  1035 is charged! Radius moved from zero to  1.0
+9656  H    SER  1036 is charged! Radius moved from zero to  1.0
+9657  HG   SER  1036 is charged! Radius moved from zero to  1.0
+9665  H    THR  1037 is charged! Radius moved from zero to  1.0
+9666  HG1  THR  1037 is charged! Radius moved from zero to  1.0
+9675  H    ILE  1038 is charged! Radius moved from zero to  1.0
+9683  H    THR  1039 is charged! Radius moved from zero to  1.0
+9684  HG1  THR  1039 is charged! Radius moved from zero to  1.0
+9691  H    SER  1040 is charged! Radius moved from zero to  1.0
+9692  HG   SER  1040 is charged! Radius moved from zero to  1.0
+9707  H    ARG  1041 is charged! Radius moved from zero to  1.0
+9719  H    GLU  1042 is charged! Radius moved from zero to  1.0
+9728  H    ILE  1043 is charged! Radius moved from zero to  1.0
+9736  H    GLN  1044 is charged! Radius moved from zero to  1.0
+9737  HE22 GLN  1044 is charged! Radius moved from zero to  1.0
+9740  HE21 GLN  1044 is charged! Radius moved from zero to  1.0
+9748  H    THR  1045 is charged! Radius moved from zero to  1.0
+9749  HG1  THR  1045 is charged! Radius moved from zero to  1.0
+9755  H    ALA  1046 is charged! Radius moved from zero to  1.0
+9763  H    VAL  1047 is charged! Radius moved from zero to  1.0
+9778  H    ARG  1048 is charged! Radius moved from zero to  1.0
+9789  H    LEU  1049 is charged! Radius moved from zero to  1.0
+9798  H    LEU  1050 is charged! Radius moved from zero to  1.0
+9807  H    LEU  1051 is charged! Radius moved from zero to  1.0
+9819  H    GLY  1053 is charged! Radius moved from zero to  1.0
+9829  H    GLU  1054 is charged! Radius moved from zero to  1.0
+9838  H    LEU  1055 is charged! Radius moved from zero to  1.0
+9844  H    ALA  1056 is charged! Radius moved from zero to  1.0
+9857  H    LYS  1057 is charged! Radius moved from zero to  1.0
+9871  H    HIS  1058 is charged! Radius moved from zero to  1.0
+9878  H    ALA  1059 is charged! Radius moved from zero to  1.0
+9886  H    VAL  1060 is charged! Radius moved from zero to  1.0
+9893  H    SER  1061 is charged! Radius moved from zero to  1.0
+9894  HG   SER  1061 is charged! Radius moved from zero to  1.0
+9904  H    GLU  1062 is charged! Radius moved from zero to  1.0
+9909  H    GLY  1063 is charged! Radius moved from zero to  1.0
+9917  H    THR  1064 is charged! Radius moved from zero to  1.0
+9918  HG1  THR  1064 is charged! Radius moved from zero to  1.0
+9931  H    LYS  1065 is charged! Radius moved from zero to  1.0
+9937  H    ALA  1066 is charged! Radius moved from zero to  1.0
+9945  H    VAL  1067 is charged! Radius moved from zero to  1.0
+9953  H    THR  1068 is charged! Radius moved from zero to  1.0
+9954  HG1  THR  1068 is charged! Radius moved from zero to  1.0
+9967  H    LYS  1069 is charged! Radius moved from zero to  1.0
+9982  H    TYR  1070 is charged! Radius moved from zero to  1.0
+9993  H    THR  1071 is charged! Radius moved from zero to  1.0
+9994  HG1  THR  1071 is charged! Radius moved from zero to  1.0
+****  H    SER  1072 is charged! Radius moved from zero to  1.0
+****  HG   SER  1072 is charged! Radius moved from zero to  1.0
+****  H    ALA  1073 is charged! Radius moved from zero to  1.0
+****  H    LYS  1074 is charged! Radius moved from zero to  1.0
+ BE CAREFUL!! A WRONG ASSIGNMENT FOR THE RADIUS MIGHT LEAD TO INACCURATE REACTION FIELD ENERGY !!!
+!!! WARNING : charge  N    SER   273 outside the box
+!!! WARNING : charge  C    SER   273 outside the box
+!!! WARNING : charge  O    SER   273 outside the box
+!!! WARNING : charge  CB   SER   273 outside the box
+!!! WARNING : charge  OG   SER   273 outside the box
+!!! WARNING : charge  HG   SER   273 outside the box
+!!! WARNING : charge  N    GLY   274 outside the box
+!!! WARNING : charge  C    GLY   274 outside the box
+!!! WARNING : charge  O    GLY   274 outside the box
+!!! WARNING : charge  H    GLY   274 outside the box
+!!! WARNING : charge  N    ARG   275 outside the box
+!!! WARNING : charge  C    ARG   275 outside the box
+!!! WARNING : charge  O    ARG   275 outside the box
+!!! WARNING : charge  CD   ARG   275 outside the box
+!!! WARNING : charge  NE   ARG   275 outside the box
+!!! WARNING : charge  CZ   ARG   275 outside the box
+!!! WARNING : charge  NH1  ARG   275 outside the box
+!!! WARNING : charge  NH2  ARG   275 outside the box
+!!! WARNING : charge  HE   ARG   275 outside the box
+!!! WARNING : charge  HH22 ARG   275 outside the box
+!!! WARNING : charge  HH21 ARG   275 outside the box
+!!! WARNING : charge  H    ARG   275 outside the box
+!!! WARNING : charge  HH12 ARG   275 outside the box
+!!! WARNING : charge  HH11 ARG   275 outside the box
+!!! WARNING : charge  N    GLY   276 outside the box
+!!! WARNING : charge  C    GLY   276 outside the box
+!!! WARNING : charge  O    GLY   276 outside the box
+!!! WARNING : charge  H    GLY   276 outside the box
+!!! WARNING : charge  N    LYS   277 outside the box
+!!! WARNING : charge  C    LYS   277 outside the box
+!!! WARNING : charge  O    LYS   277 outside the box
+!!! WARNING : charge  CE   LYS   277 outside the box
+!!! WARNING : charge  NZ   LYS   277 outside the box
+!!! WARNING : charge  HZ1  LYS   277 outside the box
+!!! WARNING : charge  HZ3  LYS   277 outside the box
+!!! WARNING : charge  HZ2  LYS   277 outside the box
+!!! WARNING : charge  H    LYS   277 outside the box
+!!! WARNING : charge  N    GLN   278 outside the box
+!!! WARNING : charge  C    GLN   278 outside the box
+!!! WARNING : charge  O    GLN   278 outside the box
+!!! WARNING : charge  CD   GLN   278 outside the box
+!!! WARNING : charge  H    GLN   278 outside the box
+!!! WARNING : charge  HE22 GLN   278 outside the box
+!!! WARNING : charge  OE1  GLN   278 outside the box
+!!! WARNING : charge  NE2  GLN   278 outside the box
+!!! WARNING : charge  HE21 GLN   278 outside the box
+!!! WARNING : charge  N    GLY   279 outside the box
+!!! WARNING : charge  C    GLY   279 outside the box
+!!! WARNING : charge  O    GLY   279 outside the box
+!!! WARNING : charge  H    GLY   279 outside the box
+!!! WARNING : charge  N    GLY   280 outside the box
+!!! WARNING : charge  C    GLY   280 outside the box
+!!! WARNING : charge  O    GLY   280 outside the box
+!!! WARNING : charge  H    GLY   280 outside the box
+!!! WARNING : charge  N    ALA   409 outside the box
+!!! WARNING : charge  C    ALA   409 outside the box
+!!! WARNING : charge  O    ALA   409 outside the box
+!!! WARNING : charge  N    LYS   410 outside the box
+!!! WARNING : charge  C    LYS   410 outside the box
+!!! WARNING : charge  O    LYS   410 outside the box
+!!! WARNING : charge  CE   LYS   410 outside the box
+!!! WARNING : charge  NZ   LYS   410 outside the box
+!!! WARNING : charge  HZ1  LYS   410 outside the box
+!!! WARNING : charge  HZ3  LYS   410 outside the box
+!!! WARNING : charge  HZ2  LYS   410 outside the box
+!!! WARNING : charge  H    LYS   410 outside the box
+!!! WARNING : charge  N    SER   411 outside the box
+!!! WARNING : charge  C    SER   411 outside the box
+!!! WARNING : charge  O    SER   411 outside the box
+!!! WARNING : charge  H    SER   411 outside the box
+!!! WARNING : charge  N    ALA   412 outside the box
+!!! WARNING : charge  C    ALA   412 outside the box
+!!! WARNING : charge  O    ALA   412 outside the box
+!!! WARNING : charge  H    ALA   412 outside the box
+!!! WARNING : charge  C    PRO   413 outside the box
+!!! WARNING : charge  O    PRO   413 outside the box
+!!! WARNING : charge  N    ALA   414 outside the box
+!!! WARNING : charge  C    ALA   414 outside the box
+!!! WARNING : charge  O    ALA   414 outside the box
+!!! WARNING : charge  H    ALA   414 outside the box
+!!! WARNING : charge  NZ   LYS   428 outside the box
+!!! WARNING : charge  HZ3  LYS   428 outside the box
+!!! WARNING : charge  HZ2  LYS   428 outside the box
+!!! WARNING : charge  N    ALA   545 outside the box
+!!! WARNING : charge  C    ALA   545 outside the box
+!!! WARNING : charge  O    ALA   545 outside the box
+!!! WARNING : charge  N    ARG   546 outside the box
+!!! WARNING : charge  C    ARG   546 outside the box
+!!! WARNING : charge  O    ARG   546 outside the box
+!!! WARNING : charge  CD   ARG   546 outside the box
+!!! WARNING : charge  NE   ARG   546 outside the box
+!!! WARNING : charge  CZ   ARG   546 outside the box
+!!! WARNING : charge  NH1  ARG   546 outside the box
+!!! WARNING : charge  NH2  ARG   546 outside the box
+!!! WARNING : charge  HE   ARG   546 outside the box
+!!! WARNING : charge  HH22 ARG   546 outside the box
+!!! WARNING : charge  HH21 ARG   546 outside the box
+!!! WARNING : charge  H    ARG   546 outside the box
+!!! WARNING : charge  HH12 ARG   546 outside the box
+!!! WARNING : charge  HH11 ARG   546 outside the box
+!!! WARNING : charge  N    THR   547 outside the box
+!!! WARNING : charge  C    THR   547 outside the box
+!!! WARNING : charge  O    THR   547 outside the box
+!!! WARNING : charge  CB   THR   547 outside the box
+!!! WARNING : charge  OG1  THR   547 outside the box
+!!! WARNING : charge  H    THR   547 outside the box
+!!! WARNING : charge  HG1  THR   547 outside the box
+!!! WARNING : charge  N    LYS   548 outside the box
+!!! WARNING : charge  C    LYS   548 outside the box
+!!! WARNING : charge  O    LYS   548 outside the box
+!!! WARNING : charge  CE   LYS   548 outside the box
+!!! WARNING : charge  NZ   LYS   548 outside the box
+!!! WARNING : charge  HZ1  LYS   548 outside the box
+!!! WARNING : charge  HZ3  LYS   548 outside the box
+!!! WARNING : charge  HZ2  LYS   548 outside the box
+!!! WARNING : charge  H    LYS   548 outside the box
+!!! WARNING : charge  N    GLN   549 outside the box
+!!! WARNING : charge  C    GLN   549 outside the box
+!!! WARNING : charge  O    GLN   549 outside the box
+!!! WARNING : charge  CD   GLN   549 outside the box
+!!! WARNING : charge  H    GLN   549 outside the box
+!!! WARNING : charge  HE22 GLN   549 outside the box
+!!! WARNING : charge  OE1  GLN   549 outside the box
+!!! WARNING : charge  NE2  GLN   549 outside the box
+!!! WARNING : charge  HE21 GLN   549 outside the box
+!!! WARNING : charge  N    THR   550 outside the box
+!!! WARNING : charge  C    THR   550 outside the box
+!!! WARNING : charge  O    THR   550 outside the box
+!!! WARNING : charge  CB   THR   550 outside the box
+!!! WARNING : charge  OG1  THR   550 outside the box
+!!! WARNING : charge  H    THR   550 outside the box
+!!! WARNING : charge  HG1  THR   550 outside the box
+!!! WARNING : charge  N    ALA   551 outside the box
+!!! WARNING : charge  C    ALA   551 outside the box
+!!! WARNING : charge  O    ALA   551 outside the box
+!!! WARNING : charge  H    ALA   551 outside the box
+!!! WARNING : charge  N    ARG   552 outside the box
+!!! WARNING : charge  C    ARG   552 outside the box
+!!! WARNING : charge  O    ARG   552 outside the box
+!!! WARNING : charge  CD   ARG   552 outside the box
+!!! WARNING : charge  NE   ARG   552 outside the box
+!!! WARNING : charge  CZ   ARG   552 outside the box
+!!! WARNING : charge  NH1  ARG   552 outside the box
+!!! WARNING : charge  NH2  ARG   552 outside the box
+!!! WARNING : charge  HE   ARG   552 outside the box
+!!! WARNING : charge  HH22 ARG   552 outside the box
+!!! WARNING : charge  HH21 ARG   552 outside the box
+!!! WARNING : charge  H    ARG   552 outside the box
+!!! WARNING : charge  HH12 ARG   552 outside the box
+!!! WARNING : charge  HH11 ARG   552 outside the box
+!!! WARNING : charge  N    LYS   553 outside the box
+!!! WARNING : charge  C    LYS   553 outside the box
+!!! WARNING : charge  O    LYS   553 outside the box
+!!! WARNING : charge  CE   LYS   553 outside the box
+!!! WARNING : charge  NZ   LYS   553 outside the box
+!!! WARNING : charge  HZ1  LYS   553 outside the box
+!!! WARNING : charge  HZ3  LYS   553 outside the box
+!!! WARNING : charge  HZ2  LYS   553 outside the box
+!!! WARNING : charge  H    LYS   553 outside the box
+!!! WARNING : charge  N    SER   554 outside the box
+!!! WARNING : charge  H    SER   554 outside the box
+!!! WARNING : charge  O    LYS   558 outside the box
+!!! WARNING : charge  H    LYS   558 outside the box
+!!! WARNING : charge  N    SER   817 outside the box
+!!! WARNING : charge  C    SER   817 outside the box
+!!! WARNING : charge  O    SER   817 outside the box
+!!! WARNING : charge  CB   SER   817 outside the box
+!!! WARNING : charge  OG   SER   817 outside the box
+!!! WARNING : charge  HG   SER   817 outside the box
+!!! WARNING : charge  N    GLY   818 outside the box
+!!! WARNING : charge  C    GLY   818 outside the box
+!!! WARNING : charge  O    GLY   818 outside the box
+!!! WARNING : charge  H    GLY   818 outside the box
+!!! WARNING : charge  N    ARG   819 outside the box
+!!! WARNING : charge  C    ARG   819 outside the box
+!!! WARNING : charge  O    ARG   819 outside the box
+!!! WARNING : charge  CD   ARG   819 outside the box
+!!! WARNING : charge  NE   ARG   819 outside the box
+!!! WARNING : charge  CZ   ARG   819 outside the box
+!!! WARNING : charge  NH1  ARG   819 outside the box
+!!! WARNING : charge  NH2  ARG   819 outside the box
+!!! WARNING : charge  HE   ARG   819 outside the box
+!!! WARNING : charge  HH22 ARG   819 outside the box
+!!! WARNING : charge  HH21 ARG   819 outside the box
+!!! WARNING : charge  H    ARG   819 outside the box
+!!! WARNING : charge  HH12 ARG   819 outside the box
+!!! WARNING : charge  HH11 ARG   819 outside the box
+!!! WARNING : charge  N    GLY   820 outside the box
+!!! WARNING : charge  C    GLY   820 outside the box
+!!! WARNING : charge  O    GLY   820 outside the box
+!!! WARNING : charge  H    GLY   820 outside the box
+!!! WARNING : charge  N    LYS   821 outside the box
+!!! WARNING : charge  C    LYS   821 outside the box
+!!! WARNING : charge  O    LYS   821 outside the box
+!!! WARNING : charge  CE   LYS   821 outside the box
+!!! WARNING : charge  NZ   LYS   821 outside the box
+!!! WARNING : charge  HZ1  LYS   821 outside the box
+!!! WARNING : charge  HZ3  LYS   821 outside the box
+!!! WARNING : charge  HZ2  LYS   821 outside the box
+!!! WARNING : charge  H    LYS   821 outside the box
+!!! WARNING : charge  N    GLN   822 outside the box
+!!! WARNING : charge  C    GLN   822 outside the box
+!!! WARNING : charge  O    GLN   822 outside the box
+!!! WARNING : charge  CD   GLN   822 outside the box
+!!! WARNING : charge  H    GLN   822 outside the box
+!!! WARNING : charge  HE22 GLN   822 outside the box
+!!! WARNING : charge  OE1  GLN   822 outside the box
+!!! WARNING : charge  NE2  GLN   822 outside the box
+!!! WARNING : charge  HE21 GLN   822 outside the box
+!!! WARNING : charge  N    GLY   823 outside the box
+!!! WARNING : charge  C    GLY   823 outside the box
+!!! WARNING : charge  O    GLY   823 outside the box
+!!! WARNING : charge  H    GLY   823 outside the box
+!!! WARNING : charge  N    GLY   824 outside the box
+!!! WARNING : charge  C    GLY   824 outside the box
+!!! WARNING : charge  O    GLY   824 outside the box
+!!! WARNING : charge  H    GLY   824 outside the box
+!!! WARNING : charge  N    LYS   825 outside the box
+!!! WARNING : charge  C    LYS   825 outside the box
+!!! WARNING : charge  O    LYS   825 outside the box
+!!! WARNING : charge  CE   LYS   825 outside the box
+!!! WARNING : charge  NZ   LYS   825 outside the box
+!!! WARNING : charge  HZ1  LYS   825 outside the box
+!!! WARNING : charge  HZ3  LYS   825 outside the box
+!!! WARNING : charge  HZ2  LYS   825 outside the box
+!!! WARNING : charge  H    LYS   825 outside the box
+!!! WARNING : charge  N    THR   826 outside the box
+!!! WARNING : charge  C    THR   826 outside the box
+!!! WARNING : charge  O    THR   826 outside the box
+!!! WARNING : charge  CB   THR   826 outside the box
+!!! WARNING : charge  OG1  THR   826 outside the box
+!!! WARNING : charge  H    THR   826 outside the box
+!!! WARNING : charge  HG1  THR   826 outside the box
+!!! WARNING : charge  N    ARG   827 outside the box
+!!! WARNING : charge  C    ARG   827 outside the box
+!!! WARNING : charge  O    ARG   827 outside the box
+!!! WARNING : charge  CD   ARG   827 outside the box
+!!! WARNING : charge  NE   ARG   827 outside the box
+!!! WARNING : charge  CZ   ARG   827 outside the box
+!!! WARNING : charge  NH1  ARG   827 outside the box
+!!! WARNING : charge  NH2  ARG   827 outside the box
+!!! WARNING : charge  HE   ARG   827 outside the box
+!!! WARNING : charge  HH22 ARG   827 outside the box
+!!! WARNING : charge  HH21 ARG   827 outside the box
+!!! WARNING : charge  H    ARG   827 outside the box
+!!! WARNING : charge  HH12 ARG   827 outside the box
+!!! WARNING : charge  HH11 ARG   827 outside the box
+!!! WARNING : charge  N    ALA   828 outside the box
+!!! WARNING : charge  C    ALA   828 outside the box
+!!! WARNING : charge  O    ALA   828 outside the box
+!!! WARNING : charge  H    ALA   828 outside the box
+!!! WARNING : charge  N    LYS   829 outside the box
+!!! WARNING : charge  H    LYS   829 outside the box
+!!! WARNING : charge  H    ALA   830 outside the box
+!!! WARNING : charge  N    ALA   953 outside the box
+!!! WARNING : charge  C    ALA   953 outside the box
+!!! WARNING : charge  O    ALA   953 outside the box
+!!! WARNING : charge  N    LYS   954 outside the box
+!!! WARNING : charge  C    LYS   954 outside the box
+!!! WARNING : charge  O    LYS   954 outside the box
+!!! WARNING : charge  CE   LYS   954 outside the box
+!!! WARNING : charge  NZ   LYS   954 outside the box
+!!! WARNING : charge  HZ1  LYS   954 outside the box
+!!! WARNING : charge  HZ3  LYS   954 outside the box
+!!! WARNING : charge  HZ2  LYS   954 outside the box
+!!! WARNING : charge  H    LYS   954 outside the box
+!!! WARNING : charge  N    SER   955 outside the box
+!!! WARNING : charge  C    SER   955 outside the box
+!!! WARNING : charge  O    SER   955 outside the box
+!!! WARNING : charge  CB   SER   955 outside the box
+!!! WARNING : charge  OG   SER   955 outside the box
+!!! WARNING : charge  H    SER   955 outside the box
+!!! WARNING : charge  HG   SER   955 outside the box
+!!! WARNING : charge  N    ALA   956 outside the box
+!!! WARNING : charge  C    ALA   956 outside the box
+!!! WARNING : charge  O    ALA   956 outside the box
+!!! WARNING : charge  H    ALA   956 outside the box
+!!! WARNING : charge  C    PRO   957 outside the box
+!!! WARNING : charge  O    PRO   957 outside the box
+!!! WARNING : charge  N    ALA   958 outside the box
+!!! WARNING : charge  H    ALA   958 outside the box
+!!! WARNING : charge  CE   LYS   964 outside the box
+!!! WARNING : charge  N    LYS   965 outside the box
+!!! WARNING : charge  C    LYS   965 outside the box
+!!! WARNING : charge  O    LYS   965 outside the box
+!!! WARNING : charge  CE   LYS   965 outside the box
+!!! WARNING : charge  NZ   LYS   965 outside the box
+!!! WARNING : charge  HZ1  LYS   965 outside the box
+!!! WARNING : charge  HZ3  LYS   965 outside the box
+!!! WARNING : charge  HZ2  LYS   965 outside the box
+!!! WARNING : charge  H    LYS   965 outside the box
+!!! WARNING : charge  N    ALA   966 outside the box
+!!! WARNING : charge  C    ALA   966 outside the box
+!!! WARNING : charge  O    ALA   966 outside the box
+!!! WARNING : charge  H    ALA   966 outside the box
+!!! WARNING : charge  N    VAL   967 outside the box
+!!! WARNING : charge  C    VAL   967 outside the box
+!!! WARNING : charge  O    VAL   967 outside the box
+!!! WARNING : charge  H    VAL   967 outside the box
+!!! WARNING : charge  N    THR   968 outside the box
+!!! WARNING : charge  C    THR   968 outside the box
+!!! WARNING : charge  O    THR   968 outside the box
+!!! WARNING : charge  CB   THR   968 outside the box
+!!! WARNING : charge  OG1  THR   968 outside the box
+!!! WARNING : charge  H    THR   968 outside the box
+!!! WARNING : charge  HG1  THR   968 outside the box
+!!! WARNING : charge  N    LYS   969 outside the box
+!!! WARNING : charge  C    LYS   969 outside the box
+!!! WARNING : charge  O    LYS   969 outside the box
+!!! WARNING : charge  CE   LYS   969 outside the box
+!!! WARNING : charge  NZ   LYS   969 outside the box
+!!! WARNING : charge  HZ1  LYS   969 outside the box
+!!! WARNING : charge  HZ3  LYS   969 outside the box
+!!! WARNING : charge  HZ2  LYS   969 outside the box
+!!! WARNING : charge  H    LYS   969 outside the box
+!!! WARNING : charge  N    THR   970 outside the box
+!!! WARNING : charge  C    THR   970 outside the box
+!!! WARNING : charge  O    THR   970 outside the box
+!!! WARNING : charge  CB   THR   970 outside the box
+!!! WARNING : charge  OG1  THR   970 outside the box
+!!! WARNING : charge  H    THR   970 outside the box
+!!! WARNING : charge  HG1  THR   970 outside the box
+!!! WARNING : charge  N    GLN   971 outside the box
+!!! WARNING : charge  C    GLN   971 outside the box
+!!! WARNING : charge  O    GLN   971 outside the box
+!!! WARNING : charge  CD   GLN   971 outside the box
+!!! WARNING : charge  H    GLN   971 outside the box
+!!! WARNING : charge  HE22 GLN   971 outside the box
+!!! WARNING : charge  OE1  GLN   971 outside the box
+!!! WARNING : charge  NE2  GLN   971 outside the box
+!!! WARNING : charge  HE21 GLN   971 outside the box
+!!! WARNING : charge  N    LYS   972 outside the box
+!!! WARNING : charge  CE   LYS   972 outside the box
+!!! WARNING : charge  NZ   LYS   972 outside the box
+!!! WARNING : charge  HZ1  LYS   972 outside the box
+!!! WARNING : charge  HZ3  LYS   972 outside the box
+!!! WARNING : charge  HZ2  LYS   972 outside the box
+!!! WARNING : charge  H    LYS   972 outside the box
+!!! WARNING : charge  CE   LYS   973 outside the box
+!!! WARNING : charge  NZ   LYS   973 outside the box
+!!! WARNING : charge  HZ1  LYS   973 outside the box
+!!! WARNING : charge  HZ3  LYS   973 outside the box
+!!! WARNING : charge  HZ2  LYS   973 outside the box
+!!! WARNING : charge  CE   LYS  1074 outside the box
+!!! WARNING : charge  NZ   LYS  1074 outside the box
+!!! WARNING : charge  HZ1  LYS  1074 outside the box
+!!! WARNING : charge  HZ3  LYS  1074 outside the box
+!!! WARNING : charge  HZ2  LYS  1074 outside the box
+!!! WARNING : charge  O1P  GUA  1165 outside the box
+!!! WARNING : charge  C4'  GUA  1183 outside the box
+!!! WARNING : charge  O4'  GUA  1183 outside the box
+!!! WARNING : charge  O3'  GUA  1183 outside the box
+!!! WARNING : charge  C1'  GUA  1183 outside the box
+!!! WARNING : charge  N9   GUA  1183 outside the box
+!!! WARNING : charge  N1   GUA  1183 outside the box
+!!! WARNING : charge  C2   GUA  1183 outside the box
+!!! WARNING : charge  N2   GUA  1183 outside the box
+!!! WARNING : charge  N3   GUA  1183 outside the box
+!!! WARNING : charge  C4   GUA  1183 outside the box
+!!! WARNING : charge  H22  GUA  1183 outside the box
+!!! WARNING : charge  H21  GUA  1183 outside the box
+!!! WARNING : charge  P    THY  1184 outside the box
+!!! WARNING : charge  O1P  THY  1184 outside the box
+!!! WARNING : charge  O2P  THY  1184 outside the box
+!!! WARNING : charge  O5'  THY  1184 outside the box
+!!! WARNING : charge  C4'  THY  1184 outside the box
+!!! WARNING : charge  O4'  THY  1184 outside the box
+!!! WARNING : charge  O3'  THY  1184 outside the box
+!!! WARNING : charge  C1'  THY  1184 outside the box
+!!! WARNING : charge  N1   THY  1184 outside the box
+!!! WARNING : charge  C2   THY  1184 outside the box
+!!! WARNING : charge  N3   THY  1184 outside the box
+!!! WARNING : charge  C4   THY  1184 outside the box
+!!! WARNING : charge  C6   THY  1184 outside the box
+!!! WARNING : charge  H6   THY  1184 outside the box
+!!! WARNING : charge  P    ADE  1185 outside the box
+!!! WARNING : charge  O1P  ADE  1185 outside the box
+!!! WARNING : charge  O2P  ADE  1185 outside the box
+!!! WARNING : charge  O5'  ADE  1185 outside the box
+!!! WARNING : charge  C4'  ADE  1185 outside the box
+!!! WARNING : charge  O4'  ADE  1185 outside the box
+!!! WARNING : charge  O3'  ADE  1185 outside the box
+!!! WARNING : charge  C1'  ADE  1185 outside the box
+!!! WARNING : charge  N9   ADE  1185 outside the box
+!!! WARNING : charge  C8   ADE  1185 outside the box
+!!! WARNING : charge  N7   ADE  1185 outside the box
+!!! WARNING : charge  C6   ADE  1185 outside the box
+!!! WARNING : charge  C2   ADE  1185 outside the box
+!!! WARNING : charge  N3   ADE  1185 outside the box
+!!! WARNING : charge  C4   ADE  1185 outside the box
+!!! WARNING : charge  P    THY  1186 outside the box
+!!! WARNING : charge  O1P  THY  1186 outside the box
+!!! WARNING : charge  O2P  THY  1186 outside the box
+!!! WARNING : charge  O5'  THY  1186 outside the box
+!!! WARNING : charge  C4'  THY  1186 outside the box
+!!! WARNING : charge  O4'  THY  1186 outside the box
+!!! WARNING : charge  O3'  THY  1186 outside the box
+!!! WARNING : charge  C1'  THY  1186 outside the box
+!!! WARNING : charge  N1   THY  1186 outside the box
+!!! WARNING : charge  C2   THY  1186 outside the box
+!!! WARNING : charge  N3   THY  1186 outside the box
+!!! WARNING : charge  C4   THY  1186 outside the box
+!!! WARNING : charge  O4   THY  1186 outside the box
+!!! WARNING : charge  C6   THY  1186 outside the box
+!!! WARNING : charge  H6   THY  1186 outside the box
+!!! WARNING : charge  P    THY  1187 outside the box
+!!! WARNING : charge  O1P  THY  1187 outside the box
+!!! WARNING : charge  O2P  THY  1187 outside the box
+!!! WARNING : charge  O5'  THY  1187 outside the box
+!!! WARNING : charge  C4'  THY  1187 outside the box
+!!! WARNING : charge  O4'  THY  1187 outside the box
+!!! WARNING : charge  O3'  THY  1187 outside the box
+!!! WARNING : charge  C1'  THY  1187 outside the box
+!!! WARNING : charge  N1   THY  1187 outside the box
+!!! WARNING : charge  C4   THY  1187 outside the box
+!!! WARNING : charge  O4   THY  1187 outside the box
+!!! WARNING : charge  C6   THY  1187 outside the box
+!!! WARNING : charge  H6   THY  1187 outside the box
+!!! WARNING : charge  P    THY  1188 outside the box
+!!! WARNING : charge  O2P  THY  1188 outside the box
+!!! WARNING : charge  O4   THY  1188 outside the box
+!!! WARNING : charge  P    THY  1257 outside the box
+!!! WARNING : charge  O1P  THY  1257 outside the box
+!!! WARNING : charge  O2P  THY  1257 outside the box
+!!! WARNING : charge  O5'  THY  1257 outside the box
+!!! WARNING : charge  O3'  THY  1257 outside the box
+!!! WARNING : charge  P    CYT  1258 outside the box
+!!! WARNING : charge  O1P  CYT  1258 outside the box
+!!! WARNING : charge  O2P  CYT  1258 outside the box
+!!! WARNING : charge  O5'  CYT  1258 outside the box
+!!! WARNING : charge  C4'  CYT  1258 outside the box
+!!! WARNING : charge  O3'  CYT  1258 outside the box
+!!! WARNING : charge  C1'  CYT  1258 outside the box
+!!! WARNING : charge  C6   CYT  1258 outside the box
+!!! WARNING : charge  H6   CYT  1258 outside the box
+!!! WARNING : charge  H5   CYT  1258 outside the box
+!!! WARNING : charge  P    CYT  1259 outside the box
+!!! WARNING : charge  O1P  CYT  1259 outside the box
+!!! WARNING : charge  O2P  CYT  1259 outside the box
+!!! WARNING : charge  O5'  CYT  1259 outside the box
+!!! WARNING : charge  C4'  CYT  1259 outside the box
+!!! WARNING : charge  O3'  CYT  1259 outside the box
+!!! WARNING : charge  C1'  CYT  1259 outside the box
+!!! WARNING : charge  N1   CYT  1259 outside the box
+!!! WARNING : charge  C4   CYT  1259 outside the box
+!!! WARNING : charge  N4   CYT  1259 outside the box
+!!! WARNING : charge  C5   CYT  1259 outside the box
+!!! WARNING : charge  C6   CYT  1259 outside the box
+!!! WARNING : charge  H6   CYT  1259 outside the box
+!!! WARNING : charge  H5   CYT  1259 outside the box
+!!! WARNING : charge  H42  CYT  1259 outside the box
+!!! WARNING : charge  P    ADE  1260 outside the box
+!!! WARNING : charge  O1P  ADE  1260 outside the box
+!!! WARNING : charge  O2P  ADE  1260 outside the box
+!!! WARNING : charge  N7   ADE  1260 outside the box
+!!! WARNING : charge  C6   ADE  1260 outside the box
+!!! WARNING : charge  N6   ADE  1260 outside the box
+!!! WARNING : charge  H61  ADE  1260 outside the box
+!!! WARNING : charge  H62  ADE  1260 outside the box
+!!! WARNING : charge  C6   ADE  1261 outside the box
+!!! WARNING : charge  N6   ADE  1261 outside the box
+!!! WARNING : charge  H61  ADE  1261 outside the box
+!!! WARNING : charge  H62  ADE  1261 outside the box
+!!! WARNING : charge  C6   ADE  1262 outside the box
+!!! WARNING : charge  N6   ADE  1262 outside the box
+!!! WARNING : charge  N1   ADE  1262 outside the box
+!!! WARNING : charge  H61  ADE  1262 outside the box
+!!! WARNING : charge  H62  ADE  1262 outside the box
+!!! WARNING : charge  N3   THY  1263 outside the box
+!!! WARNING : charge  C4'  ADE  1264 outside the box
+!!! WARNING : charge  O4'  ADE  1264 outside the box
+!!! WARNING : charge  O3'  ADE  1264 outside the box
+!!! WARNING : charge  C1'  ADE  1264 outside the box
+!!! WARNING : charge  N9   ADE  1264 outside the box
+!!! WARNING : charge  C6   ADE  1264 outside the box
+!!! WARNING : charge  N6   ADE  1264 outside the box
+!!! WARNING : charge  N1   ADE  1264 outside the box
+!!! WARNING : charge  C2   ADE  1264 outside the box
+!!! WARNING : charge  N3   ADE  1264 outside the box
+!!! WARNING : charge  C4   ADE  1264 outside the box
+!!! WARNING : charge  H61  ADE  1264 outside the box
+!!! WARNING : charge  P    CYT  1265 outside the box
+!!! WARNING : charge  O1P  CYT  1265 outside the box
+!!! WARNING : charge  O2P  CYT  1265 outside the box
+!!! WARNING : charge  O5'  CYT  1265 outside the box
+!!! WARNING : charge  C4'  CYT  1265 outside the box
+!!! WARNING : charge  O4'  CYT  1265 outside the box
+!!! WARNING : charge  O3'  CYT  1265 outside the box
+!!! WARNING : charge  C1'  CYT  1265 outside the box
+!!! WARNING : charge  N1   CYT  1265 outside the box
+!!! WARNING : charge  C2   CYT  1265 outside the box
+!!! WARNING : charge  N3   CYT  1265 outside the box
+!!! WARNING : charge  C4   CYT  1265 outside the box
+!!! WARNING : charge  N4   CYT  1265 outside the box
+!!! WARNING : charge  C5   CYT  1265 outside the box
+!!! WARNING : charge  C6   CYT  1265 outside the box
+!!! WARNING : charge  H6   CYT  1265 outside the box
+!!! WARNING : charge  H5   CYT  1265 outside the box
+!!! WARNING : charge  H41  CYT  1265 outside the box
+!!! WARNING : charge  P    ADE  1266 outside the box
+!!! WARNING : charge  O1P  ADE  1266 outside the box
+!!! WARNING : charge  O2P  ADE  1266 outside the box
+!!! WARNING : charge  O5'  ADE  1266 outside the box
+!!! WARNING : charge  C4'  ADE  1266 outside the box
+!!! WARNING : charge  O4'  ADE  1266 outside the box
+!!! WARNING : charge  O3'  ADE  1266 outside the box
+!!! WARNING : charge  C1'  ADE  1266 outside the box
+!!! WARNING : charge  N9   ADE  1266 outside the box
+!!! WARNING : charge  C8   ADE  1266 outside the box
+!!! WARNING : charge  N7   ADE  1266 outside the box
+!!! WARNING : charge  C6   ADE  1266 outside the box
+!!! WARNING : charge  N6   ADE  1266 outside the box
+!!! WARNING : charge  N1   ADE  1266 outside the box
+!!! WARNING : charge  C2   ADE  1266 outside the box
+!!! WARNING : charge  N3   ADE  1266 outside the box
+!!! WARNING : charge  C4   ADE  1266 outside the box
+!!! WARNING : charge  H61  ADE  1266 outside the box
+!!! WARNING : charge  H62  ADE  1266 outside the box
+!!! WARNING : charge  P    CYT  1267 outside the box
+!!! WARNING : charge  O1P  CYT  1267 outside the box
+!!! WARNING : charge  O2P  CYT  1267 outside the box
+!!! WARNING : charge  O5'  CYT  1267 outside the box
+!!! WARNING : charge  C4'  CYT  1267 outside the box
+!!! WARNING : charge  O4'  CYT  1267 outside the box
+!!! WARNING : charge  O3'  CYT  1267 outside the box
+!!! WARNING : charge  C1'  CYT  1267 outside the box
+!!! WARNING : charge  N1   CYT  1267 outside the box
+!!! WARNING : charge  C2   CYT  1267 outside the box
+!!! WARNING : charge  N3   CYT  1267 outside the box
+!!! WARNING : charge  C4   CYT  1267 outside the box
+!!! WARNING : charge  N4   CYT  1267 outside the box
+!!! WARNING : charge  C5   CYT  1267 outside the box
+!!! WARNING : charge  C6   CYT  1267 outside the box
+!!! WARNING : charge  H6   CYT  1267 outside the box
+!!! WARNING : charge  H5   CYT  1267 outside the box
+!!! WARNING : charge  H42  CYT  1267 outside the box
+!!! WARNING : charge  H41  CYT  1267 outside the box
+!!! WARNING : charge  P    THY  1268 outside the box
+!!! WARNING : charge  O1P  THY  1268 outside the box
+!!! WARNING : charge  O2P  THY  1268 outside the box
+!!! WARNING : charge  O5'  THY  1268 outside the box
+!!! WARNING : charge  C4'  THY  1268 outside the box
+!!! WARNING : charge  O4'  THY  1268 outside the box
+!!! WARNING : charge  O3'  THY  1268 outside the box
+!!! WARNING : charge  C1'  THY  1268 outside the box
+!!! WARNING : charge  N1   THY  1268 outside the box
+!!! WARNING : charge  C2   THY  1268 outside the box
+!!! WARNING : charge  N3   THY  1268 outside the box
+!!! WARNING : charge  C4   THY  1268 outside the box
+!!! WARNING : charge  O4   THY  1268 outside the box
+!!! WARNING : charge  C6   THY  1268 outside the box
+!!! WARNING : charge  H6   THY  1268 outside the box
+!!! WARNING : charge  P    THY  1269 outside the box
+!!! WARNING : charge  O1P  THY  1269 outside the box
+!!! WARNING : charge  O2P  THY  1269 outside the box
+!!! WARNING : charge  O5'  THY  1269 outside the box
+!!! WARNING : charge  C4'  THY  1269 outside the box
+!!! WARNING : charge  O4'  THY  1269 outside the box
+!!! WARNING : charge  O3'  THY  1269 outside the box
+!!! WARNING : charge  C1'  THY  1269 outside the box
+!!! WARNING : charge  N1   THY  1269 outside the box
+!!! WARNING : charge  C2   THY  1269 outside the box
+!!! WARNING : charge  N3   THY  1269 outside the box
+!!! WARNING : charge  C4   THY  1269 outside the box
+!!! WARNING : charge  O4   THY  1269 outside the box
+!!! WARNING : charge  C6   THY  1269 outside the box
+!!! WARNING : charge  H6   THY  1269 outside the box
+!!! WARNING : charge  P    THY  1270 outside the box
+!!! WARNING : charge  O1P  THY  1270 outside the box
+!!! WARNING : charge  O2P  THY  1270 outside the box
+!!! WARNING : charge  H61  ADE  1452 outside the box
+!!! WARNING : charge  N1   GUA  1453 outside the box
+!!! WARNING : charge  C2   GUA  1453 outside the box
+!!! WARNING : charge  N2   GUA  1453 outside the box
+!!! WARNING : charge  N3   GUA  1453 outside the box
+!!! WARNING : charge  H22  GUA  1453 outside the box
+!!! WARNING : charge  H21  GUA  1453 outside the box
+!!! WARNING : charge  O5'  THY  1454 outside the box
+!!! WARNING : charge  C4'  THY  1454 outside the box
+!!! WARNING : charge  O4'  THY  1454 outside the box
+!!! WARNING : charge  O3'  THY  1454 outside the box
+!!! WARNING : charge  C1'  THY  1454 outside the box
+!!! WARNING : charge  N1   THY  1454 outside the box
+!!! WARNING : charge  C2   THY  1454 outside the box
+!!! WARNING : charge  N3   THY  1454 outside the box
+!!! WARNING : charge  C4   THY  1454 outside the box
+!!! WARNING : charge  C6   THY  1454 outside the box
+!!! WARNING : charge  H6   THY  1454 outside the box
+!!! WARNING : charge  P    GUA  1455 outside the box
+!!! WARNING : charge  O1P  GUA  1455 outside the box
+!!! WARNING : charge  O2P  GUA  1455 outside the box
+!!! WARNING : charge  O5'  GUA  1455 outside the box
+!!! WARNING : charge  C4'  GUA  1455 outside the box
+!!! WARNING : charge  O4'  GUA  1455 outside the box
+!!! WARNING : charge  O3'  GUA  1455 outside the box
+!!! WARNING : charge  C1'  GUA  1455 outside the box
+!!! WARNING : charge  N9   GUA  1455 outside the box
+!!! WARNING : charge  C8   GUA  1455 outside the box
+!!! WARNING : charge  N7   GUA  1455 outside the box
+!!! WARNING : charge  C6   GUA  1455 outside the box
+!!! WARNING : charge  O6   GUA  1455 outside the box
+!!! WARNING : charge  N1   GUA  1455 outside the box
+!!! WARNING : charge  C2   GUA  1455 outside the box
+!!! WARNING : charge  N2   GUA  1455 outside the box
+!!! WARNING : charge  N3   GUA  1455 outside the box
+!!! WARNING : charge  C4   GUA  1455 outside the box
+!!! WARNING : charge  H22  GUA  1455 outside the box
+!!! WARNING : charge  H21  GUA  1455 outside the box
+!!! WARNING : charge  H8   GUA  1455 outside the box
+!!! WARNING : charge  P    THY  1456 outside the box
+!!! WARNING : charge  O1P  THY  1456 outside the box
+!!! WARNING : charge  O2P  THY  1456 outside the box
+!!! WARNING : charge  O5'  THY  1456 outside the box
+!!! WARNING : charge  C4'  THY  1456 outside the box
+!!! WARNING : charge  O4'  THY  1456 outside the box
+!!! WARNING : charge  O3'  THY  1456 outside the box
+!!! WARNING : charge  C1'  THY  1456 outside the box
+!!! WARNING : charge  N1   THY  1456 outside the box
+!!! WARNING : charge  C2   THY  1456 outside the box
+!!! WARNING : charge  N3   THY  1456 outside the box
+!!! WARNING : charge  C4   THY  1456 outside the box
+!!! WARNING : charge  O4   THY  1456 outside the box
+!!! WARNING : charge  C6   THY  1456 outside the box
+!!! WARNING : charge  H6   THY  1456 outside the box
+!!! WARNING : charge  P    ADE  1457 outside the box
+!!! WARNING : charge  O1P  ADE  1457 outside the box
+!!! WARNING : charge  O2P  ADE  1457 outside the box
+!!! WARNING : charge  O5'  ADE  1457 outside the box
+!!! WARNING : charge  C4'  ADE  1457 outside the box
+!!! WARNING : charge  O4'  ADE  1457 outside the box
+!!! WARNING : charge  O3'  ADE  1457 outside the box
+!!! WARNING : charge  C1'  ADE  1457 outside the box
+!!! WARNING : charge  N9   ADE  1457 outside the box
+!!! WARNING : charge  C8   ADE  1457 outside the box
+!!! WARNING : charge  N7   ADE  1457 outside the box
+!!! WARNING : charge  C6   ADE  1457 outside the box
+!!! WARNING : charge  N6   ADE  1457 outside the box
+!!! WARNING : charge  N1   ADE  1457 outside the box
+!!! WARNING : charge  C2   ADE  1457 outside the box
+!!! WARNING : charge  N3   ADE  1457 outside the box
+!!! WARNING : charge  C4   ADE  1457 outside the box
+!!! WARNING : charge  H61  ADE  1457 outside the box
+!!! WARNING : charge  H62  ADE  1457 outside the box
+!!! WARNING : charge  P    THY  1458 outside the box
+!!! WARNING : charge  O1P  THY  1458 outside the box
+!!! WARNING : charge  O2P  THY  1458 outside the box
+!!! WARNING : charge  O5'  THY  1458 outside the box
+!!! WARNING : charge  C4'  THY  1458 outside the box
+!!! WARNING : charge  O4'  THY  1458 outside the box
+!!! WARNING : charge  O3'  THY  1458 outside the box
+!!! WARNING : charge  C1'  THY  1458 outside the box
+!!! WARNING : charge  N1   THY  1458 outside the box
+!!! WARNING : charge  C2   THY  1458 outside the box
+!!! WARNING : charge  N3   THY  1458 outside the box
+!!! WARNING : charge  C4   THY  1458 outside the box
+!!! WARNING : charge  O4   THY  1458 outside the box
+!!! WARNING : charge  C6   THY  1458 outside the box
+!!! WARNING : charge  H6   THY  1458 outside the box
+!!! WARNING : charge  P    THY  1459 outside the box
+!!! WARNING : charge  O1P  THY  1459 outside the box
+!!! WARNING : charge  O2P  THY  1459 outside the box
+!!! WARNING : charge  O5'  THY  1459 outside the box
+!!! WARNING : charge  C4'  THY  1459 outside the box
+!!! WARNING : charge  O4'  THY  1459 outside the box
+!!! WARNING : charge  O3'  THY  1459 outside the box
+!!! WARNING : charge  C1'  THY  1459 outside the box
+!!! WARNING : charge  N1   THY  1459 outside the box
+!!! WARNING : charge  C2   THY  1459 outside the box
+!!! WARNING : charge  N3   THY  1459 outside the box
+!!! WARNING : charge  C4   THY  1459 outside the box
+!!! WARNING : charge  O4   THY  1459 outside the box
+!!! WARNING : charge  C6   THY  1459 outside the box
+!!! WARNING : charge  H6   THY  1459 outside the box
+!!! WARNING : charge  O2P  THY  1460 outside the box
+!!! WARNING : charge  C4   THY  1460 outside the box
+!!! WARNING : charge  O4   THY  1460 outside the box
+!!! WARNING : charge  H6   THY  1460 outside the box
+!!! WARNING : charge  P    THY  1529 outside the box
+!!! WARNING : charge  O1P  THY  1529 outside the box
+!!! WARNING : charge  O2P  THY  1529 outside the box
+!!! WARNING : charge  O5'  THY  1529 outside the box
+!!! WARNING : charge  O3'  THY  1529 outside the box
+!!! WARNING : charge  P    CYT  1530 outside the box
+!!! WARNING : charge  O1P  CYT  1530 outside the box
+!!! WARNING : charge  O2P  CYT  1530 outside the box
+!!! WARNING : charge  O5'  CYT  1530 outside the box
+!!! WARNING : charge  H6   CYT  1530 outside the box
+!!! WARNING : charge  O2P  CYT  1531 outside the box
+!!! WARNING : charge  H5   CYT  1531 outside the box
+!!! WARNING : charge  O3'  ADE  1536 outside the box
+!!! WARNING : charge  N1   ADE  1536 outside the box
+!!! WARNING : charge  C2   ADE  1536 outside the box
+!!! WARNING : charge  N3   ADE  1536 outside the box
+!!! WARNING : charge  P    CYT  1537 outside the box
+!!! WARNING : charge  O1P  CYT  1537 outside the box
+!!! WARNING : charge  O2P  CYT  1537 outside the box
+!!! WARNING : charge  O5'  CYT  1537 outside the box
+!!! WARNING : charge  C4'  CYT  1537 outside the box
+!!! WARNING : charge  O4'  CYT  1537 outside the box
+!!! WARNING : charge  O3'  CYT  1537 outside the box
+!!! WARNING : charge  C1'  CYT  1537 outside the box
+!!! WARNING : charge  N1   CYT  1537 outside the box
+!!! WARNING : charge  C2   CYT  1537 outside the box
+!!! WARNING : charge  P    ADE  1538 outside the box
+!!! WARNING : charge  O1P  ADE  1538 outside the box
+!!! WARNING : charge  O2P  ADE  1538 outside the box
+!!! WARNING : charge  O5'  ADE  1538 outside the box
+!!! WARNING : charge  C4'  ADE  1538 outside the box
+!!! WARNING : charge  O4'  ADE  1538 outside the box
+!!! WARNING : charge  O3'  ADE  1538 outside the box
+!!! WARNING : charge  C1'  ADE  1538 outside the box
+!!! WARNING : charge  N9   ADE  1538 outside the box
+!!! WARNING : charge  C8   ADE  1538 outside the box
+!!! WARNING : charge  N7   ADE  1538 outside the box
+!!! WARNING : charge  C2   ADE  1538 outside the box
+!!! WARNING : charge  N3   ADE  1538 outside the box
+!!! WARNING : charge  C4   ADE  1538 outside the box
+!!! WARNING : charge  P    CYT  1539 outside the box
+!!! WARNING : charge  O1P  CYT  1539 outside the box
+!!! WARNING : charge  O2P  CYT  1539 outside the box
+!!! WARNING : charge  O5'  CYT  1539 outside the box
+!!! WARNING : charge  C4'  CYT  1539 outside the box
+!!! WARNING : charge  O4'  CYT  1539 outside the box
+!!! WARNING : charge  O3'  CYT  1539 outside the box
+!!! WARNING : charge  C1'  CYT  1539 outside the box
+!!! WARNING : charge  N1   CYT  1539 outside the box
+!!! WARNING : charge  C6   CYT  1539 outside the box
+!!! WARNING : charge  H6   CYT  1539 outside the box
+!!! WARNING : charge  P    THY  1540 outside the box
+!!! WARNING : charge  O1P  THY  1540 outside the box
+!!! WARNING : charge  O2P  THY  1540 outside the box
+!!! WARNING : charge  O5'  THY  1540 outside the box
+!!! WARNING : charge  C4'  THY  1540 outside the box
+!!! WARNING : charge  O4'  THY  1540 outside the box
+!!! WARNING : charge  O3'  THY  1540 outside the box
+!!! WARNING : charge  H6   THY  1540 outside the box
+!!! WARNING : charge  O1P  THY  1541 outside the box
+!!! WARNING : charge  O1P  THY  1551 outside the box
+!!! WARNING : charge  NA+  NA+  1692 outside the box
+!!! WARNING : charge  NA+  NA+  1692 outside the box
+!!! WARNING : charge  NA+  NA+  1692 outside the box
+ CHARGES OUTSIDE THE BOX AND NOT DOING FOCUSSING,THEREFORE STOP
