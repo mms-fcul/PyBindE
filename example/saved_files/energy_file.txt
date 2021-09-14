@@ -1,0 +1,2 @@
+file_name            En_VdW               En_Coul              En_nonPol            En_Pol               En_Binding           Running_time(seconds)
+frame00100.gro       -355.3795668949164   -443.65404213899603  -51.75687994186442   596.5529757081631    -254.23751326761374  48.18               

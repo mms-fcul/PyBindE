@@ -15,7 +15,7 @@ A python program for Molecular Mechanics Poisson-Boltzmann Surface Area (MMPBSA)
 
   Several settings may be easily changed or adjusted on the main program's file.
   The current settings are specific for the test system provided, (named 'frame00100.gro'), which is a MD simulation frame for a Beta-2-Microglobin (B2M) dimer.
-  
+
   Different systems may have amino acid residues not found on the provided databases, missing atomic radii and charges in the SASA classifier file and in the DelPhi4Py databases.
   These can be manually added on the appropriate files, taking care to respect each file's specific formatting.
 
@@ -26,8 +26,8 @@ The dependencies for this program are:
 
 * python2.6>= & python3.8>=
 * numpy
-* scipy
-* pandas
+* scipy1.7>=
+* pandas1.3>=
 * freesasa
 
 

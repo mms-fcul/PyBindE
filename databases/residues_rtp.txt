@@ -3935,8 +3935,8 @@
   GA1   C28     C
   GA1   H29    HC
   CTR    CT     C
-  CTR   OT1    OM
-  CTR   OT2    OM
+  CTR    O1    OM
+  CTR    O2    OM
   CTR  HO11     H
   CTR  HO21     H
   CTR  HO12     H
@@ -3948,4 +3948,87 @@
   NTR    CA   CH1
   NTR     C     C
   NTR     O     O
-
+  CT0    CT     C
+  CT0    O1    OM
+  CT0    O2    OM
+  CT0  HO11     H
+  CT0  HO21     H
+  CT0  HO12     H
+  CT0  HO22     H
+  NT0     N    NT
+  NT0    H1     H
+  NT0    H2     H
+  NT0    H3     H
+  NT0    CA   CH1
+  NT0     C     C
+  NT0     O     O
+  CT1    CT     C
+  CT1    O1    OM
+  CT1    O2    OM
+  CT1  HO11     H
+  CT1  HO21     H
+  CT1  HO12     H
+  CT1  HO22     H
+  NT1     N    NT
+  NT1    H1     H
+  NT1    H2     H
+  NT1    H3     H
+  NT1    CA   CH1
+  NT1     C     C
+  NT1     O     O
+  CT2    CT     C
+  CT2    O1    OM
+  CT2    O2    OM
+  CT2  HO11     H
+  CT2  HO21     H
+  CT2  HO12     H
+  CT2  HO22     H
+  NT2     N    NT
+  NT2    H1     H
+  NT2    H2     H
+  NT2    H3     H
+  NT2    CA   CH1
+  NT2     C     C
+  NT2     O     O
+  CT3    CT     C
+  CT3    O1    OM
+  CT3    O2    OM
+  CT3  HO11     H
+  CT3  HO21     H
+  CT3  HO12     H
+  CT3  HO22     H
+  NT3     N    NT
+  NT3    H1     H
+  NT3    H2     H
+  NT3    H3     H
+  NT3    CA   CH1
+  NT3     C     C
+  NT3     O     O
+  CT4    CT     C
+  CT4    O1    OM
+  CT4    O2    OM
+  CT4  HO11     H
+  CT4  HO21     H
+  CT4  HO12     H
+  CT4  HO22     H
+  NT5     N    NT
+  NT5    H1     H
+  NT5    H2     H
+  NT5    CA   CH1
+  NT5    CD  CH2R
+  NT5     C     C
+  NT5     O     O
+  NT6     N    NT
+  NT6    H1     H
+  NT6    H2     H
+  NT6    CA   CH1
+  NT6    CD  CH2R
+  NT6     C     C
+  NT6     O     O
+  NT7     N    NT
+  NT7    H1     H
+  NT7    H2     H
+  NT7    CA   CH1
+  NT7    CD  CH2R
+  NT7     C     C
+  NT7     O     O
