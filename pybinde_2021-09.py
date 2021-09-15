@@ -20,7 +20,7 @@ txt_df_nb       = databases_path + "nonbonded_itp.txt"
 
 # optional paths
 delphi4py_path = os.path.dirname(os.path.realpath(__file__)) + "/delphi4py/"
-print("DELPHI PATH:",delphi4py_path)
+#print("DELPHI PATH:",delphi4py_path)
 sasa_classif_path = "classifier.config"
 
 
