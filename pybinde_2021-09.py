@@ -193,7 +193,7 @@ if __name__ == '__main__':
     if verbose: bind.prYellow("New file is: "+fpdb)
 
 
-    fs.setVerbosity(0)
+    fs.setVerbosity(fs.nowarnings)
 
     area_prot, area_monA, area_monB=bind.run_freesasa_custom(fpdb,100,classifier_path,verbose=True) # (fpdb,classifier_path) "/home/joaov/Projetos/MMPBSA/validation/PyEBind_validation/classifier.config"
 
