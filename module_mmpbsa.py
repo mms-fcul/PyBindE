@@ -330,7 +330,7 @@ def run_freesasa_custom(file,npoints,classifier_path="/home/joaov/Projetos/MMPBS
   #energy_prot=result.totalArea()*g+b
 
   structureArray = fs.structureArray(file, {'separate-chains': True,'hydrogen' : True, 'separate-models': False},c)
-  if verbose: print(structureArray)
+  #if verbose: print(structureArray)
   #en_list=[]
   area_list=[]
   for model in structureArray:
