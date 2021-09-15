@@ -121,12 +121,12 @@ def find_termini(df, termini=['NT3','CT4']):
   mask2 = df["atom_name"].isin(ctr_list)
   df.loc[mask1 & mask2,'res_name'] = termini[1]
 
-  print(ntrs,ctrs)
+  #print(ntrs,ctrs)
   alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   for num,terminus in enumerate(zip(ntrs,ctrs)):
     mask = df['res_num'].between(terminus[0],terminus[1])
     df.loc[mask, 'real_chain_id'] = alphabet[num]
-    print(num,alphabet[num])
+    #print(num,alphabet[num])
   return df
 
 def correct_protonation_state(res_to_find,base_state, protonated_state,proton_name,new_proton_name,df):
@@ -291,8 +291,8 @@ def gro2pdb_simple(gro_df,name,pdb_terminus=['NT3','CT4']):
   gro = gro.replace('CTR',pdb_terminus[1])
   gro = pd.DataFrame(gro,columns=['atom','atom_num','empty','atom_name','empty','res_name','chain_id', 'res_num','empty','empty','x_coord','y_coord','z_coord', 'occ','T_factor'])
   #                                         atom     a_num  empty  a_name   alt_i  r_name   chain_id  r_num  code_i empty  x_coord  y_coord  z_coord   occ     T_factor
-  print("THIS IS THE PDB:")
-  print(gro)
+  #print("THIS IS THE PDB:")
+  #print(gro)
   np.savetxt(name,gro,delimiter='',fmt=('%6.6s', '%5.5s','%1s', '%-4.4s','%1s', '%-4.4s', '%1.1s','%4.4s','%1s','%3s', '%8.3f', '%8.3f', '%8.3f', '%6.2f', '%6.2f'))
 
 def make_pdb_path(gro_file,saving_path):
@@ -303,7 +303,7 @@ def make_pdb_path(gro_file,saving_path):
 
 def run_freesasa_custom(file,npoints,classifier_path="/home/joaov/Projetos/MMPBSA/test_system/classifier.config",verbose=False):
   c =fs.Classifier(classifier_path)
-  print(classifier_path)
+  #print(classifier_path)
   structure = fs.Structure(file,c,({
   'hetatm' : False,          # False: skip HETATM
                               # True: include HETATM
