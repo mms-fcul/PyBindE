@@ -29,7 +29,7 @@ cutoff = False
 cutoff_n = 4.5
 
 # Verbose mode
-verbose = True
+verbose = False
 
 # DelpPhi4Py Settings
 # f_crg = lib_dir + "/delphi4py/example/DataBaseT.crg"
@@ -90,16 +90,16 @@ if __name__ == '__main__':
       classifier_path= args.databases + "/classifier.config"
 
     fpdb = bind.make_pdb_path(gro_file,saving_path)
-    print("fpdb:",fpdb)
-    print(os.getcwd())
+    if verbose: print("fpdb:",fpdb)
+    if verbose: print(os.getcwd())
 
-    print(os.path.dirname(os.path.realpath(__file__)))
+    if verbose: print(os.path.dirname(os.path.realpath(__file__)))
 
     gro_df = bind.read_gro_df(gro_file,monA_range,monB_range) #create df with gro info, creates monomer index
     gro_df = bind.find_termini(gro_df)
 
 
-    print(gro_df.query("res_name == @termini[0]"))
+    if verbose: print(gro_df.query("res_name == @termini[0]"))
 
 
 
@@ -143,7 +143,7 @@ if __name__ == '__main__':
 
     # add charges do gro df
     gro_res_crg_df = pd.merge(gro_res_df, df_charges,  how = 'left', on = ['res_name', 'atom_name'])
-    print(gro_res_crg_df)
+    if verbose: print(gro_res_crg_df)
     nans = gro_res_crg_df.query("atom_type != atom_type")
     nans_nr=gro_res_crg_df['atom_type'].isna().sum()
     if not nans.empty: print(nans.head(20)); print(nans.tail(20)); bind.prYellow("There are {} atoms with no attribution in atom_type!".format(nans_nr))
@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
      # fix some names between gro and databases
     complete_df = pd.merge(dist_df, df_nb,  how = 'left', on = ['type_Ai', 'type_Bj'])
-    print(complete_df)
+    if verbose: print(complete_df)
     nans = complete_df.query("charge_Ai != charge_Ai")
     nans_nr=complete_df['charge_Ai'].isna().sum()
     if not nans.empty: print(nans.head(20)); print(nans.tail(20)); print(pd.unique(nans['atom_Ai'])); bind.prYellow("There are {} atoms with no charge!".format(nans_nr))
@@ -220,12 +220,12 @@ if __name__ == '__main__':
 
     gsize=bind.max_gsize(pdb_df, scale)
 
-    print("Geometric center of dimer in pdb is:",acent)
+    if verbose: print("Geometric center of dimer in pdb is:",acent)
 
 
     box_size=bind.appropriate_box_size(pdb_df)
     if verbose: print("Appropriate box side size of pdb is:",box_size)
-    print("gsize = ", gsize)
+    if verbose: print("gsize = ", gsize)
 
     # Run DelPhi4Py
     monomers = monA_range[0], monA_range[1], monB_range[0], monB_range[1]
@@ -241,7 +241,7 @@ if __name__ == '__main__':
     sasa        = [area_prot,area_monA,area_monB]
     polar       = [solvation_dimer, solvation_mon1, solvation_mon2]
 
-    print(nonbonded, sasa, polar)
+    if verbose: print(nonbonded, sasa, polar)
 
     g = 0.00542 # gamma -> kcal/(mol‚A2)
     b = 0.92    # beta  -> kcal/mol
@@ -288,4 +288,12 @@ if __name__ == '__main__':
     binding_energy= VdW_en_total + Coul_en_total + Gnonpolar + Gpolar
     with open(energy_summary_file_path,'a+') as outfile:
         outfile.write('{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}\n'.format(bind.get_file_name(sys.argv[1]), VdW_en_total, Coul_en_total, Gnonpolar, Gpolar, binding_energy, round(elapsed_time,2)))
-
+        
+    print("File:",bind.get_file_name(sys.argv[1]))
+    print("VdW Energy (kJ/mol):", VdW_en_total)
+    print("Coul Energy (kJ/mol):", Coul_en_total)
+    print("Nonpolar Solvation Energy (kJ/mol):", Gnonpolar)
+    print("Polar Solvation Energy (kJ/mol):", Gpolar)
+    print("Binding Energy (kJ/mol):", binding_energy)
+    print("Running Time (s):", round(elapsed_time,2))
+    print()
