@@ -22,7 +22,7 @@
 
   Different systems may have amino acid residues not found on the provided databases, missing atomic radii and charges in the classifier file and in the DelPhi4Py databases (DataBaseT.crg and DatabaseT.siz). These can be manually added on the appropriate files, taking care to respect each file's specific formatting.
   
-  **IMPORTANT NOTE**: it's __crucial__ that system (present in the .gro files you intend to use to run MMPBSA calculations) is __centered in the simulation box__ in every frame with no breaks in the Periodic Boudary Condition, otherwise the results cannot be trusted.
+  **IMPORTANT NOTE**: it's __crucial__ that system (present in the .gro files you intend to use to run MMPBSA calculations) is __centered in the simulation box__ in every frame, with no breaks in the Periodic Boudary Condition, otherwise the results cannot be trusted.
 
 ## Installation & Dependencies
 
