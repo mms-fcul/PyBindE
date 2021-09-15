@@ -296,7 +296,7 @@ if __name__ == '__main__':
     #print("File:                              ",bind.get_file_name(sys.argv[1]))
     #print("VdW Energy (kJ/mol):               ", VdW_en_total)
     #print("Coul Energy (kJ/mol):              ", Coul_en_total)
-    #print("Nonpolar Solvation Energy (kJ/mol):", Gnonpolar)
+    print("Nonpolar Solvation Energy (kJ/mol):", Gnonpolar)
     print("Polar Solvation Energy (kJ/mol):   ", Gpolar)
     print("Binding Energy (kJ/mol):           ", binding_energy)
     print("Running Time (s):                  ", round(elapsed_time,2))
