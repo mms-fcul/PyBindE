@@ -21,6 +21,8 @@
   There is an 'example' folder which contains a test case for basic usage. A frame00100.gro file is provided, (which is a MD simulation frame for a Beta-2-Microglobin dimer), as well as a bash script 'example_run.sh' with the a basic usage example.
 
   Different systems may have amino acid residues not found on the provided databases, missing atomic radii and charges in the classifier file and in the DelPhi4Py databases (DataBaseT.crg and DatabaseT.siz). These can be manually added on the appropriate files, taking care to respect each file's specific formatting.
+  
+  IMPORTANT NOTE: it's crucial that system (present in the .gro files you intend to use to run MMPBSA calculations) is centered in the simulation box in every frame, otherwise the results cannot be trusted.
 
 ## Installation & Dependencies
 
