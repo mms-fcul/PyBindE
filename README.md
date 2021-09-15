@@ -21,6 +21,8 @@
   The program utilises a working DelPhi4Py implementation (to make use of its Poisson-Boltzmann solver), which is provided in the folder 'delphi4py'.
 
   Several settings may be easily changed or adjusted on the main program's file.
+  
+  There is an 'example' folder which contains a test case for basic usage. A frame00100.gro file is provided, (which is a MD simulation frame for a Beta-2-Microglobin dimer), along
   The current settings are specific for the test system provided, (named 'frame00100.gro'), which is a MD simulation frame for a Beta-2-Microglobin (B2M) dimer.
 
   Different systems may have amino acid residues not found on the provided databases, missing atomic radii and charges in the SASA classifier file and in the DelPhi4Py databases.
