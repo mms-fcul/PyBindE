@@ -1,7 +1,7 @@
 
 # This program
 
-A python program for Molecular Mechanics Poisson-Boltzmann Surface Area (MMPBSA) calculations in protein-protein and protein-ligand systems.
+"PyBindE" is a python program for Molecular Mechanics Poisson-Boltzmann Surface Area (MMPBSA) calculations in protein-protein and protein-ligand systems.
 
 
 ## Basic Usage
