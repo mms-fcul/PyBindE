@@ -289,11 +289,11 @@ if __name__ == '__main__':
     with open(energy_summary_file_path,'a+') as outfile:
         outfile.write('{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}\n'.format(bind.get_file_name(sys.argv[1]), VdW_en_total, Coul_en_total, Gnonpolar, Gpolar, binding_energy, round(elapsed_time,2)))
         
-    print("File:",bind.get_file_name(sys.argv[1]))
-    print("VdW Energy (kJ/mol):", VdW_en_total)
-    print("Coul Energy (kJ/mol):", Coul_en_total)
+    print("File:                              ",bind.get_file_name(sys.argv[1]))
+    print("VdW Energy (kJ/mol):               ", VdW_en_total)
+    print("Coul Energy (kJ/mol):              ", Coul_en_total)
     print("Nonpolar Solvation Energy (kJ/mol):", Gnonpolar)
-    print("Polar Solvation Energy (kJ/mol):", Gpolar)
-    print("Binding Energy (kJ/mol):", binding_energy)
-    print("Running Time (s):", round(elapsed_time,2))
+    print("Polar Solvation Energy (kJ/mol):   ", Gpolar)
+    print("Binding Energy (kJ/mol):           ", binding_energy)
+    print("Running Time (s):                  ", round(elapsed_time,2))
     print()
