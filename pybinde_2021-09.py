@@ -278,10 +278,10 @@ if __name__ == '__main__':
     Gsolv = Gpolar + Gnonpolar
     if verbose: print("solv",Gsolv)
     G_binding = EMM + Gsolv
-
+    
+    final_time = time.perf_counter()
+    elapsed_time=final_time-initial_time
     if verbose:
-        final_time = time.perf_counter()
-        elapsed_time=final_time-initial_time
         print("Elapsed time: ", elapsed_time,"seconds.")
 
     #VdW_en_total, Coul_en_total, Gnonpolar, Gpolar = run_protocol(files,monomers,settings)
