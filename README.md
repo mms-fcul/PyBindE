@@ -9,7 +9,7 @@
   The main program is named pybinde_2021-09.py.
   
   In order to correctly work, the program requires 5 databases.
-  - 2 databases named DataBaseT.crg and DataBase.siz, which contained partial atomic charges and atomic radii.
+  - 2 databases named DataBaseT.crg and DataBase.siz, which contain partial atomic charges and atomic radii.
   - 1 database with information regarding atom types (the same information present in forcefield.rtp files).
   - 1 database containing c6 and c12 Lennard-Jones nonbonded parameters (present also in the forcefield_nb.itp file).
   - 1 file named 'classifier.config' with atomic radii.
