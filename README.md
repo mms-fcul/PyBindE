@@ -16,7 +16,7 @@
   
   The program utilises a working DelPhi4Py implementation (to make use of its Poisson-Boltzmann solver), which is provided in the folder 'delphi4py'.
 
-  Several settings may be easily changed or adjusted on the main program's file.
+  Several settings may be easily changed or adjusted on the main program's file, although it is strongly advised that you avoid doing so, apart from DelpPhi4Py Settings, specifically.
   
   There is an 'example' folder which contains a test case for basic usage. A frame00100.gro file is provided, (which is a MD simulation frame for a Beta-2-Microglobin dimer), as well as a bash script 'example_run.sh' with the a basic usage example.
 
