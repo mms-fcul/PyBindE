@@ -103,7 +103,7 @@ if __name__ == '__main__':
     print()
     if verbose: print(gro_df.query("res_name == @termini[0]"))
 
-
+    print("File:                              ",bind.get_file_name(sys.argv[1]))
 
     correct_protonation=True
     #bind.correct_protonation_state('LYSH','LY2','LY3','HZ3','HZ3',gro_df)
@@ -185,8 +185,10 @@ if __name__ == '__main__':
     VdW_en_total  = complete_df['En_VdW'].sum()
     Coul_en_total = complete_df['En_Coul'].sum()
     if verbose: print(complete_df); print("En_VdW = ", VdW_en_total); print("En_Coul = ", Coul_en_total)
-
-
+    
+    print("VdW Energy (kJ/mol):               ", VdW_en_total)
+    print("Coul Energy (kJ/mol):              ", Coul_en_total)
+    
     nans = complete_df.query("charge_Bj != charge_Bj")
     if not nans.empty:
         print("empty entries in complete_df:",nans)
@@ -291,10 +293,10 @@ if __name__ == '__main__':
     with open(energy_summary_file_path,'a+') as outfile:
         outfile.write('{:<20} {:<20} {:<20} {:<20} {:<20} {:<20} {:<20}\n'.format(bind.get_file_name(sys.argv[1]), VdW_en_total, Coul_en_total, Gnonpolar, Gpolar, binding_energy, round(elapsed_time,2)))
         
-    print("File:                              ",bind.get_file_name(sys.argv[1]))
-    print("VdW Energy (kJ/mol):               ", VdW_en_total)
-    print("Coul Energy (kJ/mol):              ", Coul_en_total)
-    print("Nonpolar Solvation Energy (kJ/mol):", Gnonpolar)
+    #print("File:                              ",bind.get_file_name(sys.argv[1]))
+    #print("VdW Energy (kJ/mol):               ", VdW_en_total)
+    #print("Coul Energy (kJ/mol):              ", Coul_en_total)
+    #print("Nonpolar Solvation Energy (kJ/mol):", Gnonpolar)
     print("Polar Solvation Energy (kJ/mol):   ", Gpolar)
     print("Binding Energy (kJ/mol):           ", binding_energy)
     print("Running Time (s):                  ", round(elapsed_time,2))
