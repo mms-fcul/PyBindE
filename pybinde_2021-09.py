@@ -299,3 +299,4 @@ if __name__ == '__main__':
     print("Binding Energy (kJ/mol):           ", binding_energy)
     print("Running Time (s):                  ", round(elapsed_time,2))
     print()
+    print("Results saved/appended to:         ",energy_summary_file_path)
