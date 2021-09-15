@@ -36,7 +36,7 @@ The dependencies for this program are:
 |* pandas1.3>= |                  pip3 install --upgrade pandas|
 |* freesasa  |                    pip3 install --upgrade freesasa|
 
-In newer Ubuntu versions (20.xx), it may be required the installation of a package containing "libgfortran.so.4", for example gfortran-7 (suggested command for installation: sudo apt install gfortran-7).
+In newer Ubuntu versions (20.xx or above), it may be required the installation of a package containing "libgfortran.so.4", for example gfortran-7 (suggested command for installation: sudo apt install gfortran-7).
 
 ## License
 
