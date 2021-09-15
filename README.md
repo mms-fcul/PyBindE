@@ -6,11 +6,7 @@
 
 ## Basic Usage
 
-  The main program is named pybinde_2021-09.py and receives as an input argument a .gro file (a simple the coordinate file for a GROMACS simulation) and the staring and ending atom numbers for the 2 sections of our system that we wish to use to calculate the binding free energy (i.e. starting and ending atom numbers for the protein and ligand).
-  
-  Example: pybinde_2021-09.py file.gro 1 1000 1001 1100
-  
-  By running pybinde_2021-09.py with the --help or -h flag, you can see additional optional arguments.
+  The main program is named pybinde_2021-09.py.
   
   In order to correctly work, the program requires 5 databases.
   - 2 databases named DataBaseT.crg and DataBase.siz, which contained partial atomic charges and atomic radii.
@@ -22,11 +18,9 @@
 
   Several settings may be easily changed or adjusted on the main program's file.
   
-  There is an 'example' folder which contains a test case for basic usage. A frame00100.gro file is provided, (which is a MD simulation frame for a Beta-2-Microglobin dimer), along
-  The current settings are specific for the test system provided, (named 'frame00100.gro'), which is a MD simulation frame for a Beta-2-Microglobin (B2M) dimer.
+  There is an 'example' folder which contains a test case for basic usage. A frame00100.gro file is provided, (which is a MD simulation frame for a Beta-2-Microglobin dimer), as well as a bash script 'example_run.sh' with the a basic usage example.
 
-  Different systems may have amino acid residues not found on the provided databases, missing atomic radii and charges in the SASA classifier file and in the DelPhi4Py databases.
-  These can be manually added on the appropriate files, taking care to respect each file's specific formatting.
+  Different systems may have amino acid residues not found on the provided databases, missing atomic radii and charges in the classifier file and in the DelPhi4Py databases (DataBaseT.crg and DatabaseT.siz). These can be manually added on the appropriate files, taking care to respect each file's specific formatting.
 
 ## Installation & Dependencies
 
