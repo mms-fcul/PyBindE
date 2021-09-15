@@ -97,8 +97,10 @@ if __name__ == '__main__':
 
     gro_df = bind.read_gro_df(gro_file,monA_range,monB_range) #create df with gro info, creates monomer index
     gro_df = bind.find_termini(gro_df)
-
-
+    
+    print("Welcome to PyBindE!")
+    print("Calculation started...")
+    print()
     if verbose: print(gro_df.query("res_name == @termini[0]"))
 
 
