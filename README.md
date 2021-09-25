@@ -4,7 +4,7 @@
 
 ## Basic Usage
 
-The main program is (currently) named _pybinde_2021-09.py_.
+The main program is named _pybinde_2021-09.py_.
 
 In order to work correctly, the program requires 5 databases.
 
