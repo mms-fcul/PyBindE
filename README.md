@@ -15,7 +15,7 @@ In order to work correctly, the program requires 5 databases.
 
 The program utilises a working _DelPhi4Py_ implementation (to make use of its Poisson-Boltzmann solver), which is provided in the folder _'delphi4py'_.
 
-Several settings may be easily changed or adjusted on the main program's file, although it is strongly advised that you avoid doing so, apart from _DelpPhi4Py_ Settings, specifically.
+Several settings may be easily changed using the program's flags. To see all the flags, run the program with the flag '-h' or '--help'.
 
 There is an _'example'_ folder which contains a test case for basic usage. A _'frame00100.gro'_ file is provided, (which is a MD simulation frame for a Beta-2-Microglobin dimer), as well as a bash script _'example_run.sh'_ with the a basic usage example.
 
@@ -29,11 +29,11 @@ This program does not require installation. However, given its dependencies, it 
 The dependencies for this program are:
 |**Dependency**|**Suggested command for installation**|
 |------------|-------------------------------------------|
-|_ python2.6>= & python3.8>=|sudo apt install python3.9|
-|_ numpy | pip3 install --upgrade numpy|
-|_ scipy1.7>= | pip3 install --upgrade scipy|
-|_ pandas1.3>= | pip3 install --upgrade pandas|
-|\* freesasa | pip3 install --upgrade freesasa|
+|* python2.6>= & python3.8>=|sudo apt install python3.9|
+|* numpy | pip3 install --upgrade numpy|
+|* scipy1.7>= | pip3 install --upgrade scipy|
+|* pandas1.3>= | pip3 install --upgrade pandas|
+|* freesasa | pip3 install --upgrade freesasa|
 
 In newer Ubuntu versions (20.xx or above), it may be required the installation of a package containing "libgfortran.so.4", for example gfortran-7 (suggested command for installation: sudo apt install gfortran-7).
 
