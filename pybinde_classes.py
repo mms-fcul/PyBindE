@@ -601,8 +601,8 @@ class pybinde(object):
                 nonit=nonit,
                 nlit=nlit,
                 acent=self.acent,
-                relpar=0.2,
-                relfac=0.2,
+                relpar=0.9,
+                relfac=0.9,
                 outputfile=LOG,
             )
             #print("successful exit")
