@@ -25,6 +25,10 @@ parser.add_argument('-ensav','--energies_saving_path',type=str, metavar='./',req
 parser.add_argument('-ep','--epsin'    ,type=int, metavar='',required=False, default=4, help='(opt.) dielectric constant to be used')
 parser.add_argument('-cto','--cutoff'    ,type=float, metavar='',required=False, default=None, help='(opt.) cutoff for the MM calculations')
 
+parser.add_argument('-PB_scale','--PB_scale'    ,type=float, metavar='',required=False, default=2.5, help='(opt.) scale for PB calculations. default = 2.5')
+parser.add_argument('-PB_nlit','--PB_nlit'    ,type=int, metavar='',required=False, default=1000, help='(opt.) nr of linear iterations for PB calculations. default = 1000')
+parser.add_argument('-PB_nonit','--PB_nonit'    ,type=int, metavar='',required=False, default=0, help='(opt.) nr of nonlinear iterations for PB calculations. default = 0')
+parser.add_argument('-PB_conv','--PB_convergence'    ,type=float, metavar='',required=False, default=0.001, help='(opt.) convergence value for PB calculations. default = 0.001')
 args = parser.parse_args()
 
 
@@ -50,7 +54,7 @@ if __name__ == '__main__':
 
   pybinde_object.calculate_MM_energy()
   pybinde_object.calculate_SA_energy()
-  pybinde_object.calculate_PB_energy()
+  pybinde_object.calculate_PB_energy(args.PB_scale,args.PB_nlit,args.PB_nonit,args.PB_convergence)
 
   pybinde_object.calculate_binding_energy()
 

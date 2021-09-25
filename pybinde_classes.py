@@ -528,7 +528,7 @@ class pybinde(object):
             df.to_string(outfile)
         #Neatly allocate all columns and rows to a .txt file
     
-    def d4p_run_all(self):
+    def d4p_run_all(self,scale,nlit,nonit,conv):
 
         import sys
         sys.path.insert(0, self.delphi4py_path)
@@ -548,13 +548,13 @@ class pybinde(object):
                 self.database_radii,
                 fpdb,
                 self.gsize,  # grid size #nodes in each axis has to be an odd number
-                self.scale,  # scale = 1 / (distance between nodes)
+                scale,  # scale = 1 / (distance between nodes)
                 "single",  # precision
                 epsin=self.epsin,
                 conc=0.1,  # ionic strength
                 ibctyp=4,  # boundary type: Coulombic
-                res2=self.convergence,  # convergence criterion
-                nlit=self.nlit,  # number of linear iterations
+                res2=conv,  # convergence criterion
+                nlit=nlit,  # number of linear iterations
                 outputfile="LOG_readFiles",
             )
             return delphimol
@@ -564,8 +564,8 @@ class pybinde(object):
             p_atpos = delphimol.p_atpos
 
             delphimol.runDelPhi(
-                nonit=self.nonit,
-                nlit=self.nlit,
+                nonit=nonit,
+                nlit=nlit,
                 acent=self.acent,
                 relpar=0.9,
                 relfac=0.9,
@@ -598,8 +598,8 @@ class pybinde(object):
             delphimol.changeStructureSize(p_atpos, p_rad3, p_chrgv4, atinf, delphimol.p_iatmed,     natoms=natoms)
 
             delphimol.runDelPhi(
-                nonit=self.nonit,
-                nlit=self.nlit,
+                nonit=nonit,
+                nlit=nlit,
                 acent=self.acent,
                 relpar=0.2,
                 relfac=0.2,
@@ -623,7 +623,7 @@ class pybinde(object):
 
         return solvation_dimer, solvation_mon1, solvation_mon2
     
-    def calculate_PB_energy(self):
+    def calculate_PB_energy(self,scale,nlit,nonit,conv):
         pdb_df = self.read_pdb(self.pdb_path)
         
 
@@ -642,7 +642,7 @@ class pybinde(object):
 
         # Run DelPhi4Py
 
-        solvation_whole, solvation_obj1, solvation_obj2 = self.d4p_run_all()
+        solvation_whole, solvation_obj1, solvation_obj2 = self.d4p_run_all(scale,nlit,nonit,conv)
 
         t=310 #K
         kb=0.008314463
