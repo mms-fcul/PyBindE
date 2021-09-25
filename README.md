@@ -29,11 +29,11 @@ This program does not require installation. However, given its dependencies, it 
 The dependencies for this program are:
 |**Dependency**|**Suggested command for installation**|
 |------------|-------------------------------------------|
-|_ python2.6>= & python3.8>=|sudo apt install python3.9|
-|_ numpy | pip3 install --upgrade numpy|
-|_ scipy1.7>= | pip3 install --upgrade scipy|
-|_ pandas1.3>= | pip3 install --upgrade pandas|
-|\* freesasa | pip3 install --upgrade freesasa|
+|* python2.6>= & python3.8>=|sudo apt install python3.9|
+|* numpy | pip3 install --upgrade numpy|
+|* scipy1.7>= | pip3 install --upgrade scipy|
+|* pandas1.3>= | pip3 install --upgrade pandas|
+|* freesasa | pip3 install --upgrade freesasa|
 
 In newer Ubuntu versions (20.xx or above), it may be required the installation of a package containing "libgfortran.so.4", for example gfortran-7 (suggested command for installation: sudo apt install gfortran-7).
 
