@@ -15,7 +15,7 @@ In order to work correctly, the program requires 5 databases.
 
 The program utilises a working _DelPhi4Py_ implementation (to make use of its Poisson-Boltzmann solver), which is provided in the folder _'delphi4py'_.
 
-Several settings may be easily changed or adjusted on the main program's file, although it is strongly advised that you avoid doing so, apart from _DelpPhi4Py_ Settings, specifically.
+Several settings may be easily changed using the program's flags. To see all the flags, run the program with the flag '-h' or '--help'.
 
 There is an _'example'_ folder which contains a test case for basic usage. A _'frame00100.gro'_ file is provided, (which is a MD simulation frame for a Beta-2-Microglobin dimer), as well as a bash script _'example_run.sh'_ with the a basic usage example.
 
