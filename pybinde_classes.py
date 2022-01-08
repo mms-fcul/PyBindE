@@ -1,19 +1,20 @@
 #!/usr/bin/python3
-# version 2021.09.25
+# version 2021.10.18
 import pandas as pd
 import os
 import numpy as np
 import freesasa as fs
 from copy import copy
 from scipy.spatial.distance import cdist
+from delphi4py import DelPhi4py
 
 lib_dir=os.path.dirname(os.path.realpath(__file__))
 databases_path = lib_dir + "/databases/"
 
 class pybinde(object):
     """"""
-    
-    
+
+
     def __init__(
         self,
         gro_file,
@@ -37,7 +38,6 @@ class pybinde(object):
         SA_obj1=0,
         SA_obj2=0,
         nonpolar_energy=0,
-        delphi4py_path = os.path.dirname(os.path.realpath(__file__)) + "/delphi4py/",
         scale = 2.5,
         nlit = 1000,
         nonit = 0,
@@ -66,7 +66,6 @@ class pybinde(object):
         self.SA_obj1 = SA_obj1
         self.SA_obj2 = SA_obj2
         self.nonpolar_energy = nonpolar_energy
-        self.delphi4py_path = delphi4py_path
         self.scale = float(scale)
         self.nlit = int(nlit)
         self.nonit = int(nonit)
@@ -75,14 +74,14 @@ class pybinde(object):
         self.binding_energy = binding_energy
 
 
-    
-    
+
+
     def delphi4py_params(
         scale = 2.5,
         nlit = 1000,
         nonit = 0,
         convergence = 0.001
-        
+
     ):
         scale = float(scale)
         nlit = int(nlit)
@@ -90,7 +89,7 @@ class pybinde(object):
         res2 = float(res2)
 
     def read_gro_df(self):
-        
+
         obj1_range,obj2_range = [self.atom_ranges[0],self.atom_ranges[1]],[self.atom_ranges[2],self.atom_ranges[3]]
         gro_lines = []
         gro_dict = []
@@ -128,7 +127,7 @@ class pybinde(object):
         gro_df.loc[mask, 'chain_id'] = 'B'
         gro_df_subset = gro_df.query("chain_id == chain_id")
         return gro_df_subset
-    
+
     def import_databases(self):
         df_res      = pd.read_table(self.database_restypes,     delim_whitespace=True,header=None,  names=['res_name','atom_name','atom_type']) # df w/ atom names/types from rtp
         df_charges  = pd.read_table(self.database_charges, delim_whitespace=True,header=None,   names=  ['atom_name','res_name','charge'])
@@ -137,9 +136,9 @@ class pybinde(object):
         #print(df_nb[df_nb.duplicated()])
         df_nb = df_nb.rename(columns = {"i": "type_Ai", "j": "type_Bj"})
         return df_res, df_charges, df_nb
-    
+
     def prYellow(self,skk):    print("\033[93m {}\033[00m" .format(skk))
-    
+
     def find_termini(self,df, termini=['NT3','CT4']):
         basic_aa_list=[
         "ALA",
@@ -211,10 +210,10 @@ class pybinde(object):
           df.loc[mask, 'real_chain_id'] = alphabet[num]
           #print(num,alphabet[num])
         return df
-    
-    
+
+
     def correct_protonation_state(self,res_to_find,base_state, protonated_state,proton_name,new_proton_name,df):
-  
+
         mask1 = df["res_name"] == res_to_find; RES_atom_nrs=list(df.loc[mask1,'atom_num'])
         mask2 = df["atom_num"].isin(RES_atom_nrs)
         df.loc[mask1 & mask2,'res_name'] = base_state
@@ -271,11 +270,11 @@ class pybinde(object):
         mask1 = df["res_name"] == residue
         mask2 = df["atom_name"] == old_atom_name
         df.loc[mask1 & mask2,'atom_name'] = new_atom_name
-    
-    
-    
-    
-    
+
+
+
+
+
     def construct_objects(self):
         print("⌬  Welcome to PyBindE! ⌬")
         print("Calculation started...")
@@ -283,7 +282,7 @@ class pybinde(object):
         print("File:                              ",(self.gro_file))
         gro_df = self.read_gro_df()
         gro_df = self.find_termini(gro_df)
-        
+
         self.correct_protonation_state('ASP','AS4','AS1','HD2','HD21',gro_df)
         self.correct_protonation_state('ASPH','AS4','AS1','HD2','HD21',gro_df)
         self.correct_protonation_state('CYS','CYS','CY0','HG','HG1',gro_df)
@@ -302,28 +301,28 @@ class pybinde(object):
         #self.correct_protonation_state('THR','TH3','TH0','HG1','HG1',gro_df)
         #self.correct_protonation_state('HIS','HIS','AS2','HD2','HD21',gro_df)
         self.correct_protonation_state_HIS(gro_df)
-        
+
         self.gro_df = gro_df
-        
+
         df_res, df_charges, df_nb = self.import_databases()
         self.restypes_df, self.charges_df, self.nonbonded_df  = df_res, df_charges, df_nb
         #add information about atom_type
         gro_res_df = pd.merge(gro_df, df_res,  how = 'left', on = ['res_name', 'atom_name'])
         gro_res_df['atom_type'] = gro_res_df['atom_type'].str.replace('CH2R', 'CH2r')
-        
+
         # add charges do gro df
         gro_res_crg_df = pd.merge(gro_res_df, df_charges,  how = 'left', on = ['res_name', 'atom_name'])
         #print(gro_res_crg_df)
         nans = gro_res_crg_df.query("atom_type != atom_type")
         nans_nr=gro_res_crg_df['atom_type'].isna().sum()
         if not nans.empty: print(nans.head(50)); self.prYellow("There are {} atoms with no attribution in atom_type!".format(nans_nr))
-        
+
         nans = gro_res_crg_df.query("charge != charge")
         nans_nr=gro_res_crg_df['charge'].isna().sum()
         if not nans.empty: print(nans.head(50)); self.prYellow("There are {} atoms with no attribution in charge!".format(nans_nr))
-        
-       
-        
+
+
+
         monA_df = gro_res_crg_df.query('chain_id == "A"')
         trimmed_monA = pd.DataFrame(monA_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
 
@@ -331,7 +330,7 @@ class pybinde(object):
         trimmed_monB = pd.DataFrame(monB_df,columns=['atom_num','atom_type','charge','x_coord','y_coord','z_coord'])
         self.obj1, self.obj2 = trimmed_monA, trimmed_monB
         return trimmed_monA, trimmed_monB
-    
+
     def calculate_pair_distances(self, cutoff_n=None):
         #print("calculating distances...")
         #obj1, obj2 = self.trimmed_monA, self.trimmed_monB
@@ -344,20 +343,20 @@ class pybinde(object):
                              'atom_num_Bj':'atom_Bj',
                              'atom_type_Ai':'type_Ai',
                              'atom_type_Bj':'type_Bj'}, inplace = True)
-        
+
         if cutoff_n: dist_df = dist_df.query("distance <= {}".format(cutoff_n))
         self.dist_df = dist_df
         return dist_df
-    
+
     def calculate_MM_energy(self):
-        
-        
+
+
         complete_df = pd.merge(self.dist_df, self.nonbonded_df,  how = 'left', on = ['type_Ai', 'type_Bj'])
         #print(complete_df)
         nans = complete_df.query("charge_Ai != charge_Ai")
         nans_nr=complete_df['charge_Ai'].isna().sum()
         if not nans.empty: print(nans.head(20)); print(nans.tail(20)); print(pd.unique(nans ['atom_Ai'])); self.prYellow("There are {} atom pairs with missing charge_Ai!".format(nans_nr))
-        
+
         # Vdw and coulomb calculations
         complete_df['En_VdW'] = (complete_df['c12']/complete_df['distance']**12)-(complete_df['c6'] /complete_df['distance']**6)
 
@@ -370,10 +369,10 @@ class pybinde(object):
 
         print("VdW Energy (kJ/mol):               ", self.vdw_energy )
         print("Coul Energy (kJ/mol):              ", self.coul_energy)
-    
-    
-    
-    
+
+
+
+
     def create_pdb(self,pdb_saving_dir):
         if not pdb_saving_dir.endswith("/"):
             pdb_saving_dir = pdb_saving_dir + "/"
@@ -398,7 +397,7 @@ class pybinde(object):
         #print(gro)
         np.savetxt(self.pdb_path,gro,delimiter='',fmt=('%6.6s', '%5.5s','%1s', '%-4.4s','%1s', '%-4.4s', '%1.1s','%4.4s','%1s','%3s', '%8.3f', '%8.3f', '%8.3f', '%6.2f', '%6.2f'))
         print("PDB file saved to:                 ", self.pdb_path)
-    
+
     def run_freesasa_custom(self,npoints,verbose=False):
         c =fs.Classifier(self.database_classifier)
         #print(classifier_path)
@@ -448,25 +447,25 @@ class pybinde(object):
         areas=[area_prot,area_list[0],area_list[1]]
 
         return areas
-    
-    
-    
+
+
+
     def calculate_SA_energy(self):
         fs.setVerbosity(fs.nowarnings)
         self.SA_whole, self.SA_obj1, self.SA_obj2 = self.run_freesasa_custom(100)
-        
+
         g = 0.00542 # gamma -> kcal/(mol‚A2)
         b = 0.92    # beta  -> kcal/mol
 
         energy_whole = (self.SA_whole*g+b)
         energy_obj1 = (self.SA_obj1*g+b)
         energy_obj2 = (self.SA_obj2*g+b)
-        
+
         self.nonpolar_energy = (energy_whole -(energy_obj1 + energy_obj2))*4.184 # kJ/mol
         print("Nonpolar Solvation Energy (kJ/mol):", self.nonpolar_energy)
-        
-        
-        
+
+
+
     def read_pdb(self,file):
         pdb_lines = []
         pdb_dict = []
@@ -490,10 +489,10 @@ class pybinde(object):
                     'z_coord':    float(line[8].strip())
                 }
                 pdb_dict.append(line_dict)
-        
+
         pdb_df = pd.DataFrame(pdb_dict)
         return pdb_df
-    
+
     #functions to determine data needed for delphi
     def geom_center(self,df):
         x = (float(max(df['x_coord']))+float(min(df['x_coord'])))/2
@@ -527,29 +526,24 @@ class pybinde(object):
         with open(base_filename,'w') as outfile:
             df.to_string(outfile)
         #Neatly allocate all columns and rows to a .txt file
-    
+
     def d4p_run_all(self,scale,nlit,nonit,conv):
-
-        import sys
-        sys.path.insert(0, self.delphi4py_path)
-        from delphi4py import DelPhi4py
-
 
         mon1_start, mon1_end, mon2_start, mon2_end = self.atom_ranges
         #indices
-        i_mon1_start = mon1_start - mon1_start #0
-        i_mon1_end   = mon1_end   - mon1_start #1148
-        i_mon2_start = mon2_start - mon1_start #1149
-        i_mon2_end   = mon2_end   - mon1_start #2297
+        i_mon1_start = mon1_start - 1 # mon1_start - mon1_start #0
+        i_mon1_end   = mon1_end - 1   # mon1_end   - mon1_start #1148
+        i_mon2_start = mon2_start - 1 # mon2_start - mon1_start #1149
+        i_mon2_end   = mon2_end -1    # mon2_end   - mon1_start #2297
 
         def d4p_read_dimer(fpdb):
             delphimol = DelPhi4py(
                 self.database_charges,
                 self.database_radii,
                 fpdb,
-                self.gsize,  # grid size #nodes in each axis has to be an odd number
-                scale,  # scale = 1 / (distance between nodes)
-                "single",  # precision
+                igrid=self.gsize,  # grid size #nodes in each axis has to be an odd number
+                scale=scale,  # scale = 1 / (distance between nodes)
+                precision="single",  # precision
                 epsin=self.epsin,
                 conc=0.1,  # ionic strength
                 ibctyp=4,  # boundary type: Coulombic
@@ -557,6 +551,7 @@ class pybinde(object):
                 nlit=nlit,  # number of linear iterations
                 outputfile="LOG_readFiles",
             )
+
             return delphimol
 
         def d4p_run_dimer(delphimol):
@@ -575,11 +570,11 @@ class pybinde(object):
             return delphimol.getSolvation()
 
 
-        def d4p_run_monomer(delphimol,i_mon_start,i_mon_end,LOG):
-            p_atpos = delphimol.p_atpos     # coordinates
-            p_rad3 = delphimol.p_rad3       # raios
-            p_chrgv4 = delphimol.p_chrgv4   # cargas
-            atinf = delphimol.atinf         # info sobre o atomo p/ warnings
+        def d4p_run_monomer(delphimol, i_mon_start, i_mon_end,LOG):
+            p_atpos = copy(delphimol.p_atpos)     # coordinates
+            p_rad3 = copy(delphimol.p_rad3)       # raios
+            p_chrgv4 = copy(delphimol.p_chrgv4)   # cargas
+            atinf = copy(delphimol.atinf)         # info sobre o atomo p/ warnings
 
             #print(delphimol)
             for site_atom_position, atom_position in enumerate(range(i_mon_start, i_mon_end+1)):
@@ -593,9 +588,8 @@ class pybinde(object):
                 p_chrgv4[site_atom_position] = delphimol.p_chrgv4[atom_position]
                 atinf[site_atom_position].value = delphimol.atinf[atom_position].value
 
-
             natoms = i_mon_end - i_mon_start + 1
-            delphimol.changeStructureSize(p_atpos, p_rad3, p_chrgv4, atinf, delphimol.p_iatmed,     natoms=natoms)
+            delphimol.changeStructureSize(p_atpos, p_rad3, p_chrgv4, atinf, delphimol.p_iatmed, natoms=natoms)
 
             delphimol.runDelPhi(
                 nonit=nonit,
@@ -606,26 +600,25 @@ class pybinde(object):
                 outputfile=LOG,
             )
             #print("successful exit")
+            #print(delphimol.__str__())
             return delphimol.getSolvation()
 #if __name__ == "__main__":
 
 
         delphimol = d4p_read_dimer(self.pdb_path)
 
-        original_delphimol = copy(delphimol)
-
         solvation_dimer = d4p_run_dimer(delphimol)
 
-        solvation_mon1 = d4p_run_monomer(delphimol,i_mon1_start,i_mon1_end, "LOG_runDelPhi_monomer1")
+        delphimol_copy = copy(delphimol)
 
-        delphimol = original_delphimol
-        solvation_mon2 = d4p_run_monomer(delphimol,i_mon2_start,i_mon2_end, "LOG_runDelPhi_monomer2")
+        solvation_mon1 = d4p_run_monomer(delphimol, i_mon1_start, i_mon1_end, "LOG_runDelPhi_monomer1")
+        solvation_mon2 = d4p_run_monomer(delphimol_copy, i_mon2_start, i_mon2_end, "LOG_runDelPhi_monomer2")
 
         return solvation_dimer, solvation_mon1, solvation_mon2
-    
-    def calculate_PB_energy(self,scale,nlit,nonit,conv):
+
+    def calculate_PB_energy(self, scale, nlit, nonit, conv):
         pdb_df = self.read_pdb(self.pdb_path)
-        
+
 
 
         x,y,z=self.geom_center(pdb_df)
@@ -651,11 +644,11 @@ class pybinde(object):
         Gpolar_obj2  = solvation_obj2*kb*t
         self.polar_energy = Gpolar_whole - (Gpolar_obj1 + Gpolar_obj2)
         print("Polar Solvation Energy (kJ/mol):   ", self.polar_energy)
-    
+
     def calculate_binding_energy(self):
         self.binding_energy = self.vdw_energy + self.coul_energy + self.nonpolar_energy + self.polar_energy
         print("Binding Energy (kJ/mol):           ", self.binding_energy)
-        
+
     def save_results(self,energy_summary_file_path,elapsed_time):
         file_basename   = os.path.basename(self.gro_file)
         with open(energy_summary_file_path,'a+') as outfile:
